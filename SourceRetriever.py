@@ -35,7 +35,7 @@ class SourceRetriever:
             # Connect to the client, as shown in the notebook
             self.es_client = Elasticsearch(host, api_key=api_key, verify_certs=True, request_timeout=30)
             # Test the connection
-            self.es_client.info()
+            self.es_client.search(index=INDEX_NAME_SERPS, body={"query": {"match_all": {}}})
             print("✅ Successfully connected to Elasticsearch!")
         except Exception as e:
             print(f"❌ Connection to Elasticsearch failed: {e}")
@@ -156,7 +156,7 @@ if __name__ == '__main__':
             # 4. Print the results
             if sources:
                 print(f"--- {len(sources)} relevant sources found ---")
-                for i, source in enumerate(sources[:5]):  # Show the top 5
+                for i, source in enumerate(sources[:10]):  # Show the top 5
                     print(f"Source {i + 1}: {source}\n")
             else:
                 print("No suitable sources were found.")
