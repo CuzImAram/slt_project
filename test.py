@@ -3,22 +3,22 @@ import pandas as pd
 from dotenv import dotenv_values
 from elasticsearch import Elasticsearch
 
-# --- Pandas Anzeigeoptionen anpassen ---
-# Stellt sicher, dass der gesamte Text in den Spalten angezeigt wird.
+# --- Adjust Pandas display options ---
+# Ensures that the entire text in the columns is displayed.
 pd.set_option('display.max_colwidth', None)
-# Stellt sicher, dass alle Spalten angezeigt werden.
+# Ensures that all columns are displayed.
 pd.set_option('display.max_columns', None)
-# Stellt sicher, dass die Ausgabe die Konsolenbreite optimal nutzt.
+# Ensures that the output optimally uses the console width.
 pd.set_option('display.width', None)
 
 
-# --- Konfiguration ---
-# Lädt Umgebungsvariablen aus der .env-Datei.
-# Stellen Sie sicher, dass Ihre .env-Datei den ES_API_KEY enthält.
+# --- Configuration ---
+# Loads environment variables from the .env file.
+# Make sure your .env file contains the ES_API_KEY.
 config = dotenv_values(".env")
 ES_API_KEY = config.get("ES_API_KEY")
 
-# Verbindungsparameter aus Ihrem bereitgestellten Notebook.
+# Connection parameters from your provided notebook.
 ES_HOST = "https://elasticsearch.bw.webis.de:9200"
 INDEX_NAME_SERPS = "aql_serps"
 INDEX_NAME_RESULTS = "aql_results"
@@ -26,39 +26,50 @@ INDEX_NAME_RESULTS = "aql_results"
 
 class SourceRetriever:
     """
-    Eine Klasse zum Abrufen von Quellen aus Elasticsearch unter Verwendung erweiterter Abfragen
-    und Pandas zur Datenmanipulation. Diese Version verwendet einen Instanz-Client für ES.
+    A class for retrieving sources from Elasticsearch using advanced queries
+    and Pandas for data manipulation. This version uses an instance client for ES.
     """
 
     def __init__(self, host: str, api_key: str, serps_index: str, results_index: str):
         """
-        Initialisiert den Retriever und stellt die Verbindung zu Elasticsearch her.
+        Initializes the retriever and establishes the connection to Elasticsearch.
+
+        Args:
+            host (str): The Elasticsearch host URL.
+            api_key (str): The API key for authentication.
+            serps_index (str): The name of the SERPs index.
+            results_index (str): The name of the results index.
         """
         self.serps_index = serps_index
         self.results_index = results_index
-        self.es_client = None  # Client als None initialisieren
+        self.es_client = None  # Initialize client as None
 
         if not api_key:
-            print("❌ ES_API_KEY nicht in .env-Datei gefunden.")
+            print("❌ ES_API_KEY not found in .env file.")
             return
 
         try:
-            print("Verbinde mit Elasticsearch...")
-            # Speichert den Client als Instanzvariable
+            print("Connecting to Elasticsearch...")
+            # Store the client as an instance variable
             self.es_client = Elasticsearch(host, api_key=api_key, verify_certs=True, request_timeout=30)
-            # Verbindung testen
+            # Test connection
             self.es_client.ping()
-            print("✅ Erfolgreich mit Elasticsearch verbunden!")
+            print("✅ Successfully connected to Elasticsearch!")
         except Exception as e:
-            print(f"❌ Verbindung zu Elasticsearch fehlgeschlagen: {e}")
+            print(f"❌ Failed to connect to Elasticsearch: {e}")
             print(
-                "Bitte stellen Sie sicher, dass Sie mit dem Webis VPN verbunden sind und Ihr API-Schlüssel korrekt ist.")
+                "Please make sure you are connected to the Webis VPN and your API key is correct.")
             self.es_client = None
 
     def get_serps(self, rag_query: str):
         """
-        Ruft relevante SERPs basierend auf der Benutzeranfrage ab.
-        Dies ist nun eine ordnungsgemäße Instanzmethode.
+        Retrieves relevant SERPs based on the user query.
+
+        Args:
+            rag_query (str): The user query string.
+
+        Returns:
+            pd.DataFrame: DataFrame containing SERPs.
         """
         query = {
             "query": {
@@ -85,15 +96,19 @@ class SourceRetriever:
             },
             "size": 10_000
         }
-        # Verwendet den Instanz-Client 'self.es_client'
         serps = self.es_client.search(index=self.serps_index, body=query)
         serps_df = pd.json_normalize(serps['hits']['hits']).loc[:, ["_id", "_source.warc_query", "_score"]]
         return serps_df
 
     def get_texts_from_index(self, serps_df: pd.DataFrame):
         """
-        Ruft die Snippet-Texte für das angegebene SERPs-DataFrame ab.
-        Dies ist nun eine ordnungsgemäße Instanzmethode.
+        Retrieves the snippet texts for the given SERPs DataFrame.
+
+        Args:
+            serps_df (pd.DataFrame): DataFrame containing SERP IDs.
+
+        Returns:
+            pd.DataFrame: DataFrame containing snippet texts.
         """
         query = {
             "query": {
@@ -115,7 +130,6 @@ class SourceRetriever:
             },
             "size": 10_000  # Set to maximum, to make sure we get all results
         }
-        # Verwendet den Instanz-Client 'self.es_client'
         texts = self.es_client.search(index=self.results_index, body=query)
         texts_df = pd.json_normalize(texts['hits']['hits']).loc[:,
                            ["_source.serp.id", "_source.snippet.id", "_source.snippet.text", "_source.snippet.rank"]]
@@ -123,14 +137,20 @@ class SourceRetriever:
 
     def get_context(self, rag_query: str):
         """
-        Öffentliche Hauptmethode zum Abrufen, Zusammenführen und Verarbeiten von Daten
-        in einem finalen Kontext-DataFrame.
+        Public main method to retrieve, merge, and process data
+        into a final context DataFrame.
+
+        Args:
+            rag_query (str): The user query string.
+
+        Returns:
+            pd.DataFrame: DataFrame containing the final context.
         """
         if not self.es_client:
-            print("Kontext kann nicht abgerufen werden, Elasticsearch-Client ist nicht verbunden.")
+            print("Context cannot be retrieved, Elasticsearch client is not connected.")
             return pd.DataFrame()
 
-        # Ruft die anderen Methoden mit 'self' auf
+        # Calls the other methods with 'self'
         serps = self.get_serps(rag_query)
         texts = self.get_texts_from_index(serps)
 
@@ -160,9 +180,9 @@ class SourceRetriever:
         return context
 
 
-# --- Anwendungsbeispiel ---
+# --- Usage example ---
 if __name__ == '__main__':
-    # 1. Initialisieren Sie die Retriever-Klasse
+    # 1. Initialize the retriever class
     retriever = SourceRetriever(
         host=ES_HOST,
         api_key=ES_API_KEY,
@@ -170,19 +190,20 @@ if __name__ == '__main__':
         results_index=INDEX_NAME_RESULTS
     )
 
-    # 2. Fahren Sie nur fort, wenn die Verbindung erfolgreich war
+    # 2. Continue only if the connection was successful
     if retriever.es_client:
         user_question = "pizza pineapple"
-        print(f"\n--- Rufe Kontext für die Anfrage ab: '{user_question}' ---")
+        print(f"\n--- Retrieving context for query: '{user_question}' ---")
 
-        # 3. Rufen Sie die Hauptmethode auf, um den Kontext zu erhalten
+        # 3. Call the main method to get the context
         context_df = retriever.get_context(user_question)
 
-        # 4. Zeigen Sie die Ergebnisse an
+        # 4. Display the results
         if not context_df.empty:
-            print("\n--- Abgerufener Kontext-DataFrame ---")
+            print("\n--- Retrieved context DataFrame ---")
             print(context_df.head(100)) # Changed to head(100) to show more rows by default
-            print(f"\nGesamtzahl der abgerufenen Snippets: {len(context_df)}")
+            print(f"\nTotal number of retrieved snippets: {len(context_df)}")
             print("-----------------------------------")
         else:
-            print("\n--- Es wurde kein Kontext abgerufen. ---")
+            print("\n--- No context was retrieved. ---")
+
