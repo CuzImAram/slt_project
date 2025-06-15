@@ -22,7 +22,6 @@ ES_HOST = "https://elasticsearch.bw.webis.de:9200"
 INDEX_NAME_SERPS = "aql_serps"
 INDEX_NAME_RESULTS = "aql_results"
 
-
 class SourceRetriever:
     """
     A class for retrieving sources from Elasticsearch using advanced queries
