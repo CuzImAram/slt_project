@@ -1,7 +1,7 @@
 import pandas as pd
 from dotenv import dotenv_values
 from openai import OpenAI
-from source_retriever_v3 import SourceRetriever  # Import the retriever to use in the example
+from SourceRetriever import SourceRetriever
 
 # --- Configuration ---
 # Loads environment variables from the .env file.
@@ -97,10 +97,40 @@ class LLMGenerator:
 
 # --- Usage Example ---
 if __name__ == '__main__':
-    # This block demonstrates how to connect the SourceRetriever with the LLMGenerator.
+    test_questions = [
+        "What are the health benefits of a Mediterranean diet?",
+        "How does climate change affect coral reefs?",
+        "What is the process of photosynthesis?",
+        "Why is the sky blue?",
+        "What are the main causes of inflation?",
+        "How do vaccines work?",
+        "What is the history of the internet?",
+        "What are black holes?",
+        "How does solar power work?",
+        "What is the difference between nuclear fission and fusion?",
+        "Why do we dream?",
+        "What are the symptoms of long COVID?",
+        "How to bake a sourdough bread?",
+        "What are the arguments for and against universal basic income?",
+        "What is the significance of the Rosetta Stone?",
+        "How does a 3D printer work?",
+        "What are the ethical implications of artificial intelligence?",
+        "Why is biodiversity important for ecosystems?",
+        "What was the impact of the printing press?",
+        "How to learn a new language effectively?",
+        "What is blockchain technology?",
+        "What are the causes of the Roman Empire's fall?",
+        "How does quantum computing differ from classical computing?",
+        "What are the benefits of mindfulness and meditation?",
+        "Why is sleep important for health?",
+        "What is the theory of relativity?",
+        "How are electric car batteries recycled?",
+        "What is the gig economy?",
+        "What are the main principles of stoicism?",
+        "How does GPS technology work?"
+    ]
 
     # 1. Initialize the SourceRetriever (from the other file)
-    # Note: This assumes the ES_API_KEY is also in your .env file.
     es_api_key = config.get("ES_API_KEY")
     retriever = SourceRetriever(
         host="https://elasticsearch.bw.webis.de:9200",
@@ -118,20 +148,23 @@ if __name__ == '__main__':
 
     # 3. Proceed only if both clients were initialized successfully
     if retriever.es_client and llm_generator.client:
-        user_question = "why has olive oil increased in price"
+        # Loop through each question in the test list
+        for i, user_question in enumerate(test_questions):
+            print(f"\n\n{'=' * 20} PROCESSING QUESTION {i + 1}/{len(test_questions)} {'=' * 20}")
+            print(f"QUERY: {user_question}")
 
-        # Step A: Get the context
-        print(f"--- Retrieving context for query: '{user_question}' ---")
-        context_dataframe = retriever.get_context(user_question)
+            # Step A: Get the context
+            context_dataframe = retriever.get_context(user_question)
 
-        if not context_dataframe.empty:
-            # Step B: Pass the context to the LLM for summarization
-            summarized_context = llm_generator.summarize_context(context_dataframe, user_question)
+            if not context_dataframe.empty:
+                # Step B: Pass the context to the LLM for summarization
+                summarized_context = llm_generator.summarize_context(context_dataframe, user_question)
 
-            if summarized_context:
-                print("\n--- LLM-Generated Summary of Context ---")
-                print(summarized_context)
-                print("----------------------------------------")
-        else:
-            print("\n--- No context was retrieved, skipping summarization. ---")
+                if summarized_context:
+                    print("\n--- LLM-Generated Summary of Context ---")
+                    print(summarized_context)
+                    print("----------------------------------------")
+            else:
+                print("\n--- No context was retrieved, skipping summarization. ---")
+            print(f"{'=' * 20} FINISHED QUESTION {i + 1}/{len(test_questions)} {'=' * 20}")
 

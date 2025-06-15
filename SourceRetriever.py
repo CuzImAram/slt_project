@@ -93,7 +93,7 @@ class SourceRetriever:
                     ]
                 }
             },
-            "size": 10_000
+            "size": 100
         }
         serps = self.es_client.search(index=self.serps_index, body=query)
         serps_df = pd.json_normalize(serps['hits']['hits']).loc[:, ["_id", "_source.warc_query", "_score"]]
