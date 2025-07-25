@@ -65,10 +65,12 @@ def get_llm_generator():
 
 # --- Main App UI ---
 st.title("🔬 RAG Pipeline Analysis Tool")
-st.markdown("""
+st.markdown(
+    """
 This application allows you to test and compare different Retrieval-Augmented Generation (RAG) strategies. 
 Enter a question below and click 'Run Analysis' to see how each pipeline performs.
-""")
+"""
+)
 
 retriever = get_retriever()
 llm_generator = get_llm_generator()
@@ -88,47 +90,56 @@ if st.button("Run Analysis", type="primary"):
     else:
         st.success(f"Processing query: **{user_question}**")
 
-        # --- Pipeline 1 & 2: Original Query ---
-        st.header("Pipelines 1 & 2: Original Query")
-        with st.spinner("Retrieving context for the original query..."):
+        # --- Pipeline 2: Original Query (Summary -> Answer) ---
+        st.header("Pipeline 1: Original Query (Direct Context → Answer)")
+        with st.spinner("Retrieving context for Pipeline 1..."):
+            context_df2 = retriever.get_context(user_question)
+
+        if not context_df2.empty:
+            st.info(f"Retrieved **{len(context_df2)}** snippets for Pipeline 1.")
+            with st.expander("Show Retrieved Context for Pipeline 1"):
+                st.dataframe(context_df2)
+
+            with st.expander("Show Pipeline 1 Result"):
+                with st.spinner("Pipeline 1: Generating answer directly from context..."):
+                    answer_p2 = llm_generator.answer_question_from_context(context_df2, user_question)
+                st.subheader("Final Answer")
+                st.success(answer_p2 or "Could not generate an answer.")
+        else:
+            st.warning("No context was retrieved for Pipeline 1.")
+
+        # --- Pipeline 1: Original Query (Direct Context -> Answer) ---
+        st.header("Pipeline 2: Original Query (Summary → Answer)")
+        with st.spinner("Retrieving context for Pipeline 2..."):
             context_df = retriever.get_context(user_question)
 
         if not context_df.empty:
-            st.info(f"Retrieved **{len(context_df)}** snippets for the original query.")
-
-            with st.expander("Show Retrieved Context for Pipelines 1 & 2"):
+            st.info(f"Retrieved **{len(context_df)}** snippets for Pipeline 2.")
+            with st.expander("Show Retrieved Context for Pipeline 2"):
                 st.dataframe(context_df)
 
-            # Pipeline 1 with Dropdown
-            with st.expander("Show Pipeline 1 Result (Summary -> Answer)"):
-                with st.spinner("Pipeline 1: Summarizing context and generating answer..."):
+            with st.expander("Show Pipeline 2 Result"):
+                with st.spinner("Pipeline 2: Summarizing context and generating answer..."):
                     summarized_context = llm_generator.summarize_context(context_df, user_question)
                     st.subheader("Intermediate Summary")
-                    st.write(summarized_context if summarized_context else "Could not generate summary.")
+                    st.write(summarized_context or "Could not generate summary.")
 
                     if summarized_context:
                         answer_p1 = llm_generator.answer_question_from_summary(summarized_context, user_question)
                         st.subheader("Final Answer")
-                        st.success(answer_p1 if answer_p1 else "Could not generate an answer.")
-
-            # Pipeline 2 with Dropdown
-            with st.expander("Show Pipeline 2 Result (Direct Context -> Answer)"):
-                with st.spinner("Pipeline 2: Generating answer directly from context..."):
-                    answer_p2 = llm_generator.answer_question_from_context(context_df, user_question)
-                st.subheader("Final Answer")
-                st.success(answer_p2 if answer_p2 else "Could not generate an answer.")
+                        st.success(answer_p1 or "Could not generate an answer.")
         else:
-            st.warning("No context was retrieved for the original query.")
+            st.warning("No context was retrieved for Pipeline 2.")
 
         # --- Pipeline 3: Rewritten Query ---
-        st.header("Pipeline 3: Rewritten Query")
-        with st.expander("Show Pipeline 3 Result (Rewrite -> Summary -> Answer)"):
+        st.header("Pipeline 3: Rewritten Query (Rewrite → Summary → Answer)")
+        with st.expander("Show Pipeline 3 Result"):
             with st.spinner("Pipeline 3: Rewriting query..."):
                 rewritten_query = llm_generator.rewrite_query(user_question)
             st.subheader("LLM-Rewritten Query")
             st.info(f"**{rewritten_query}**")
 
-            with st.spinner(f"Retrieving context for rewritten query..."):
+            with st.spinner("Retrieving context for rewritten query..."):
                 rewritten_context_df = retriever.get_context(rewritten_query)
 
             if not rewritten_context_df.empty:
@@ -139,18 +150,18 @@ if st.button("Run Analysis", type="primary"):
                 with st.spinner("Pipeline 3: Summarizing and generating final answer..."):
                     summarized_context_p3 = llm_generator.summarize_context(rewritten_context_df, user_question)
                     st.subheader("Intermediate Summary")
-                    st.write(summarized_context_p3 if summarized_context_p3 else "Could not generate summary.")
+                    st.write(summarized_context_p3 or "Could not generate summary.")
 
                     if summarized_context_p3:
                         answer_p3 = llm_generator.answer_question_from_summary(summarized_context_p3, user_question)
                         st.subheader("Final Answer")
-                        st.success(answer_p3 if answer_p3 else "Could not generate an answer.")
+                        st.success(answer_p3 or "Could not generate an answer.")
             else:
                 st.warning("No context was retrieved for the rewritten query.")
 
         # --- Pipeline 4: Query Pool ---
-        st.header("Pipeline 4: Query Pool")
-        with st.expander("Show Pipeline 4 Result (Query Pool -> Direct Answer)"):
+        st.header("Pipeline 4: Query Pool (Query Pool → Direct Answer)")
+        with st.expander("Show Pipeline 4 Result"):
             with st.spinner("Pipeline 4: Generating query pool..."):
                 query_pool = llm_generator.generate_query_pool(user_question, 25)
 
@@ -177,8 +188,6 @@ if st.button("Run Analysis", type="primary"):
                 with st.spinner("Pipeline 4: Generating answer from pooled context..."):
                     answer_p4 = llm_generator.answer_question_from_context(truncated_pool_df, user_question)
                 st.subheader("Final Answer")
-                st.success(answer_p4 if answer_p4 else "Could not generate an answer.")
+                st.success(answer_p4 or "Could not generate an answer.")
             else:
                 st.warning("No context could be retrieved for any query in the pool.")
-
-        st.balloons()
