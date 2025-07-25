@@ -11,7 +11,6 @@ st.set_page_config(
     layout="wide"
 )
 
-
 # --- Load API Keys ---
 @st.cache_data
 def load_config():
@@ -28,12 +27,10 @@ def load_config():
         st.error(f"Could not load the .env file. Please make sure it exists in the root directory. Error: {e}")
         return None, None
 
-
 ES_API_KEY, LLM_API_KEY = load_config()
 
 if not ES_API_KEY or not LLM_API_KEY:
     st.stop()
-
 
 # --- Caching the Clients ---
 @st.cache_resource
@@ -49,7 +46,6 @@ def get_retriever():
         return None
     return retriever
 
-
 @st.cache_resource
 def get_llm_generator():
     llm = LLM(
@@ -61,7 +57,6 @@ def get_llm_generator():
         st.error("Failed to initialize the LLM client. Please check your API key.")
         return None
     return llm
-
 
 # --- Main App UI ---
 st.title("🔬 RAG Pipeline Analysis Tool")
@@ -90,7 +85,7 @@ if st.button("Run Analysis", type="primary"):
     else:
         st.success(f"Processing query: **{user_question}**")
 
-        # --- Pipeline 2: Original Query (Summary -> Answer) ---
+        # --- Pipeline 1: Original Query (Direct Context → Answer) ---
         st.header("Pipeline 1: Original Query (Direct Context → Answer)")
         with st.spinner("Retrieving context for Pipeline 1..."):
             context_df2 = retriever.get_context(user_question)
@@ -108,7 +103,7 @@ if st.button("Run Analysis", type="primary"):
         else:
             st.warning("No context was retrieved for Pipeline 1.")
 
-        # --- Pipeline 1: Original Query (Direct Context -> Answer) ---
+        # --- Pipeline 2: Original Query (Summary → Answer) ---
         st.header("Pipeline 2: Original Query (Summary → Answer)")
         with st.spinner("Retrieving context for Pipeline 2..."):
             context_df = retriever.get_context(user_question)
@@ -131,22 +126,25 @@ if st.button("Run Analysis", type="primary"):
         else:
             st.warning("No context was retrieved for Pipeline 2.")
 
-        # --- Pipeline 3: Rewritten Query ---
+        # --- Pipeline 3: Rewritten Query (Rewrite → Summary → Answer) ---
         st.header("Pipeline 3: Rewritten Query (Rewrite → Summary → Answer)")
-        with st.expander("Show Pipeline 3 Result"):
-            with st.spinner("Pipeline 3: Rewriting query..."):
-                rewritten_query = llm_generator.rewrite_query(user_question)
-            st.subheader("LLM-Rewritten Query")
-            st.info(f"**{rewritten_query}**")
+        # Rewrite Query
+        with st.spinner("Pipeline 3: Rewriting query..."):
+            rewritten_query = llm_generator.rewrite_query(user_question)
+        st.subheader("LLM-Rewritten Query")
+        st.info(f"**{rewritten_query}**")
 
-            with st.spinner("Retrieving context for rewritten query..."):
-                rewritten_context_df = retriever.get_context(rewritten_query)
+        # Retrieve Context
+        with st.spinner("Retrieving context for rewritten query..."):
+            rewritten_context_df = retriever.get_context(rewritten_query)
 
-            if not rewritten_context_df.empty:
-                st.write(f"Retrieved **{len(rewritten_context_df)}** snippets for the rewritten query.")
-                with st.expander("Show Retrieved Context for Pipeline 3"):
-                    st.dataframe(rewritten_context_df)
+        if not rewritten_context_df.empty:
+            st.info(f"Retrieved **{len(rewritten_context_df)}** snippets for Pipeline 3.")
+            with st.expander("Show Retrieved Context for Pipeline 3"):
+                st.dataframe(rewritten_context_df)
 
+            # Generate Summary & Answer
+            with st.expander("Show Pipeline 3 Result"):
                 with st.spinner("Pipeline 3: Summarizing and generating final answer..."):
                     summarized_context_p3 = llm_generator.summarize_context(rewritten_context_df, user_question)
                     st.subheader("Intermediate Summary")
@@ -156,10 +154,10 @@ if st.button("Run Analysis", type="primary"):
                         answer_p3 = llm_generator.answer_question_from_summary(summarized_context_p3, user_question)
                         st.subheader("Final Answer")
                         st.success(answer_p3 or "Could not generate an answer.")
-            else:
-                st.warning("No context was retrieved for the rewritten query.")
+        else:
+            st.warning("No context was retrieved for Pipeline 3.")
 
-        # --- Pipeline 4: Query Pool ---
+        # --- Pipeline 4: Query Pool (Query Pool → Direct Answer) ---
         st.header("Pipeline 4: Query Pool (Query Pool → Direct Answer)")
         with st.expander("Show Pipeline 4 Result"):
             with st.spinner("Pipeline 4: Generating query pool..."):
