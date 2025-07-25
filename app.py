@@ -96,7 +96,7 @@ if st.button("Run Analysis", type="primary"):
                 st.dataframe(context_df2)
 
             with st.expander("Show Pipeline 1 Result"):
-                with st.spinner("Pipeline 1: Generating answer directly from context..."):
+                with st.spinner("Pipeline 1: Generating answer directly from context..." ):
                     answer_p2 = llm_generator.answer_question_from_context(context_df2, user_question)
                 st.subheader("Final Answer")
                 st.success(answer_p2 or "Could not generate an answer.")
@@ -159,33 +159,28 @@ if st.button("Run Analysis", type="primary"):
 
         # --- Pipeline 4: Query Pool (Query Pool → Direct Answer) ---
         st.header("Pipeline 4: Query Pool (Query Pool → Direct Answer)")
-        with st.expander("Show Pipeline 4 Result"):
-            with st.spinner("Pipeline 4: Generating query pool..."):
+        # Generate Query Pool and Retrieve Context
+        with st.expander("Show Retrieved Context for Pipeline 4"):
+            with st.spinner("Pipeline 4: Generating query pool and retrieving context..."):
                 query_pool = llm_generator.generate_query_pool(user_question, 25)
-
-            with st.expander("Show Generated Query Pool"):
-                st.info(query_pool)
-
-            all_contexts = []
-            with st.spinner("Pipeline 4: Retrieving context for all pooled queries..."):
+                all_contexts = []
                 for q in query_pool:
                     pooled_df = retriever.get_context(q)
                     if not pooled_df.empty:
                         all_contexts.append(pooled_df)
-
             if all_contexts:
                 full_context_df = pd.concat(all_contexts, ignore_index=True).drop_duplicates(
                     subset=['text']).reset_index(drop=True)
                 truncated_pool_df = full_context_df.head(100)
-                st.write(
-                    f"Retrieved **{len(full_context_df)}** total unique snippets, using top **{len(truncated_pool_df)}** for answer generation.")
+                st.info(f"Retrieved **{len(full_context_df)}** total unique snippets, using top **{len(truncated_pool_df)}** for answer generation.")
+                st.dataframe(truncated_pool_df)
+            else:
+                st.warning("No context could be retrieved for any query in the pool.")
 
-                with st.expander("Show Pooled & Truncated Context for Pipeline 4"):
-                    st.dataframe(truncated_pool_df)
-
+        # Generate and Show Answer
+        with st.expander("Show Pipeline 4 Result"):
+            if all_contexts:
                 with st.spinner("Pipeline 4: Generating answer from pooled context..."):
                     answer_p4 = llm_generator.answer_question_from_context(truncated_pool_df, user_question)
                 st.subheader("Final Answer")
                 st.success(answer_p4 or "Could not generate an answer.")
-            else:
-                st.warning("No context could be retrieved for any query in the pool.")
