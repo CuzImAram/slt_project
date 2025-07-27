@@ -11,7 +11,7 @@ import re  # Import regular expressions for robust parsing
 config = dotenv_values(".env")
 LLM_API_KEY = config.get("API_KEY")
 LLM_API_URL = "https://api.helmholtz-blablador.fz-juelich.de/v1/"
-LLM_API_MODEL = "alias-fast"
+LLM_API_MODEL = "alias-fast-experimental"
 
 
 class LLM:
