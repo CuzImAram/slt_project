@@ -51,7 +51,7 @@ def get_llm_generator():
     llm = LLM(
         api_key=LLM_API_KEY,
         base_url="https://api.helmholtz-blablador.fz-juelich.de/v1/",
-        model="alias-fast"
+        model="alias-fast-experimental"
     )
     if not llm.client:
         st.error("Failed to initialize the LLM client. Please check your API key.")
@@ -162,7 +162,7 @@ if st.button("Run Analysis", type="primary"):
         # Generate Query Pool and Retrieve Context
         with st.expander("Show Retrieved Context for Pipeline 4"):
             with st.spinner("Pipeline 4: Generating query pool and retrieving context..."):
-                query_pool = llm_generator.generate_query_pool(user_question, 25)
+                query_pool = llm_generator.generate_query_pool(user_question, 10)
                 all_contexts = []
                 for q in query_pool:
                     pooled_df = retriever.get_context(q)
