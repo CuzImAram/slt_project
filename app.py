@@ -94,7 +94,7 @@ def run_pipeline_1(query, retriever, llm_generator):
 def run_pipeline_4(query, retriever, llm_generator):
     """Pipeline 4: Query Pool (Query Pool → Direct Answer)"""
     try:
-        query_pool = llm_generator.generate_query_pool(query, 25)
+        query_pool = llm_generator.generate_query_pool(query, 10)
         all_contexts = []
         for q in query_pool:
             pooled_df = retriever.get_context(q)
