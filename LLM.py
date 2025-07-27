@@ -44,11 +44,13 @@ class LLM:
 
         print(f"\n--- Generating a pool of {num_queries} queries for: '{query}' ---")
         system_prompt = (
-            "You are a helpful AI research assistant. Your task is to generate a list of "
-            f"{num_queries} diverse and relevant search engine queries based on the user's "
-            "question. These queries should explore different facets of the original question. "
-            "Return the queries as a valid JSON object with a single key 'queries' containing a list of strings. For example: "
-            '{"queries": ["query 1", "query 2", "query 3"]}'
+            "You are a helpful AI research assistant. Your task is to take the user’s input query, split it into its "
+            "individual terms, and generate the power set of those terms (i.e. every non‑empty combination of the words "
+            "in the query). Return the result as a valid JSON object with a single key, queries, whose value is a list "
+            "of strings. For example, given the input"
+            "Carbonara best recipe, you should return:"
+            '{"queries": ["Carbonara best recipe", "Carbonara best", "Carbonara recipe", "best recipe", "Carbonara", "best", "recipe"]}'
+            "the queries should be relevant to the original query and suitable for a search engine. for instance, you should remove recipe and best "
         )
         user_prompt = f"User question: \"{query}\""
 
