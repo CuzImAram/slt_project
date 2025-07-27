@@ -236,7 +236,7 @@ if st.session_state.page == 'analysis':
 
     user_question = st.text_input(
         "Enter your question here:",
-        "What are the health benefits of a Mediterranean diet?"
+        "Seven Wonders of the World"
     )
 
     if st.button("Run Analysis", type="primary"):
