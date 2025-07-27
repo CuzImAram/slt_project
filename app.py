@@ -62,37 +62,47 @@ def get_llm_generator():
 
 # --- Test Queries ---
 TEST_QUERIES = [
-    "What are the health benefits of a Mediterranean diet?",
-    "How does climate change affect coral reefs?",
-    "What is the process of photosynthesis?",
-    "Why is the sky blue?",
-    "What are the main causes of inflation?",
-    "How do vaccines work to prevent diseases?",
-    "What are the effects of exercise on mental health?",
-    "How does artificial intelligence impact job markets?",
-    "What causes earthquakes and how are they measured?",
-    "How do solar panels convert sunlight into electricity?",
-    "What are the benefits and risks of nuclear energy?",
-    "How does the human immune system fight infections?",
-    "What is the role of genetics in determining personality?",
-    "How do hurricanes form and why are they so destructive?",
-    "What are the environmental impacts of fast fashion?"
+    "How does climate change affect coral reefs?"
 ]
 
 # --- Pipeline Functions ---
 def run_pipeline_1(query, retriever, llm_generator):
-    """Pipeline 1: Original Query (Direct Context → Answer)"""
+    """Pipeline 1: Original Query (Direct Context → Filter → Answer)"""
     try:
         context_df = retriever.get_context(query)
+        original_context = context_df.copy() if not context_df.empty else pd.DataFrame()
+
         if not context_df.empty:
-            answer = llm_generator.answer_question_from_context(context_df, query)
-            return answer or "Could not generate an answer."
-        return "No context retrieved."
+            # Apply context filtering for Pipeline 1
+            filtered_context_df = llm_generator.filter_context(context_df, query)
+
+            if not filtered_context_df.empty:
+                answer = llm_generator.answer_question_from_context(filtered_context_df, query)
+                return {
+                    'answer': answer or "Could not generate an answer.",
+                    'original_context': original_context,
+                    'filtered_context': filtered_context_df
+                }
+            else:
+                return {
+                    'answer': "No relevant context found for this query.",
+                    'original_context': original_context,
+                    'filtered_context': pd.DataFrame()
+                }
+        return {
+            'answer': "No context retrieved.",
+            'original_context': pd.DataFrame(),
+            'filtered_context': pd.DataFrame()
+        }
     except Exception as e:
-        return f"Error in Pipeline 1: {str(e)}"
+        return {
+            'answer': f"Error in Pipeline 1: {str(e)}",
+            'original_context': pd.DataFrame(),
+            'filtered_context': pd.DataFrame()
+        }
 
 def run_pipeline_4(query, retriever, llm_generator):
-    """Pipeline 4: Query Pool (Query Pool → Direct Answer)"""
+    """Pipeline 4: Query Pool (Query Pool → Filtered Context → Direct Answer)"""
     try:
         query_pool = llm_generator.generate_query_pool(query, 10)
         all_contexts = []
@@ -105,11 +115,35 @@ def run_pipeline_4(query, retriever, llm_generator):
             full_context_df = pd.concat(all_contexts, ignore_index=True).drop_duplicates(
                 subset=['text']).reset_index(drop=True)
             truncated_pool_df = full_context_df.head(100)
-            answer = llm_generator.answer_question_from_context(truncated_pool_df, query)
-            return answer or "Could not generate an answer."
-        return "No context retrieved from query pool."
+            original_context = truncated_pool_df.copy()
+
+            # Apply context filtering for Pipeline 4
+            filtered_context_df = llm_generator.filter_context(truncated_pool_df, query)
+
+            if not filtered_context_df.empty:
+                answer = llm_generator.answer_question_from_context(filtered_context_df, query)
+                return {
+                    'answer': answer or "Could not generate an answer.",
+                    'original_context': original_context,
+                    'filtered_context': filtered_context_df
+                }
+            else:
+                return {
+                    'answer': "No relevant context found for this query.",
+                    'original_context': original_context,
+                    'filtered_context': pd.DataFrame()
+                }
+        return {
+            'answer': "No context retrieved from query pool.",
+            'original_context': pd.DataFrame(),
+            'filtered_context': pd.DataFrame()
+        }
     except Exception as e:
-        return f"Error in Pipeline 4: {str(e)}"
+        return {
+            'answer': f"Error in Pipeline 4: {str(e)}",
+            'original_context': pd.DataFrame(),
+            'filtered_context': pd.DataFrame()
+        }
 
 # --- Initialize Session State ---
 if 'results_ready' not in st.session_state:
@@ -152,23 +186,23 @@ if not st.session_state.results_ready:
             status_text.text(f"Processing query {i+1}/15: {query[:50]}...")
 
             # Run both pipelines
-            pipeline1_answer = run_pipeline_1(query, retriever, llm_generator)
-            pipeline4_answer = run_pipeline_4(query, retriever, llm_generator)
+            pipeline1_result = run_pipeline_1(query, retriever, llm_generator)
+            pipeline4_result = run_pipeline_4(query, retriever, llm_generator)
 
             # Randomly assign which pipeline goes to left/right
             if random.choice([True, False]):
-                left_answer = ("Pipeline 1", pipeline1_answer)
-                right_answer = ("Pipeline 4", pipeline4_answer)
+                left_result = ("Pipeline 1", pipeline1_result)
+                right_result = ("Pipeline 4", pipeline4_result)
             else:
-                left_answer = ("Pipeline 4", pipeline4_answer)
-                right_answer = ("Pipeline 1", pipeline1_answer)
+                left_result = ("Pipeline 4", pipeline4_result)
+                right_result = ("Pipeline 1", pipeline1_result)
 
             st.session_state.comparison_results.append({
                 'query': query,
-                'left': left_answer,
-                'right': right_answer,
-                'pipeline1_answer': pipeline1_answer,
-                'pipeline4_answer': pipeline4_answer
+                'left': left_result,
+                'right': right_result,
+                'pipeline1_answer': pipeline1_result['answer'],
+                'pipeline4_answer': pipeline4_result['answer']
             })
 
             progress_bar.progress((i + 1) / len(TEST_QUERIES))
@@ -198,11 +232,85 @@ elif st.session_state.results_ready and not st.session_state.voting_complete:
 
         with col1:
             st.subheader("Answer A")
-            st.write(result['left'][1])
+            st.write(result['left'][1]['answer'])
 
         with col2:
             st.subheader("Answer B")
-            st.write(result['right'][1])
+            st.write(result['right'][1]['answer'])
+
+        # Context Viewing Dropdown
+        st.markdown("---")
+        st.subheader("📄 Context Inspection")
+
+        # Get pipeline results for context display
+        pipeline1_result = None
+        pipeline4_result = None
+
+        # Determine which pipeline is which
+        for name, result_data in [result['left'], result['right']]:
+            if name == "Pipeline 1":
+                pipeline1_result = result_data
+            elif name == "Pipeline 4":
+                pipeline4_result = result_data
+
+        # Create context view options
+        context_options = []
+        context_data = {}
+
+        if pipeline1_result is not None:
+            if not pipeline1_result['original_context'].empty:
+                context_options.append("Pipeline 1 - Original Context")
+                context_data["Pipeline 1 - Original Context"] = pipeline1_result['original_context']
+
+            if not pipeline1_result['filtered_context'].empty:
+                context_options.append("Pipeline 1 - Filtered Context")
+                context_data["Pipeline 1 - Filtered Context"] = pipeline1_result['filtered_context']
+
+        if pipeline4_result is not None:
+            if not pipeline4_result['original_context'].empty:
+                context_options.append("Pipeline 4 - Original Context")
+                context_data["Pipeline 4 - Original Context"] = pipeline4_result['original_context']
+
+            if not pipeline4_result['filtered_context'].empty:
+                context_options.append("Pipeline 4 - Filtered Context")
+                context_data["Pipeline 4 - Filtered Context"] = pipeline4_result['filtered_context']
+
+        if context_options:
+            selected_context = st.selectbox(
+                "Select context to view:",
+                options=["None"] + context_options,
+                index=0
+            )
+
+            if selected_context != "None" and selected_context in context_data:
+                selected_df = context_data[selected_context]
+
+                # Display context statistics
+                col1, col2 = st.columns(2)
+                with col1:
+                    st.metric("Number of snippets", len(selected_df))
+                with col2:
+                    if "Pipeline 1" in selected_context and pipeline1_result is not None:
+                        original_count = len(pipeline1_result['original_context'])
+                        filtered_count = len(pipeline1_result['filtered_context'])
+                        if "Filtered" in selected_context and original_count > 0:
+                            retention_rate = (filtered_count / original_count) * 100
+                            st.metric("Retention rate", f"{retention_rate:.1f}%")
+                    elif "Pipeline 4" in selected_context and pipeline4_result is not None:
+                        original_count = len(pipeline4_result['original_context'])
+                        filtered_count = len(pipeline4_result['filtered_context'])
+                        if "Filtered" in selected_context and original_count > 0:
+                            retention_rate = (filtered_count / original_count) * 100
+                            st.metric("Retention rate", f"{retention_rate:.1f}%")
+
+                # Display context snippets
+                with st.expander(f"View {selected_context} snippets", expanded=True):
+                    for idx, row in selected_df.iterrows():
+                        st.markdown(f"**Snippet {idx + 1}:**")
+                        st.text(row['text'])
+                        st.markdown("---")
+        else:
+            st.info("No context available for this query.")
 
         # Voting buttons
         st.markdown("---")
