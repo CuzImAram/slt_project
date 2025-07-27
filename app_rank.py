@@ -5,13 +5,23 @@ from LLM import LLM
 from dotenv import dotenv_values
 import random
 import io
+import subprocess
+import sys
 
 # --- Page Configuration ---
 st.set_page_config(
     page_title="RAG Pipeline Comparison Tool",
-    page_icon="🔬",
+    page_icon="🏆",
     layout="wide"
 )
+
+# --- Navigation ---
+col1, col2 = st.columns([4, 1])
+with col2:
+    if st.button("🔬 Back to Analysis Tool", use_container_width=True):
+        # Launch the main app in a new process
+        subprocess.Popen([sys.executable, "-m", "streamlit", "run", "app.py", "--server.port", "8501"])
+        st.info("Analysis app öffnet sich in einem neuen Tab auf Port 8501")
 
 # --- Load API Keys ---
 @st.cache_data
