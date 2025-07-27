@@ -197,7 +197,7 @@ if not st.session_state.results_ready:
         status_text = st.empty()
 
         for i, query in enumerate(TEST_QUERIES):
-            status_text.text(f"Processing query {i+1}/15: {query}")
+            status_text.text(f"Processing query {i+1}/{len(TEST_QUERIES)}: {query}")
 
             # Run both pipelines
             pipeline1_result = run_pipeline_1(query, retriever, llm_generator)

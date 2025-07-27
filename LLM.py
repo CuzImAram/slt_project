@@ -51,6 +51,7 @@ class LLM:
             "Carbonara best recipe, you should return:"
             '{"queries": ["Carbonara best recipe", "Carbonara best", "Carbonara recipe", "best recipe", "Carbonara", "best", "recipe"]}'
             "the queries should be relevant to the original query and suitable for a search engine. for instance, you should remove recipe and best "
+            "and if the query is a question, remove the question words like what, how, where, etc. if the query is a single word"
         )
         user_prompt = f"User question: \"{query}\""
 
