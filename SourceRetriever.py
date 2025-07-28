@@ -140,7 +140,7 @@ class SourceRetriever:
                         {
                             "terms": {
                                 "provider.domain": top_domains,
-                                "boost": 2.0  # Boost results from top providers
+                                "boost": 2.0
                             }
                         }
                     ]
