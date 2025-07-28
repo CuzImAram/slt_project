@@ -50,8 +50,10 @@ class LLM:
             "of strings. For example, given the input"
             "Carbonara best recipe, you should return:"
             '{"queries": ["Carbonara best recipe", "Carbonara best", "Carbonara recipe", "best recipe", "Carbonara", "best", "recipe"]}'
-            "the queries should be relevant to the original query and suitable for a search engine. for instance, you should remove recipe and best "
-            "and if the query is a question, remove the question words like what, how, where, etc. if the query is a single word"
+            "the queries should be relevant to the original query and suitable for a search engine. for instance, you should remove "
+            "'recipe', 'best' and 'best recipe', because they don't add to the original query of Carbonara best recipe. "
+            "remove the question words like what, how, where, etc. if the query is a single word"
+            "The originál query is ALWAY included in the result, even if it is not a combination of terms."
         )
         user_prompt = f"User question: \"{query}\""
 

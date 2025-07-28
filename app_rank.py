@@ -53,7 +53,7 @@ def get_llm_generator():
     llm = LLM(
         api_key=LLM_API_KEY,
         base_url="https://api.helmholtz-blablador.fz-juelich.de/v1/",
-        model="alias-fast"
+        model="alias-fast-experimental"
     )
     if not llm.client:
         st.error("Failed to initialize the LLM client. Please check your API key.")
