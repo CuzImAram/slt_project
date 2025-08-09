@@ -164,6 +164,12 @@ if 'votes' not in st.session_state:
     st.session_state.votes = []
 if 'voting_complete' not in st.session_state:
     st.session_state.voting_complete = False
+if 'show_reason_popup' not in st.session_state:
+    st.session_state.show_reason_popup = False
+if 'temp_vote' not in st.session_state:
+    st.session_state.temp_vote = None
+if 'vote_choice' not in st.session_state:
+    st.session_state.vote_choice = None
 
 # --- Main App UI ---
 st.title("🔬 RAG Pipeline Comparison Tool")
@@ -312,51 +318,81 @@ elif st.session_state.results_ready and not st.session_state.voting_complete:
         else:
             st.info("No context available for this query.")
 
-        # Voting buttons
+        # Voting buttons or reason popup
         st.markdown("---")
-        col1, col2, col3 = st.columns(3)
 
-        with col1:
-            if st.button("👈 Answer A is Better", use_container_width=True):
-                winner = result['left'][0]  # Pipeline name
-                st.session_state.votes.append({
-                    'query': result['query'],
-                    'output_1': result['pipeline1_answer'],
-                    'output_2': result['pipeline4_answer'],
-                    'winner': winner,
-                    'pipeline1_time_seconds': result['pipeline1_time'],
-                    'pipeline4_time_seconds': result['pipeline4_time']
-                })
-                st.session_state.current_vote_index += 1
-                st.rerun()
+        # Show reason popup if a vote was made
+        if st.session_state.show_reason_popup:
+            st.subheader(f"💭 Why did you choose {st.session_state.vote_choice}?")
 
-        with col2:
-            if st.button("🤷 Don't Care", use_container_width=True):
-                st.session_state.votes.append({
-                    'query': result['query'],
-                    'output_1': result['pipeline1_answer'],
-                    'output_2': result['pipeline4_answer'],
-                    'winner': 'Don\'t Care',
-                    'pipeline1_time_seconds': result['pipeline1_time'],
-                    'pipeline4_time_seconds': result['pipeline4_time']
-                })
-                st.session_state.current_vote_index += 1
-                st.rerun()
+            reason = st.text_area(
+                "Please explain your reasoning:",
+                placeholder="Explain why you made this choice...",
+                height=100,
+                key="reason_input"
+            )
 
-        with col3:
-            if st.button("👉 Answer B is Better", use_container_width=True):
-                winner = result['right'][0]  # Pipeline name
-                st.session_state.votes.append({
-                    'query': result['query'],
-                    'output_1': result['pipeline1_answer'],
-                    'output_2': result['pipeline4_answer'],
-                    'winner': winner,
-                    'pipeline1_time_seconds': result['pipeline1_time'],
-                    'pipeline4_time_seconds': result['pipeline4_time']
-                })
-                st.session_state.current_vote_index += 1
-                st.rerun()
+            col1, col2, col3 = st.columns([1, 2, 1])
+            with col2:
+                if st.button("Continue to Next Question", use_container_width=True, type="primary"):
+                    # Add the reason to the temporary vote and save it
+                    if st.session_state.temp_vote is not None:
+                        st.session_state.temp_vote['reason'] = reason
+                        st.session_state.votes.append(st.session_state.temp_vote)
 
+                    # Reset popup state and move to next question
+                    st.session_state.show_reason_popup = False
+                    st.session_state.temp_vote = None
+                    st.session_state.vote_choice = None
+                    st.session_state.current_vote_index += 1
+                    st.rerun()
+        else:
+            # Show voting buttons
+            col1, col2, col3 = st.columns(3)
+
+            with col1:
+                if st.button("👈 Answer A is Better", use_container_width=True):
+                    winner = result['left'][0]  # Pipeline name
+                    st.session_state.temp_vote = {
+                        'query': result['query'],
+                        'output_1': result['pipeline1_answer'],
+                        'output_2': result['pipeline4_answer'],
+                        'winner': winner,
+                        'pipeline1_time_seconds': result['pipeline1_time'],
+                        'pipeline4_time_seconds': result['pipeline4_time']
+                    }
+                    st.session_state.vote_choice = "Answer A"
+                    st.session_state.show_reason_popup = True
+                    st.rerun()
+
+            with col2:
+                if st.button("🤷 Don't Care", use_container_width=True):
+                    st.session_state.temp_vote = {
+                        'query': result['query'],
+                        'output_1': result['pipeline1_answer'],
+                        'output_2': result['pipeline4_answer'],
+                        'winner': 'Don\'t Care',
+                        'pipeline1_time_seconds': result['pipeline1_time'],
+                        'pipeline4_time_seconds': result['pipeline4_time']
+                    }
+                    st.session_state.vote_choice = "Don't Care"
+                    st.session_state.show_reason_popup = True
+                    st.rerun()
+
+            with col3:
+                if st.button("👉 Answer B is Better", use_container_width=True):
+                    winner = result['right'][0]  # Pipeline name
+                    st.session_state.temp_vote = {
+                        'query': result['query'],
+                        'output_1': result['pipeline1_answer'],
+                        'output_2': result['pipeline4_answer'],
+                        'winner': winner,
+                        'pipeline1_time_seconds': result['pipeline1_time'],
+                        'pipeline4_time_seconds': result['pipeline4_time']
+                    }
+                    st.session_state.vote_choice = "Answer B"
+                    st.session_state.show_reason_popup = True
+                    st.rerun()
     else:
         st.session_state.voting_complete = True
         st.rerun()
