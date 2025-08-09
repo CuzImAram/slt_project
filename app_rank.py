@@ -5,6 +5,7 @@ from LLM import LLM
 from dotenv import dotenv_values
 import random
 import io
+import time
 
 # --- Page Configuration ---
 st.set_page_config(
@@ -64,59 +65,42 @@ def get_llm_generator():
 TEST_QUERIES = [
     "What are the health benefits of a Mediterranean diet?",
     "How does climate change affect coral reefs?",
-    "What is the process of photosynthesis?",
-    "Why is the sky blue?",
-    "What are the main causes of inflation?",
-    "How do vaccines work to prevent diseases?",
-    "What are the effects of exercise on mental health?",
-    "How does artificial intelligence impact job markets?",
-    "What causes earthquakes and how are they measured?",
-    "How do solar panels convert sunlight into electricity?",
-    "What are the benefits and risks of nuclear energy?",
-    "How does the human immune system fight infections?",
-    "What is the role of genetics in determining personality?",
-    "How do hurricanes form and why are they so destructive?",
-    "What are the environmental impacts of fast fashion?"
 ]
 
 # --- Pipeline Functions ---
 def run_pipeline_1(query, retriever, llm_generator):
     """Pipeline 1: Original Query (Direct Context → Filter → Answer)"""
+    start_time = time.time()
     try:
         context_df = retriever.get_context(query)
-        original_context = context_df.copy() if not context_df.empty else pd.DataFrame()
 
         if not context_df.empty:
             # Apply context filtering for Pipeline 1
-            filtered_context_df = llm_generator.filter_context(context_df, query)
-
-            if not filtered_context_df.empty:
-                answer = llm_generator.answer_question_from_context(filtered_context_df, query)
-                return {
-                    'answer': answer or "Could not generate an answer.",
-                    'original_context': original_context,
-                    'filtered_context': filtered_context_df
-                }
-            else:
-                return {
-                    'answer': "No relevant context found for this query.",
-                    'original_context': original_context,
-                    'filtered_context': pd.DataFrame()
-                }
-        return {
-            'answer': "No context retrieved.",
-            'original_context': pd.DataFrame(),
-            'filtered_context': pd.DataFrame()
-        }
+            answer = llm_generator.answer_question_from_context(context_df, query)
+            execution_time = time.time() - start_time
+            return {
+                'answer': answer or "Could not generate an answer.",
+                'original_context': context_df,
+                'execution_time': execution_time
+            }
+        else:
+            execution_time = time.time() - start_time
+            return {
+                'answer': "No relevant context found for this query.",
+                'original_context': pd.DataFrame(),
+                'execution_time': execution_time
+            }
     except Exception as e:
+        execution_time = time.time() - start_time
         return {
             'answer': f"Error in Pipeline 1: {str(e)}",
             'original_context': pd.DataFrame(),
-            'filtered_context': pd.DataFrame()
+            'execution_time': execution_time
         }
 
 def run_pipeline_4(query, retriever, llm_generator):
     """Pipeline 4: Query Pool (Query Pool → Filtered Context → Direct Answer)"""
+    start_time = time.time()
     try:
         query_pool = llm_generator.generate_query_pool(query, 10)
         all_contexts = []
@@ -136,27 +120,35 @@ def run_pipeline_4(query, retriever, llm_generator):
 
             if not filtered_context_df.empty:
                 answer = llm_generator.answer_question_from_context(filtered_context_df, query)
+                execution_time = time.time() - start_time
                 return {
                     'answer': answer or "Could not generate an answer.",
                     'original_context': original_context,
-                    'filtered_context': filtered_context_df
+                    'filtered_context': filtered_context_df,
+                    'execution_time': execution_time
                 }
             else:
+                execution_time = time.time() - start_time
                 return {
                     'answer': "No relevant context found for this query.",
                     'original_context': original_context,
-                    'filtered_context': pd.DataFrame()
+                    'filtered_context': pd.DataFrame(),
+                    'execution_time': execution_time
                 }
+        execution_time = time.time() - start_time
         return {
             'answer': "No context retrieved from query pool.",
             'original_context': pd.DataFrame(),
-            'filtered_context': pd.DataFrame()
+            'filtered_context': pd.DataFrame(),
+            'execution_time': execution_time
         }
     except Exception as e:
+        execution_time = time.time() - start_time
         return {
             'answer': f"Error in Pipeline 4: {str(e)}",
             'original_context': pd.DataFrame(),
-            'filtered_context': pd.DataFrame()
+            'filtered_context': pd.DataFrame(),
+            'execution_time': execution_time
         }
 
 # --- Initialize Session State ---
@@ -216,7 +208,9 @@ if not st.session_state.results_ready:
                 'left': left_result,
                 'right': right_result,
                 'pipeline1_answer': pipeline1_result['answer'],
-                'pipeline4_answer': pipeline4_result['answer']
+                'pipeline4_answer': pipeline4_result['answer'],
+                'pipeline1_time': pipeline1_result['execution_time'],
+                'pipeline4_time': pipeline4_result['execution_time']
             })
 
             progress_bar.progress((i + 1) / len(TEST_QUERIES))
@@ -276,10 +270,6 @@ elif st.session_state.results_ready and not st.session_state.voting_complete:
                 context_options.append("Pipeline 1 - Original Context")
                 context_data["Pipeline 1 - Original Context"] = pipeline1_result['original_context']
 
-            if not pipeline1_result['filtered_context'].empty:
-                context_options.append("Pipeline 1 - Filtered Context")
-                context_data["Pipeline 1 - Filtered Context"] = pipeline1_result['filtered_context']
-
         if pipeline4_result is not None:
             if not pipeline4_result['original_context'].empty:
                 context_options.append("Pipeline 4 - Original Context")
@@ -337,7 +327,9 @@ elif st.session_state.results_ready and not st.session_state.voting_complete:
                     'query': result['query'],
                     'output_1': result['pipeline1_answer'],
                     'output_2': result['pipeline4_answer'],
-                    'winner': winner
+                    'winner': winner,
+                    'pipeline1_time_seconds': result['pipeline1_time'],
+                    'pipeline4_time_seconds': result['pipeline4_time']
                 })
                 st.session_state.current_vote_index += 1
                 st.rerun()
@@ -348,7 +340,9 @@ elif st.session_state.results_ready and not st.session_state.voting_complete:
                     'query': result['query'],
                     'output_1': result['pipeline1_answer'],
                     'output_2': result['pipeline4_answer'],
-                    'winner': 'Don\'t Care'
+                    'winner': 'Don\'t Care',
+                    'pipeline1_time_seconds': result['pipeline1_time'],
+                    'pipeline4_time_seconds': result['pipeline4_time']
                 })
                 st.session_state.current_vote_index += 1
                 st.rerun()
@@ -360,7 +354,9 @@ elif st.session_state.results_ready and not st.session_state.voting_complete:
                     'query': result['query'],
                     'output_1': result['pipeline1_answer'],
                     'output_2': result['pipeline4_answer'],
-                    'winner': winner
+                    'winner': winner,
+                    'pipeline1_time_seconds': result['pipeline1_time'],
+                    'pipeline4_time_seconds': result['pipeline4_time']
                 })
                 st.session_state.current_vote_index += 1
                 st.rerun()
