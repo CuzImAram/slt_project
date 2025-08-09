@@ -405,9 +405,7 @@ elif st.session_state.voting_complete:
         st.dataframe(votes_df)
 
     # Reset button
-    if st.button("🔄 Start New Comparison"):
-        st.session_state.results_ready = False
-        st.session_state.comparison_results = []
+    if st.button("🔄 Restart Voting"):
         st.session_state.current_vote_index = 0
         st.session_state.votes = []
         st.session_state.voting_complete = False
