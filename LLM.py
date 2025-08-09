@@ -44,16 +44,21 @@ class LLM:
 
         print(f"\n--- Generating a pool of {num_queries} queries for: '{query}' ---")
         system_prompt = (
-            "You are a helpful AI research assistant. Your task is to take the user’s input query, split it into its "
-            "individual terms, and generate the power set of those terms (i.e. every non‑empty combination of the words "
-            "in the query). Return the result as a valid JSON object with a single key, queries, whose value is a list "
-            "of strings. For example, given the input"
-            "Carbonara best recipe, you should return:"
-            '{"queries": ["Carbonara best recipe", "Carbonara best", "Carbonara recipe", "best recipe", "Carbonara", "best", "recipe"]}'
-            "the queries should be relevant to the original query and suitable for a search engine. for instance, you should remove "
-            "'recipe', 'best' and 'best recipe', because they don't add to the original query of Carbonara best recipe. "
-            "remove the question words like what, how, where, etc. if the query is a single word"
-            "The originál query is ALWAY included in the result, even if it is not a combination of terms."
+           "You are a helpful AI research assistant specialized in query expansion for search engines. "
+           "Your task is to generate multiple relevant search queries from the user's input to improve search coverage.\n\n"
+           "Instructions:\n"
+           "1. Take the user's input query and identify meaningful terms (ignore stop words like 'the', 'a', 'an')\n"
+           "2. Generate strategic combinations of these terms that would be useful for search\n"
+           "3. Remove question words (what, how, where, when, why, who) from combinations\n"
+           "4. Exclude overly generic terms that don't add search value (like 'best', 'good', 'how to')\n"
+           "5. Always include the original query as the first item\n"
+           "Return ONLY a valid JSON object with this exact format:\n"
+           '{"queries": ["original query", "variation 1", "variation 2", ...]}\n\n'
+           "Example:\n"
+           "Input: 'What is the best carbonara recipe?'\n"
+           "Output: "
+           '{"queries": ["What is the best carbonara recipe?", "carbonara recipe", "carbonara ingredients", "authentic carbonara", "carbonara cooking method"]}\n\n'
+           "Focus on creating queries that would find different but relevant information about the topic."
         )
         user_prompt = f"User question: \"{query}\""
 
@@ -232,11 +237,20 @@ class LLM:
             context_batch = "\n".join(batch_texts)
 
             system_prompt = (
-                "You are an expert at evaluating text relevance. Your task is to determine which context snippets "
-                "are relevant to answering the user's question. Return ONLY a JSON object with a 'relevant_indices' "
-                "key containing a list of indices (numbers) of the relevant snippets. "
-                "If NO snippets are relevant, return an empty list. "
-                "For example: {\"relevant_indices\": [0, 2, 4]} OR {\"relevant_indices\": []}"
+                "You are an expert at evaluating text relevance for question-answering systems. Your task is to determine which context snippets "
+                "are relevant to answering the user's question with high precision and recall.\n\n"
+                "Evaluation criteria:\n"
+                "- Include snippets that directly answer the question or provide key information\n"
+                "- Include snippets with relevant facts, data, or examples related to the topic\n"
+                "- Include snippets that provide necessary background or context\n"
+                "- Exclude snippets that are only tangentially related or off-topic\n"
+                "- Exclude snippets that contain no useful information for answering the question\n\n"
+                "Return ONLY a JSON object with a 'relevant_indices' key containing a list of indices (numbers) of the relevant snippets. "
+                "If NO snippets are relevant, return an empty list.\n"
+                "Examples:\n"
+                "- Relevant snippets found: {\"relevant_indices\": [0, 2, 4]}\n"
+                "- No relevant snippets: {\"relevant_indices\": []}\n"
+                "- Single relevant snippet: {\"relevant_indices\": [1]}"
             )
 
             user_prompt = (
