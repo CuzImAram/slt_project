@@ -67,6 +67,19 @@ def get_llm_generator():
 TEST_QUERIES = [
     "What are the health benefits of a Mediterranean diet?",
     "How does climate change affect coral reefs?",
+    "What is the process of photosynthesis?",
+    "Why is the sky blue?",
+    "What are the main causes of inflation?",
+    "How do vaccines work to prevent diseases?",
+    "What are the effects of exercise on mental health?",
+    "How does artificial intelligence impact job markets?",
+    "What causes earthquakes and how are they measured?",
+    "How do solar panels convert sunlight into electricity?",
+    "What are the benefits and risks of nuclear energy?",
+    "How does the human immune system fight infections?",
+    "What is the role of genetics in determining personality?",
+    "How do hurricanes form and why are they so destructive?",
+    "What are the environmental impacts of fast fashion?"
 ]
 
 # --- Pipeline Functions ---
