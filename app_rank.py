@@ -65,21 +65,21 @@ def get_llm_generator():
 
 # --- Test Queries ---
 TEST_QUERIES = [
-    "What are the health benefits of a Mediterranean diet?",
-    "How does climate change affect coral reefs?",
-    "What is the process of photosynthesis?",
-    "Why is the sky blue?",
-    "What are the main causes of inflation?",
-    "How do vaccines work to prevent diseases?",
-    "What are the effects of exercise on mental health?",
-    "How does artificial intelligence impact job markets?",
-    "What causes earthquakes and how are they measured?",
-    "How do solar panels convert sunlight into electricity?",
-    "What are the benefits and risks of nuclear energy?",
-    "How does the human immune system fight infections?",
-    "What is the role of genetics in determining personality?",
-    "How do hurricanes form and why are they so destructive?",
-    "What are the environmental impacts of fast fashion?"
+    "What is a healthy diet and good nutrition?",
+    "What is climate change and global warming?",
+    "What is photosynthesis in plants?",
+    "Why is the sky blue and sunsets red?",
+    "What is inflation in an economy?",
+    "How do vaccines and immunization work?",
+    "How does regular exercise affect mental health?",
+    "How do artificial intelligence and automation affect jobs?",
+    "What causes earthquakes and seismic activity?",
+    "How do solar panels produce electricity?",
+    "What are the benefits and risks of nuclear power?",
+    "How does the human immune system protect the body?",
+    "What is genetics and heredity?",
+    "How do hurricanes form?",
+    "What are the environmental impacts of the clothing industry?"
 ]
 
 # --- Pipeline Functions ---
@@ -186,11 +186,42 @@ if 'vote_choice' not in st.session_state:
 
 # --- Main App UI ---
 st.title("🔬 RAG Pipeline Comparison Tool")
-st.markdown(
+
+# Create dropdown for voting instructions
+with st.expander("📋 Voting Instructions", expanded=True):
+    st.markdown(
     """
-This application compares Pipeline 1 (Direct Context → Answer) vs Pipeline 4 (Query Pool → Direct Answer).
-Click 'Start Comparison' to run 15 test queries through both pipelines and then vote on the results.
-"""
+    ## Voting Instructions
+
+    **Your task**: For each prompt, you’ll see two anonymous answers (left/right). Pick the better answer based on the three criteria below. Don’t try to guess which system wrote which answer.
+    
+    **Criteria** (what to look for)
+    - Correctness (most important): Are the statements factually accurate and consistent with the question? Penalize hallucinations, contradictions, and unjustified claims. If you’re unsure, prefer the answer that is more careful and better supported by what’s stated.
+    - Conciseness: Does the answer get to the point without fluff or repetition? Shorter is not always better—prefer complete but compact answers over verbose ones.
+    - Relevance: Does the answer stay on-topic and directly address the user’s prompt (including any constraints or nuances)? Penalize off-topic content and unnecessary digressions.
+    
+    ### How to vote
+    
+    1. Read the prompt.
+    2. Compare both answers against each criterion.
+    3. Choose the answer that is overall better.
+        - If criteria conflict, prioritize Correctness → Relevance → Conciseness.
+        - If both are equally good or bad, pick the one you’d prefer overall (or “No preference” if available).
+    
+    ### After you select
+    
+    A popup will open. Please briefly explain why you preferred that answer:
+    - Reference the criteria (e.g., “Correctness: cites key facts; Conciseness: no filler; Relevance: directly answers the constraint.”).
+    - Mention any critical errors or omissions you noticed.
+    - 1–3 short sentences are enough.
+    
+    ### Do / Don’t 
+    
+    - Do judge only what’s written; ignore formatting polish unless it affects clarity.
+    - Do penalize confident but wrong claims more than cautious, correct ones.
+    - Don’t use external web searches; rely on general knowledge and what’s in the answers.
+    - Don’t reward style over substance.
+    """
 )
 
 retriever = get_retriever()
@@ -242,7 +273,6 @@ if not st.session_state.results_ready:
 
 # --- Voting Interface ---
 elif st.session_state.results_ready and not st.session_state.voting_complete:
-    st.header("🗳️ Vote for the Better Answer")
 
     current_idx = st.session_state.current_vote_index
     if current_idx < len(st.session_state.comparison_results):
