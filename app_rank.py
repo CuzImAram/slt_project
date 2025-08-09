@@ -6,6 +6,8 @@ from dotenv import dotenv_values
 import random
 import io
 import time
+import os
+from datetime import datetime
 
 # --- Page Configuration ---
 st.set_page_config(
@@ -54,7 +56,7 @@ def get_llm_generator():
     llm = LLM(
         api_key=LLM_API_KEY,
         base_url="https://api.helmholtz-blablador.fz-juelich.de/v1/",
-        model="alias-fast-experimental"
+        model="alias-large"
     )
     if not llm.client:
         st.error("Failed to initialize the LLM client. Please check your API key.")
@@ -294,13 +296,7 @@ elif st.session_state.results_ready and not st.session_state.voting_complete:
                 with col1:
                     st.metric("Number of snippets", len(selected_df))
                 with col2:
-                    if "Pipeline 1" in selected_context and pipeline1_result is not None:
-                        original_count = len(pipeline1_result['original_context'])
-                        filtered_count = len(pipeline1_result['filtered_context'])
-                        if "Filtered" in selected_context and original_count > 0:
-                            retention_rate = (filtered_count / original_count) * 100
-                            st.metric("Retention rate", f"{retention_rate:.1f}%")
-                    elif "Pipeline 4" in selected_context and pipeline4_result is not None:
+                    if "Pipeline 4" in selected_context and pipeline4_result is not None:
                         original_count = len(pipeline4_result['original_context'])
                         filtered_count = len(pipeline4_result['filtered_context'])
                         if "Filtered" in selected_context and original_count > 0:
@@ -393,6 +389,50 @@ elif st.session_state.voting_complete:
     votes_df.to_csv(csv_buffer, index=False)
     csv_content = csv_buffer.getvalue()
 
+    # Reset button - centered and red
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        st.markdown("""
+        <style>
+        .stButton > button {
+            background-color: #ff4b4b;
+            color: white;
+            font-weight: bold;
+            border: 2px solid #ff4b4b;
+            border-radius: 5px;
+            width: 100%;
+        }
+        .stButton > button:hover {
+            background-color: #ff6b6b;
+            border-color: #ff6b6b;
+        }
+        </style>
+        """, unsafe_allow_html=True)
+
+        if st.button("IMPORTANT Submit Results and rerun for next person IMPORTANT"):
+            st.session_state.current_vote_index = 0
+            st.session_state.votes = []
+            st.session_state.voting_complete = False
+
+            # Automatic save to eval folder
+            eval_folder = "eval"
+            if not os.path.exists(eval_folder):
+                os.makedirs(eval_folder)
+
+            # Generate timestamp for unique filename
+            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+            auto_filename = f"{timestamp}.csv"
+            auto_filepath = os.path.join(eval_folder, auto_filename)
+
+            # Save automatically
+            try:
+                votes_df.to_csv(auto_filepath, index=False)
+                st.success(f"✅ Results automatically saved to: {auto_filepath}")
+            except Exception as e:
+                st.error(f"❌ Error saving file automatically: {str(e)}")
+
+            st.rerun()
+
     st.download_button(
         label="📥 Download Results as CSV",
         data=csv_content,
@@ -403,10 +443,3 @@ elif st.session_state.voting_complete:
     # Display detailed results
     with st.expander("View Detailed Results"):
         st.dataframe(votes_df)
-
-    # Reset button
-    if st.button("🔄 Restart Voting"):
-        st.session_state.current_vote_index = 0
-        st.session_state.votes = []
-        st.session_state.voting_complete = False
-        st.rerun()
