@@ -11,7 +11,7 @@ import re  # Import regular expressions for robust parsing
 config = dotenv_values(".env")
 LLM_API_KEY = config.get("API_KEY")
 LLM_API_URL = "https://api.helmholtz-blablador.fz-juelich.de/v1/"
-LLM_API_MODEL = "alias-fast-experimental"
+LLM_API_MODEL = "alias-large"
 
 
 class LLM:
@@ -44,21 +44,45 @@ class LLM:
 
         print(f"\n--- Generating a pool of {num_queries} queries for: '{query}' ---")
         system_prompt = (
-           "You are a helpful AI research assistant specialized in query expansion for search engines. "
-           "Your task is to generate multiple relevant search queries from the user's input to improve search coverage.\n\n"
+           "You are a specialized AI assistant for generating search queries. "
+           "Your task is to extract CORE subjects from the user's question and create search queries with space-separated words.\n\n"
            "Instructions:\n"
-           "1. Take the user's input query and identify meaningful terms (ignore stop words like 'the', 'a', 'an')\n"
-           "2. Generate strategic combinations of these terms that would be useful for search\n"
-           "3. Remove question words (what, how, where, when, why, who) from combinations\n"
-           "4. Exclude overly generic terms that don't add search value (like 'best', 'good', 'how to')\n"
-           "5. Always include the original query as the first item\n"
+           "1. Remember the initial user question\n"
+           "2. Identify the CORE subjects (most important nouns, entities, or concepts) from the question\n"
+           "3. Create query combinations using space-separated words between RELEVANT CORE subjects\n"
+           "4. Always ensure the main CORE subject appears in every query to avoid irrelevant snippets\n"
+           "5. Remove question words (what, how, where, when, why, who) but consider them for combinations\n"
+           "6. Focus on meaningful term combinations that would find relevant information\n"
+           "7. Use ONLY space-separated individual words. NO phrases with multiple words without spaces!\n"
+           "   - CORRECT: 'Sam Altman' or 'solar energy'\n"
+           "   - INCORRECT: 'SamAltman' or 'solarenergy'\n"
+           "   - Each term should be separated by a single space\n"
+           "8. You MAY add contextual words to the core subjects if they are necessary to answer the question effectively.\n"
+           "   - Example: 'Is tomato sauce vegan?' -> core: tomato, sauce + context: ingredients\n"
+           "   - This helps find more relevant information that could answer the question\n"
            "Return ONLY a valid JSON object with this exact format:\n"
-           '{"queries": ["original query", "variation 1", "variation 2", ...]}\n\n'
+           '{"queries": ["term1 term2", "term1 term2 term3", ...]}\n\n'
            "Example:\n"
-           "Input: 'What is the best carbonara recipe?'\n"
+           "Input: 'Who is Naruto's son?'\n"
+           "Core subjects: Naruto (main core), son\n"
            "Output: "
-           '{"queries": ["What is the best carbonara recipe?", "carbonara recipe", "carbonara ingredients", "authentic carbonara", "carbonara cooking method"]}\n\n'
-           "Focus on creating queries that would find different but relevant information about the topic."
+           '{"queries": ["Naruto son", "Who Naruto son"]}\n\n'
+           "Another example:\n"
+           "Input: 'What are the benefits of solar energy?'\n"
+           "Core subjects: solar, energy (main core), benefits\n"
+           "Output: "
+           '{"queries": ["solar energy benefits", "What solar energy benefits", "benefits solar energy"]}\n\n'
+           "Example with names:\n"
+           "Input: 'What did Sam Altman say about AI?'\n"
+           "Core subjects: Sam, Altman (main core), AI\n"
+           "Output: "
+           '{"queries": ["Sam Altman AI", "Sam Altman", "Altman AI"]}\n\n'
+           "Example with contextual addition:\n"
+           "Input: 'Is tomato sauce vegan?'\n"
+           "Core subjects: tomato, sauce (main core) + contextual: ingredients, vegan\n"
+           "Output: "
+           '{"queries": ["tomato sauce ingredients", "tomato sauce vegan", "sauce ingredients vegan"]}\n\n'
+           "Focus on creating search queries that combine individual words with spaces to find precise, relevant information."
         )
         user_prompt = f"User question: \"{query}\""
 
@@ -238,13 +262,15 @@ class LLM:
 
             system_prompt = (
                 "You are an expert at evaluating text relevance for question-answering systems. Your task is to determine which context snippets "
-                "are relevant to answering the user's question with high precision and recall.\n\n"
-                "Evaluation criteria:\n"
+                "are relevant to answering the user's question. Be INCLUSIVE rather than strict - it's better to include potentially useful information.\n\n"
+                "Evaluation criteria (be GENEROUS in your assessment):\n"
                 "- Include snippets that directly answer the question or provide key information\n"
                 "- Include snippets with relevant facts, data, or examples related to the topic\n"
-                "- Include snippets that provide necessary background or context\n"
-                "- Exclude snippets that are only tangentially related or off-topic\n"
-                "- Exclude snippets that contain no useful information for answering the question\n\n"
+                "- Include snippets that provide background context or related information\n"
+                "- Include snippets that mention the same entities, concepts, or topics\n"
+                "- Include snippets that could provide partial answers or supporting information\n"
+                "- Only exclude snippets that are completely unrelated to the question topic\n"
+                "- When in doubt, INCLUDE the snippet rather than exclude it\n\n"
                 "Return ONLY a JSON object with a 'relevant_indices' key containing a list of indices (numbers) of the relevant snippets. "
                 "If NO snippets are relevant, return an empty list.\n"
                 "Examples:\n"
@@ -257,8 +283,8 @@ class LLM:
                 f"Question: {query}\n\n"
                 f"Context snippets:\n{context_batch}\n\n"
                 f"Which of these snippets (by their index numbers) are relevant to answering the question? "
-                f"Only include snippets that contain information that could help answer the question. "
-                f"Be strict - if a snippet doesn't directly help answer the question, don't include it."
+                f"Be INCLUSIVE - include any snippet that could provide useful information, even if it's only partially related. "
+                f"Only exclude snippets that are completely unrelated to the topic."
             )
 
             try:
@@ -295,5 +321,5 @@ class LLM:
             print(f"✅ Context filtered: {len(context_df)} → {len(filtered_df)} snippets")
             return filtered_df
         else:
-            print("⚠️ No relevant context found after filtering - returning empty DataFrame")
-            return pd.DataFrame()  # Return empty DataFrame instead of original context
+            print("⚠️ No relevant context found after filtering - returning original context as fallback")
+            return context_df  # Return original context instead of empty DataFrame

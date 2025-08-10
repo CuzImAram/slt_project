@@ -67,19 +67,19 @@ def get_llm_generator():
 TEST_QUERIES = [
     "What is a healthy diet and good nutrition?",
     "What is climate change and global warming?",
-    "What is photosynthesis in plants?",
-    "Why is the sky blue and sunsets red?",
     "What is inflation in an economy?",
     "How do vaccines and immunization work?",
-    "How does regular exercise affect mental health?",
-    "How do artificial intelligence and automation affect jobs?",
-    "What causes earthquakes and seismic activity?",
-    "How do solar panels produce electricity?",
-    "What are the benefits and risks of nuclear power?",
-    "How does the human immune system protect the body?",
     "What is genetics and heredity?",
     "How do hurricanes form?",
-    "What are the environmental impacts of the clothing industry?"
+    "What is oscillation in physics?",
+    "Who is Sam Altman?",
+    "What is the history of the internet?",
+    "What is the theory of relativity?",
+    "What is quantum computing?",
+    "Is the stock market rigged?",
+    "What is the impact of social media on society?",
+    "Has mankind landed on the moon?",
+    "How many seconds are in a year?"
 ]
 
 # --- Pipeline Functions ---
@@ -91,11 +91,13 @@ def run_pipeline_1(query, retriever, llm_generator):
 
         if not context_df.empty:
             # Apply context filtering for Pipeline 1
-            answer = llm_generator.answer_question_from_context(context_df, query)
+            filtered_context_df = llm_generator.filter_context(context_df, query)
+            answer = llm_generator.answer_question_from_context(filtered_context_df, query)
             execution_time = time.time() - start_time
             return {
                 'answer': answer or "Could not generate an answer.",
                 'original_context': context_df,
+                'filtered_context': filtered_context_df,
                 'execution_time': execution_time
             }
         else:
@@ -114,19 +116,17 @@ def run_pipeline_1(query, retriever, llm_generator):
         }
 
 def run_pipeline_4(query, retriever, llm_generator):
-    """Pipeline 4: Query Pool (Query Pool → Filtered Context → Direct Answer)"""
+    """Pipeline 4: Query Pool with AND operators (Generate Query Pool → AND Query Context → Filter → Answer)"""
     start_time = time.time()
     try:
+        # Generate query pool using LLM
         query_pool = llm_generator.generate_query_pool(query, 10)
-        all_contexts = []
-        for q in query_pool:
-            pooled_df = retriever.get_context(q)
-            if not pooled_df.empty:
-                all_contexts.append(pooled_df)
 
-        if all_contexts:
-            full_context_df = pd.concat(all_contexts, ignore_index=True).drop_duplicates(
-                subset=['text']).reset_index(drop=True)
+        # Use the new pipeline4 method that handles AND operators
+        full_context_df = retriever.get_context_pipeline4(query_pool, use_provider_priority=True)
+
+        if not full_context_df.empty:
+            # Truncate to top 100 results
             truncated_pool_df = full_context_df.head(100)
             original_context = truncated_pool_df.copy()
 
@@ -145,18 +145,19 @@ def run_pipeline_4(query, retriever, llm_generator):
             else:
                 execution_time = time.time() - start_time
                 return {
-                    'answer': "No relevant context found for this query.",
+                    'answer': "No relevant context found after filtering.",
                     'original_context': original_context,
                     'filtered_context': pd.DataFrame(),
                     'execution_time': execution_time
                 }
-        execution_time = time.time() - start_time
-        return {
-            'answer': "No context retrieved from query pool.",
-            'original_context': pd.DataFrame(),
-            'filtered_context': pd.DataFrame(),
-            'execution_time': execution_time
-        }
+        else:
+            execution_time = time.time() - start_time
+            return {
+                'answer': "No context retrieved from query pool.",
+                'original_context': pd.DataFrame(),
+                'filtered_context': pd.DataFrame(),
+                'execution_time': execution_time
+            }
     except Exception as e:
         execution_time = time.time() - start_time
         return {
@@ -449,7 +450,7 @@ elif st.session_state.voting_complete:
 
     st.subheader("Results Summary")
     pipeline1_wins = len(votes_df[votes_df['winner'] == 'Pipeline 1'])
-    pipeline4_wins = len(votes_df[votes_df['winner'] == 'Pipeline 4'])
+    pipeline4_wins = len(votes_df[vvotes_df['winner'] == 'Pipeline 4'])
     dont_care = len(votes_df[votes_df['winner'] == 'Don\'t Care'])
 
     col1, col2, col3 = st.columns(3)
