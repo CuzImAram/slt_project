@@ -65,39 +65,27 @@ def get_llm_generator():
 
 # --- Test Queries ---
 TEST_QUERIES = [
-    "What is a healthy diet and good nutrition?",
-    "What is climate change and global warming?",
-    "What is inflation in an economy?",
-    "How do vaccines and immunization work?",
-    "What is genetics and heredity?",
-    "How do hurricanes form?",
-    "What is oscillation in physics?",
-    "Who is Sam Altman?",
-    "What is the history of the internet?",
-    "What is the theory of relativity?",
-    "What is quantum computing?",
-    "Is the stock market rigged?",
-    "What is the impact of social media on society?",
-    "Has mankind landed on the moon?",
-    "How many seconds are in a year?"
+    "Last eruption of Vesuvius",
+    "Was Luke Skywalker a Jedi",
+    "Best youtube to mp3 converter",
+    "What is covfefe",
+    "How to tell if an egg is bad",
 ]
 
 # --- Pipeline Functions ---
 def run_pipeline_1(query, retriever, llm_generator):
-    """Pipeline 1: Original Query (Direct Context → Filter → Answer)"""
+    """Pipeline 1: Original Query (Direct Context → Answer)"""
     start_time = time.time()
     try:
         context_df = retriever.get_context(query)
 
         if not context_df.empty:
-            # Apply context filtering for Pipeline 1
-            filtered_context_df = llm_generator.filter_context(context_df, query)
-            answer = llm_generator.answer_question_from_context(filtered_context_df, query)
+            answer = llm_generator.answer_question_from_context(context_df, query)
             execution_time = time.time() - start_time
             return {
                 'answer': answer or "Could not generate an answer.",
                 'original_context': context_df,
-                'filtered_context': filtered_context_df,
+                'filtered_context': context_df,
                 'execution_time': execution_time
             }
         else:
@@ -450,7 +438,7 @@ elif st.session_state.voting_complete:
 
     st.subheader("Results Summary")
     pipeline1_wins = len(votes_df[votes_df['winner'] == 'Pipeline 1'])
-    pipeline4_wins = len(votes_df[vvotes_df['winner'] == 'Pipeline 4'])
+    pipeline4_wins = len(votes_df[votes_df['winner'] == 'Pipeline 4'])
     dont_care = len(votes_df[votes_df['winner'] == 'Don\'t Care'])
 
     col1, col2, col3 = st.columns(3)

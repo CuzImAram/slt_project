@@ -326,6 +326,12 @@ class SourceRetriever:
 
             # Get context for this space-separated query using default_operator AND
             context = self.get_serps_with_and_query(space_query, use_provider_priority)
+            
+            if context.empty:
+                print(f"  ⚠️ No results found with AND, retrying with OR")
+                context = self.get_context(space_query, use_provider_priority)
+
+
             if not context.empty:
                 # Add query information for tracking
                 context['source_query'] = space_query
@@ -346,7 +352,7 @@ class SourceRetriever:
                 combined_context = combined_context.sort_values('score', ascending=False)
 
             combined_context = combined_context.reset_index(drop=True)
-            print(f"✅ Pipeline 4 completed: {len(combined_context)} unique results from {len(all_contexts)} queries")
+            print(f"✅ Pipeline 4 completed: {len(combined_context)} unique results from {len(query_list)} queries")
 
             return combined_context
         else:

@@ -218,11 +218,12 @@ class LLM:
         print(f"--- Generating answer from context of size {len(context_df)} for query: '{query}' ---")
         context_texts = "\n- ".join(context_df['text'].tolist())
         system_prompt = (
-            "You are a helpful AI assistant. Your task is to provide a clear and direct answer in max. 5 sentences "
-            "to the user's question using ONLY the provided context snippets"
+            "You are a helpful AI assistant. Your task is to provide a clear and direct answer in max. 5 sentences."
         )
         user_prompt = (
             f"Based on the following context snippets, please answer the question.\n\n"
+            f"Do NOT use any information that is not found in the context snippets provided.\n\n"
+            f"If you cannot find the answer in the context snippets, please say so.\n\n"
             f"Context Snippets:\n- {context_texts}\n\n"
             f"Question: {query}"
         )
