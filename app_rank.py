@@ -65,11 +65,26 @@ def get_llm_generator():
 
 # --- Test Queries ---
 TEST_QUERIES = [
+    "tallest building of the world",
     "Last eruption of Vesuvius",
     "Was Luke Skywalker a Jedi",
     "Best youtube to mp3 converter",
+    "What is the difference between a supernova and a hypernova?",
+    "What was the historical significance of the Magna Carta?",
     "What is covfefe",
     "How to tell if an egg is bad",
+    "What are the most common rock types on earth",
+    "What is the theory of plate tectonics?",
+    "What are the primary colors in art versus in light?",
+    "Who was Marie Curie and what were her major contributions to science?",
+    "Population of the country Ukraine",
+    "How does photosynthesis work",
+    "What is the role of mitochondria in a cell?",
+    "saddam hussein hideout",
+    "How does the greenhouse effect work?",
+    "What are the main functions of the human liver?",
+    "Explain the basic principles of supply and demand.",
+    "How does a blockchain work in simple terms?"
 ]
 
 # --- Pipeline Functions ---
@@ -122,7 +137,7 @@ def run_pipeline_4(query, retriever, llm_generator):
             filtered_context_df = llm_generator.filter_context(truncated_pool_df, query)
 
             if not filtered_context_df.empty:
-                answer = llm_generator.answer_question_from_context(filtered_context_df, query)
+                answer = llm_generator.answer_question_from_context(filtered_context_df, query, is_pipeline_4=True)
                 execution_time = time.time() - start_time
                 return {
                     'answer': answer or "Could not generate an answer.",

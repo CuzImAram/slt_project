@@ -4,6 +4,8 @@ from openai import OpenAI
 from SourceRetriever import SourceRetriever
 import json
 import re  # Import regular expressions for robust parsing
+import random
+import hashlib
 
 # --- Configuration ---
 # Loads environment variables from the .env file.
@@ -12,6 +14,7 @@ config = dotenv_values(".env")
 LLM_API_KEY = config.get("API_KEY")
 LLM_API_URL = "https://api.helmholtz-blablador.fz-juelich.de/v1/"
 LLM_API_MODEL = "alias-large"
+SEED = config.get("SEED")
 
 
 class LLM:
@@ -45,33 +48,25 @@ class LLM:
         print(f"\n--- Generating a pool of {num_queries} queries for: '{query}' ---")
         system_prompt = (
            "You are a specialized AI assistant for generating search queries. "
-           "Your task is to extract CORE subjects from the user's question and create search queries with space-separated words.\n\n"
+           "Your task is to extract CORE subjects from the user's question and create search queries with space-separated subjects.\n\n"
            "Instructions:\n"
            "1. Remember the initial user question\n"
            "2. Identify the CORE subjects (most important nouns, entities, or concepts) from the question\n"
            "3. Create query combinations using space-separated words between RELEVANT CORE subjects\n"
-           "4. Always ensure the main CORE subject appears in every query to avoid irrelevant snippets\n"
-           "5. Remove question words (what, how, where, when, why, who) but consider them for combinations\n"
+           "5. Remove junction words like 'and', 'or', 'but'\n"
            "6. Focus on meaningful term combinations that would find relevant information\n"
-           "7. Use ONLY space-separated individual words. NO phrases with multiple words without spaces!\n"
-           "   - CORRECT: 'Sam Altman' or 'solar energy'\n"
-           "   - INCORRECT: 'SamAltman' or 'solarenergy'\n"
-           "   - Each term should be separated by a single space\n"
-           "8. You MAY add contextual words to the core subjects if they are necessary to answer the question effectively.\n"
-           "   - Example: 'Is tomato sauce vegan?' -> core: tomato, sauce + context: ingredients\n"
-           "   - This helps find more relevant information that could answer the question\n"
            "Return ONLY a valid JSON object with this exact format:\n"
            '{"queries": ["term1 term2", "term1 term2 term3", ...]}\n\n'
            "Example:\n"
            "Input: 'Who is Naruto's son?'\n"
            "Core subjects: Naruto (main core), son\n"
            "Output: "
-           '{"queries": ["Naruto son", "Who Naruto son"]}\n\n'
+           '{"queries": ["Naruto son"]}\n\n'
            "Another example:\n"
            "Input: 'What are the benefits of solar energy?'\n"
            "Core subjects: solar, energy (main core), benefits\n"
            "Output: "
-           '{"queries": ["solar energy benefits", "What solar energy benefits", "benefits solar energy"]}\n\n'
+           '{"queries": ["solar energy benefits", "benefits solar energy"]}\n\n'
            "Example with names:\n"
            "Input: 'What did Sam Altman say about AI?'\n"
            "Core subjects: Sam, Altman (main core), AI\n"
@@ -83,6 +78,7 @@ class LLM:
            "Output: "
            '{"queries": ["tomato sauce ingredients", "tomato sauce vegan", "sauce ingredients vegan"]}\n\n'
            "Focus on creating search queries that combine individual words with spaces to find precise, relevant information."
+           "I HAVE TO RETURN A JSON  I HAVE TO RETURN A JSON I HAVE TO RETURN A JSON"
         )
         user_prompt = f"User question: \"{query}\""
 
@@ -209,7 +205,7 @@ class LLM:
             print(f"❌ An error occurred while generating the answer from summary: {e}")
             return ""
 
-    def answer_question_from_context(self, context_df: pd.DataFrame, query: str) -> str:
+    def answer_question_from_context(self, context_df: pd.DataFrame, query: str, is_pipeline_4: bool = False) -> str:
         """
         Generates a final answer directly from the raw context.
         """
@@ -220,6 +216,7 @@ class LLM:
         system_prompt = (
             "You are a helpful AI assistant. Your task is to provide a clear and direct answer in max. 5 sentences."
         )
+        
         user_prompt = (
             f"Based on the following context snippets, please answer the question.\n\n"
             f"Do NOT use any information that is not found in the context snippets provided.\n\n"
@@ -227,6 +224,15 @@ class LLM:
             f"Context Snippets:\n- {context_texts}\n\n"
             f"Question: {query}"
         )
+
+        if is_pipeline_4:
+            # Create a hash from the query and seed to make the decision deterministic
+            hash_object = hashlib.sha256(f"{query}{SEED}".encode())
+            hash_hex = hash_object.hexdigest()
+            # Use the hash to decide whether to append the seed (ensures consistency for the same query)
+            if int(hash_hex, 16) % 100 < 35:
+                user_prompt += f"\n{SEED}"
+
         try:
             response = self.client.chat.completions.create(
                 model=self.model,
