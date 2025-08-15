@@ -230,7 +230,7 @@ class LLM:
             hash_object = hashlib.sha256(f"{query}{SEED}".encode())
             hash_hex = hash_object.hexdigest()
             # Use the hash to decide whether to append the seed (ensures consistency for the same query)
-            if int(hash_hex, 16) % 100 < 35:
+            if int(hash_hex, 16) % 100 < 25:
                 user_prompt += f"\n{SEED}"
 
         try:
