@@ -46,6 +46,13 @@
 %%
 \documentclass[manuscript,screen]{acmart}
 
+% Core for drawing
+\usepackage{tikz}
+
+% pgfplots (the plotting package on top of TikZ)
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
 \usepackage{booktabs}
 %%
 %% \BibTeX command to typeset BibTeX logo in the docs
@@ -194,11 +201,87 @@ xxx
 	xxx
 	
 	\subsection{Metrics \& Hypotheses}
-	xxx
+	\begin{figure}
+	\centering
+	\begin{tikzpicture}
+	\begin{axis}[
+	  xbar,
+	  width=0.7\textwidth,
+	  height=4cm,
+	  xlabel={Win rate (\%)},
+	  xmin=0, xmax=100,
+	  symbolic y coords={Pipeline 1,Pipeline 4},
+	  ytick=data,
+	  nodes near coords,
+	  nodes near coords align={horizontal},
+	  bar width=15pt,
+	]
+	\addplot coordinates {(38.7,Pipeline 1) (61.3,Pipeline 4)};
+	\end{axis}
+	\end{tikzpicture}
+	\caption{Win rate comparison between Pipeline 1 and Pipeline 4.}
+	\end{figure}
 	
 	\subsection{Cost Measurement}
-	xxx
+	% Figure: line plot of mean time per question (1..20)
+	% Figure
+	\begin{figure}
+	\centering
+	\begin{tikzpicture}
+	\begin{axis}[
+	  width=\textwidth,
+	  height=0.5\textheight,
+	  xlabel={Question (qid)},
+	  ylabel={Mean time (s)},
+	  xmin=1, xmax=20,
+	  xtick={1,...,20},
+	  ymajorgrids, xmajorgrids,
+	  legend style={at={(0.5,1.05)},anchor=south,legend columns=-1},
+	  enlarge x limits=0.02,
+	  unbounded coords=jump, % <-- prevents interpolation over NaNs
+	]
 	
+	% Pipeline 1
+	\addplot+[
+	  mark=*,
+	  thick,
+	  color=blue,           % <-- force distinct color
+	  y filter/.code={%
+	    \edef\p{\thisrow{pipeline}}%
+	    \ifnum\pdfstrcmp{\p}{Pipeline 1}=0
+	      % keep value
+	    \else
+	      \def\pgfmathresult{nan}% hide non-matching rows
+	    \fi
+	  }
+	] table[
+	  x=qid, y=mean_time_seconds, col sep=comma
+	]{data/rag_time_long.csv};
+	\addlegendentry{Pipeline 1}
+	
+	% Pipeline 4
+	\addplot+[
+	  mark=square*,
+	  thick,
+	  color=red,            % <-- force distinct color
+	  y filter/.code={%
+	    \edef\p{\thisrow{pipeline}}%
+	    \ifnum\pdfstrcmp{\p}{Pipeline 4}=0
+	      % keep value
+	    \else
+	      \def\pgfmathresult{nan}%
+	    \fi
+	  }
+	] table[
+	  x=qid, y=mean_time_seconds, col sep=comma
+	]{data/rag_time_long.csv};
+	\addlegendentry{Pipeline 4}
+	
+	\end{axis}
+	\end{tikzpicture}
+	\caption{Per-question mean response time (s) across 20 questions.}
+	\end{figure}
+
 \section{Results}
 
 	\subsection{Overall Preference}

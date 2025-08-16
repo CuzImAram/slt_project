@@ -5,72 +5,126 @@ The style file: ACM-Reference-Format.bst
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
-Database file #1: ../sample-base.bib
-Warning--entry type for "Bornmann2019" isn't style-file defined
---line 1426 of file ../sample-base.bib
-Warning--entry type for "AnzarootPBM14" isn't style-file defined
---line 1443 of file ../sample-base.bib
-Warning--entry type for "Reiser2014" isn't style-file defined
---line 1468 of file ../sample-base.bib
-Warning--entry type for "Baggett2025" isn't style-file defined
---line 1478 of file ../sample-base.bib
+Database file #1: ../cites.bib
+Warning--I didn't find a database entry for "Lamport:LaTeX"
+Warning--I didn't find a database entry for "Abril07"
+Warning--I didn't find a database entry for "Cohen07"
+Warning--I didn't find a database entry for "JCohen96"
+Warning--I didn't find a database entry for "Kosiur01"
+Warning--I didn't find a database entry for "Harel79"
+Warning--I didn't find a database entry for "Editor00"
+Warning--I didn't find a database entry for "Editor00a"
+Warning--I didn't find a database entry for "Spector90"
+Warning--I didn't find a database entry for "Douglass98"
+Warning--I didn't find a database entry for "Knuth97"
+Warning--I didn't find a database entry for "Andler79"
+Warning--I didn't find a database entry for "Hagerup1993"
+Warning--I didn't find a database entry for "Smith10"
+Warning--I didn't find a database entry for "VanGundy07"
+Warning--I didn't find a database entry for "Harel78"
+Warning--I didn't find a database entry for "Bornmann2019"
+Warning--I didn't find a database entry for "AnzarootPBM14"
+Warning--I didn't find a database entry for "Clarkson85"
+Warning--I didn't find a database entry for "anisi03"
+Warning--I didn't find a database entry for "Thornburg01"
+Warning--I didn't find a database entry for "Ablamowicz07"
+Warning--I didn't find a database entry for "Poker06"
+Warning--I didn't find a database entry for "Obama08"
+Warning--I didn't find a database entry for "Novak03"
+Warning--I didn't find a database entry for "Lee05"
+Warning--I didn't find a database entry for "JoeScientist001"
+Warning--I didn't find a database entry for "rous08"
+Warning--I didn't find a database entry for "SaeediMEJ10"
+Warning--I didn't find a database entry for "SaeediJETC10"
+Warning--I didn't find a database entry for "Kirschmer:2010:AEI:1958016.1958018"
+Warning--I didn't find a database entry for "MR781536"
+Warning--I didn't find a database entry for "MR781537"
+Warning--I didn't find a database entry for "Reiser2014"
+Warning--I didn't find a database entry for "Baggett2025"
+Warning--I didn't find a database entry for "2004:ITE:1009386.1010128"
+Warning--I didn't find a database entry for "TUGInstmem"
+Warning--I didn't find a database entry for "CTANacmart"
+Warning--I didn't find a database entry for "R"
+Warning--I didn't find a database entry for "UMassCitations"
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated glb_str_ptr (elt_size=4) to 20 items from 10.
 Reallocated global_strs (elt_size=200001) to 20 items from 10.
 Reallocated glb_str_end (elt_size=4) to 20 items from 10.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
-Warning--empty organization in Ablamowicz07
-Warning--empty organization in UMassCitations
-Warning--empty author in 2004:ITE:1009386.1010128
-Warning--articleno or eid field, but no numpages field, in Lee05
-Warning--page numbers missing in both pages and numpages fields in Lee05
-Warning--articleno or eid, but no pages or numpages field in Lee05
-Warning--articleno or eid field, but no numpages field, in rous08
-Warning--page numbers missing in both pages and numpages fields in rous08
-Warning--articleno or eid, but no pages or numpages field in rous08
-Warning--empty organization in Thornburg01
-Warning--empty organization in TUGInstmem
-Warning--empty organization in TUGInstmem
-Warning--empty organization in CTANacmart
-You've used 40 entries,
+Warning--empty publisher in bai2022training
+Warning--empty address in bai2022training
+Warning--page numbers missing in both pages and numpages fields in bai2022training
+Warning--empty publisher in gienapp2025viability
+Warning--empty address in gienapp2025viability
+Warning--page numbers missing in both pages and numpages fields in gienapp2025viability
+Warning--empty publisher in guu2020realm
+Warning--empty address in guu2020realm
+Warning--page numbers missing in both pages and numpages fields in guu2020realm
+Warning--empty publisher in izacard2021leveraging
+Warning--empty address in izacard2021leveraging
+Warning--page numbers missing in both pages and numpages fields in izacard2021leveraging
+Warning--empty publisher in karpukhin2020dense
+Warning--empty address in karpukhin2020dense
+Warning--empty publisher in lewis2020retrieval
+Warning--empty address in lewis2020retrieval
+Warning--page numbers missing in both pages and numpages fields in lewis2020retrieval
+Warning--no number and no volume in liu2016not
+Warning--page numbers missing in both pages and numpages fields in liu2016not
+Warning--empty publisher in nogueira2019passage
+Warning--empty address in nogueira2019passage
+Warning--page numbers missing in both pages and numpages fields in nogueira2019passage
+Warning--no number and no volume in rocchio1971relevance
+Warning--page numbers missing in both pages and numpages fields in rocchio1971relevance
+Warning--empty publisher in stiennon2020learning
+Warning--empty address in stiennon2020learning
+Warning--page numbers missing in both pages and numpages fields in stiennon2020learning
+Warning--empty publisher in thoppilan2022lamda
+Warning--empty address in thoppilan2022lamda
+Warning--page numbers missing in both pages and numpages fields in thoppilan2022lamda
+Warning--empty publisher in wang2023query
+Warning--empty address in wang2023query
+Warning--page numbers missing in both pages and numpages fields in wang2023query
+Warning--empty publisher in zhang2020bertscore
+Warning--page numbers missing in both pages and numpages fields in zhang2020bertscore
+You've used 15 entries,
             5981 wiz_defined-function locations,
-            1937 strings with 26998 characters,
-and the built_in function-call counts, 36538 in all, are:
-= -- 4545
-> -- 880
-< -- 5
-+ -- 277
-- -- 350
-* -- 2449
-:= -- 3621
-add.period$ -- 213
-call.type$ -- 40
-change.case$ -- 232
-chr.to.int$ -- 38
-cite$ -- 53
-duplicate$ -- 3405
-empty$ -- 2414
-format.name$ -- 379
-if$ -- 8509
-int.to.chr$ -- 4
+            1630 strings with 21728 characters,
+and the built_in function-call counts, 16686 in all, are:
+= -- 1707
+> -- 631
+< -- 0
++ -- 218
+- -- 227
+* -- 1203
+:= -- 1651
+add.period$ -- 68
+call.type$ -- 15
+change.case$ -- 121
+chr.to.int$ -- 15
+cite$ -- 50
+duplicate$ -- 1594
+empty$ -- 1123
+format.name$ -- 275
+if$ -- 3933
+int.to.chr$ -- 2
 int.to.str$ -- 1
-missing$ -- 70
-newline$ -- 442
-num.names$ -- 273
-pop$ -- 1111
+missing$ -- 73
+newline$ -- 154
+num.names$ -- 105
+pop$ -- 816
 preamble$ -- 1
-purify$ -- 542
+purify$ -- 241
 quote$ -- 0
-skip$ -- 1271
+skip$ -- 559
 stack$ -- 0
-substring$ -- 2889
-swap$ -- 313
-text.length$ -- 52
+substring$ -- 951
+swap$ -- 102
+text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 972
-warning$ -- 13
-while$ -- 270
+type$ -- 422
+warning$ -- 35
+while$ -- 82
 width$ -- 0
-write$ -- 904
-(There were 17 warnings)
+write$ -- 311
+(There were 75 warnings)

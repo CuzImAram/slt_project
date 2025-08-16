@@ -1,0 +1,41 @@
+qid,query,n_votes,pipeline,mean_time_seconds
+1,Best youtube to mp3 converter,4,Pipeline 1,3.432843565940857
+2,Explain the basic principles of supply and demand.,4,Pipeline 1,4.020915627479553
+3,How does a blockchain work in simple terms?,4,Pipeline 1,1.7361747026443481
+4,How does photosynthesis work,4,Pipeline 1,2.0922953486442566
+5,How does the greenhouse effect work?,4,Pipeline 1,2.6955549120903015
+6,How to tell if an egg is bad,4,Pipeline 1,3.026982545852661
+7,Last eruption of Vesuvius,4,Pipeline 1,3.6181508898735046
+8,Population of the country Ukraine,4,Pipeline 1,6.212888479232788
+9,Was Luke Skywalker a Jedi,4,Pipeline 1,3.4615765810012817
+10,What are the main functions of the human liver?,4,Pipeline 1,4.131838083267212
+11,What are the most common rock types on earth,4,Pipeline 1,4.576411664485931
+12,What are the primary colors in art versus in light?,4,Pipeline 1,3.442966639995575
+13,What is covfefe,4,Pipeline 1,2.6620312333106995
+14,What is the difference between a supernova and a hypernova?,4,Pipeline 1,4.269808530807495
+15,What is the role of mitochondria in a cell?,4,Pipeline 1,3.194947600364685
+16,What is the theory of plate tectonics?,4,Pipeline 1,3.259461462497711
+17,What was the historical significance of the Magna Carta?,4,Pipeline 1,4.234213829040527
+18,Who was Marie Curie and what were her major contributions to science?,4,Pipeline 1,3.56205952167511
+19,saddam hussein hideout,4,Pipeline 1,3.998956024646759
+20,tallest building of the world,4,Pipeline 1,4.486200928688049
+1,Best youtube to mp3 converter,4,Pipeline 4,6.5117573738098145
+2,Explain the basic principles of supply and demand.,4,Pipeline 4,17.437008559703827
+3,How does a blockchain work in simple terms?,4,Pipeline 4,15.884830892086029
+4,How does photosynthesis work,4,Pipeline 4,18.952194571495056
+5,How does the greenhouse effect work?,4,Pipeline 4,11.516604959964752
+6,How to tell if an egg is bad,4,Pipeline 4,16.962672293186188
+7,Last eruption of Vesuvius,4,Pipeline 4,12.371711015701294
+8,Population of the country Ukraine,4,Pipeline 4,9.25490403175354
+9,Was Luke Skywalker a Jedi,4,Pipeline 4,19.018205761909485
+10,What are the main functions of the human liver?,4,Pipeline 4,10.041966080665588
+11,What are the most common rock types on earth,4,Pipeline 4,19.1373428106308
+12,What are the primary colors in art versus in light?,4,Pipeline 4,18.72689950466156
+13,What is covfefe,4,Pipeline 4,17.241298735141754
+14,What is the difference between a supernova and a hypernova?,4,Pipeline 4,20.087659895420074
+15,What is the role of mitochondria in a cell?,4,Pipeline 4,18.84140419960022
+16,What is the theory of plate tectonics?,4,Pipeline 4,13.157619416713715
+17,What was the historical significance of the Magna Carta?,4,Pipeline 4,10.771817564964294
+18,Who was Marie Curie and what were her major contributions to science?,4,Pipeline 4,18.05808526277542
+19,saddam hussein hideout,4,Pipeline 4,19.857127368450165
+20,tallest building of the world,4,Pipeline 4,18.452738106250763
