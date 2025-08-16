@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.5.27)  16 AUG 2025 19:50
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.5.27)  16 AUG 2025 20:10
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1718,28 +1718,33 @@ PGFPlots: reading {data/rag_time_long.csv}
 
 Class acmart Warning: A possible image without description on input line 506.
 
-[6.6] (/Users/domenic/repos/slt_project/paper/.texpadtmp/main.bbl
+[6.6]
+LaTeX Font Info:    Font shape `TU/LinLibertine(0)/m/n' will be
+(Font)              scaled to size 7.2pt on input line 537.
+ (/Users/domenic/repos/slt_project/paper/.texpadtmp/main.bbl
+LaTeX Info: Redefining \tempurl on input line 60.
 LaTeX Font Info:    Font shape `TU/LinLibertine(0)/m/it' will be
-(Font)              scaled to size 7.0pt on input line 63.
-LaTeX Info: Redefining \tempurl on input line 66.
-LaTeX Info: Redefining \tempurl on input line 78.
-LaTeX Info: Redefining \tempurl on input line 89.
-LaTeX Info: Redefining \tempurl on input line 99.
-LaTeX Info: Redefining \tempurl on input line 110.
-LaTeX Info: Redefining \tempurl on input line 121.
-LaTeX Info: Redefining \tempurl on input line 132.
-LaTeX Info: Redefining \tempurl on input line 145.
-LaTeX Info: Redefining \tempurl on input line 157.
-LaTeX Info: Redefining \tempurl on input line 168.
-LaTeX Info: Redefining \tempurl on input line 179.
-LaTeX Info: Redefining \tempurl on input line 191.
-LaTeX Info: Redefining \tempurl on input line 202.
-LaTeX Info: Redefining \tempurl on input line 214.
-LaTeX Info: Redefining \tempurl on input line 227.
+(Font)              scaled to size 7.0pt on input line 68.
+LaTeX Info: Redefining \tempurl on input line 71.
+LaTeX Info: Redefining \tempurl on input line 83.
+LaTeX Info: Redefining \tempurl on input line 94.
+LaTeX Info: Redefining \tempurl on input line 104.
+LaTeX Info: Redefining \tempurl on input line 115.
+LaTeX Info: Redefining \tempurl on input line 126.
+LaTeX Info: Redefining \tempurl on input line 137.
+LaTeX Info: Redefining \tempurl on input line 150.
+LaTeX Info: Redefining \tempurl on input line 162.
+LaTeX Info: Redefining \tempurl on input line 173.
+LaTeX Info: Redefining \tempurl on input line 184.
+LaTeX Info: Redefining \tempurl on input line 196.
 
-Underfull \vbox (badness 3701) has occurred while \output is active []
+Underfull \vbox (badness 5260) has occurred while \output is active []
 
- [7.7])
+ [7.7]
+LaTeX Info: Redefining \tempurl on input line 207.
+LaTeX Info: Redefining \tempurl on input line 219.
+LaTeX Info: Redefining \tempurl on input line 232.
+)
 
 Class acmart Warning: Some images may lack descriptions.
 (acmart)              ACM is committed to complying with the upcoming US ADA https://accessiblyapp.com/accessibility-compliance/ada/ and European Accessibility Act (EAA) https://accessiblyapp.com/accessibility-compliance/eaa/ regulations by actively working to ensure our publications and application services are accessible to individuals with disabilities, adhering to the WCAG guidelines to provide a seamless experience for all users, and regularly reviewing our accessibility practices to maintain compliance with evolving standards. 
@@ -1755,14 +1760,14 @@ LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 6975B2AFA6EA7D26D35819FC584A2862;2673.
+(rerunfilecheck)             Checksum: 7AACF107E542993056282FAC905B98A6;2673.
  ) 
 Here is how much of TeX's memory you used:
- 53705 strings out of 474773
- 1228460 string characters out of 5757724
- 1958839 words of memory out of 5000000
- 74932 multiletter control sequences out of 15000+600000
- 566235 words of font info for 146 fonts, out of 8000000 for 9000
+ 53710 strings out of 474773
+ 1228616 string characters out of 5757724
+ 1955839 words of memory out of 5000000
+ 74936 multiletter control sequences out of 15000+600000
+ 566300 words of font info for 147 fonts, out of 8000000 for 9000
  1509 hyphenation exceptions out of 8191
  105i,17n,135p,1353b,32979s stack positions out of 10000i,1000n,20000p,200000b,200000s
 

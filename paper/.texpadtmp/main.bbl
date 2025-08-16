@@ -40,8 +40,13 @@
 \bibitem[Aram~Aytekin({[n.\,d.]})]%
         {repo}
 \bibfield{author}{\bibinfo{person}{Moritz Dietrich Maximilian~Bennedik Aram~Aytekin, Domenic~Bremmer}.} \bibinfo{year}{[n.\,d.]}\natexlab{}.
+\newblock \bibinfo{title}{SLT Project}.
 \newblock
 \newblock
+\urldef\tempurl%
+\url{https://github.com/CuzImAram/slt_project}
+\showURL{%
+\tempurl}
 
 
 \bibitem[Bai et~al\mbox{.}(2022)]%
