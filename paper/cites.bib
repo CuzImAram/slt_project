@@ -1,130 +1,210 @@
-@inproceedings{lewis2020retrieval,
-  title={Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks},
-  author={Lewis, Patrick and Perez, Ethan and Piktus, Aleksandra and Petroni, Fabio and Karpukhin, Vladimir and Goyal, Naman and et al.},
-  booktitle={NeurIPS},
-  year={2020},
-  doi={10.5555/3454287.3455183},
-  url={https://doi.org/10.5555/3454287.3455183}
+@inproceedings{NEURIPS2020_6b493230,
+ author = {Lewis, Patrick and Perez, Ethan and Piktus, Aleksandra and Petroni, Fabio and Karpukhin, Vladimir and Goyal, Naman and K\"{u}ttler, Heinrich and Lewis, Mike and Yih, Wen-tau and Rockt\"{a}schel, Tim and Riedel, Sebastian and Kiela, Douwe},
+ booktitle = {Advances in Neural Information Processing Systems},
+ editor = {H. Larochelle and M. Ranzato and R. Hadsell and M.F. Balcan and H. Lin},
+ pages = {9459--9474},
+ publisher = {Curran Associates, Inc.},
+ title = {Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks},
+ url = {https://proceedings.neurips.cc/paper_files/paper/2020/file/6b493230205f780e1bc26945df7481e5-Paper.pdf},
+ volume = {33},
+ year = {2020}
 }
 
-@inproceedings{izacard2021leveraging,
-  title={Leveraging Passage Retrieval with Generative Models for Open Domain Question Answering},
-  author={Izacard, Gautier and Grave, Edouard},
-  booktitle={arXiv preprint arXiv:2102.00026},
-  year={2021},
-  url={https://arxiv.org/abs/2102.00026}
+
+@inproceedings{izacard-grave-2021-leveraging,
+    title = "Leveraging Passage Retrieval with Generative Models for Open Domain Question Answering",
+    author = "Izacard, Gautier  and
+      Grave, Edouard",
+    editor = "Merlo, Paola  and
+      Tiedemann, Jorg  and
+      Tsarfaty, Reut",
+    booktitle = "Proceedings of the 16th Conference of the European Chapter of the Association for Computational Linguistics: Main Volume",
+    month = apr,
+    year = "2021",
+    address = "Online",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2021.eacl-main.74/",
+    doi = "10.18653/v1/2021.eacl-main.74",
+    pages = "874--880",
+    abstract = "Generative models for open domain question answering have proven to be competitive, without resorting to external knowledge. While promising, this approach requires to use models with billions of parameters, which are expensive to train and query. In this paper, we investigate how much these models can benefit from retrieving text passages, potentially containing evidence. We obtain state-of-the-art results on the Natural Questions and TriviaQA open benchmarks. Interestingly, we observe that the performance of this method significantly improves when increasing the number of retrieved passages. This is evidence that sequence-to-sequence models offers a flexible framework to efficiently aggregate and combine evidence from multiple passages."
 }
 
-@inproceedings{karpukhin2020dense,
-  title={Dense Passage Retrieval for Open-Domain Question Answering},
-  author={Karpukhin, Vladimir and Oguz, Barlas and Min, Sewon and Lewis, Patrick and Wu, Ledell and Edunov, Sergey and Chen, Danqi and Yih, Wen-tau},
-  booktitle={Proceedings of EMNLP},
-  year={2020},
-  doi={10.18653/v1/2020.emnlp-main.550},
-  url={https://doi.org/10.18653/v1/2020.emnlp-main.550}
+@inproceedings{karpukhin-etal-2020-dense,
+    title = "Dense Passage Retrieval for Open-Domain Question Answering",
+    author = "Karpukhin, Vladimir  and
+      Oguz, Barlas  and
+      Min, Sewon  and
+      Lewis, Patrick  and
+      Wu, Ledell  and
+      Edunov, Sergey  and
+      Chen, Danqi  and
+      Yih, Wen-tau",
+    editor = "Webber, Bonnie  and
+      Cohn, Trevor  and
+      He, Yulan  and
+      Liu, Yang",
+    booktitle = "Proceedings of the 2020 Conference on Empirical Methods in Natural Language Processing (EMNLP)",
+    month = nov,
+    year = "2020",
+    address = "Online",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2020.emnlp-main.550/",
+    doi = "10.18653/v1/2020.emnlp-main.550",
+    pages = "6769--6781",
+    abstract = "Open-domain question answering relies on efficient passage retrieval to select candidate contexts, where traditional sparse vector space models, such as TF-IDF or BM25, are the de facto method. In this work, we show that retrieval can be practically implemented using dense representations alone, where embeddings are learned from a small number of questions and passages by a simple dual-encoder framework. When evaluated on a wide range of open-domain QA datasets, our dense retriever outperforms a strong Lucene-BM25 system greatly by 9{\%}-19{\%} absolute in terms of top-20 passage retrieval accuracy, and helps our end-to-end QA system establish new state-of-the-art on multiple open-domain QA benchmarks."
 }
 
-@inproceedings{guu2020realm,
-  title={REALM: Retrieval-Augmented Language Model Pre-Training},
-  author={Guu, Kelvin and Lee, Kenton and Tung, Zora and Pasupat, Panupong and Chang, Ming-Wei},
-  booktitle={ICLR},
-  year={2020},
-  url={https://openreview.net/forum?id=rkgNKkHtvB}
+@misc{guu2020realmretrievalaugmentedlanguagemodel,
+      title={REALM: Retrieval-Augmented Language Model Pre-Training}, 
+      author={Kelvin Guu and Kenton Lee and Zora Tung and Panupong Pasupat and Ming-Wei Chang},
+      year={2020},
+      eprint={2002.08909},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2002.08909}, 
 }
 
-@article{rocchio1971relevance,
-  title={Relevance Feedback in Information Retrieval},
-  author={Rocchio, J. J.},
-  journal={The SMART Retrieval System: Experiments in Automatic Document Processing},
-  year={1971},
-  publisher={Prentice Hall},
-  url={https://ci.nii.ac.jp/naid/10024734288/}
+@misc{nogueira2020passagererankingbert,
+      title={Passage Re-ranking with BERT}, 
+      author={Rodrigo Nogueira and Kyunghyun Cho},
+      year={2020},
+      eprint={1901.04085},
+      archivePrefix={arXiv},
+      primaryClass={cs.IR},
+      url={https://arxiv.org/abs/1901.04085}, 
 }
 
-@inproceedings{nogueira2019passage,
-  title={Passage Re-Ranking with BERT},
-  author={Nogueira, Rodrigo and Cho, Kyunghyun},
-  booktitle={arXiv preprint arXiv:1901.04085},
-  year={2019},
-  url={https://arxiv.org/abs/1901.04085}
+@inproceedings{wang-etal-2023-query2doc,
+    title = "Query2doc: Query Expansion with Large Language Models",
+    author = "Wang, Liang  and
+      Yang, Nan  and
+      Wei, Furu",
+    editor = "Bouamor, Houda  and
+      Pino, Juan  and
+      Bali, Kalika",
+    booktitle = "Proceedings of the 2023 Conference on Empirical Methods in Natural Language Processing",
+    month = dec,
+    year = "2023",
+    address = "Singapore",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2023.emnlp-main.585/",
+    doi = "10.18653/v1/2023.emnlp-main.585",
+    pages = "9414--9423",
+    abstract = "This paper introduces a simple yet effective query expansion approach, denoted as query2doc, to improve both sparse and dense retrieval systems. The proposed method first generates pseudo-documents by few-shot prompting large language models (LLMs), and then expands the query with generated pseudo documents. LLMs are trained on web-scale text corpora and are adept at knowledge memorization. The pseudo-documents from LLMs often contain highly relevant information that can aid in query disambiguation and guide the retrievers. Experimental results demonstrate that query2doc boosts the performance of BM25 by 3{\%} to 15{\%} on ad-hoc IR datasets, such as MS-MARCO and TREC DL, without any model fine-tuning. Furthermore, our method also benefits state-of-the-art dense retrievers in terms of both in-domain and out-of-domain results."
 }
 
-@inproceedings{wang2023query,
-  title={Query Expansion with Large Language Models for Open-Domain Question Answering},
-  author={Wang, Author and et al.},
-  booktitle={arXiv preprint arXiv:2301.XXXX},
-  year={2023},
-  url={https://arxiv.org/abs/2301.XXXX}
+@inproceedings{post-2018-call,
+    title = "A Call for Clarity in Reporting {BLEU} Scores",
+    author = "Post, Matt",
+    editor = "Bojar, Ond{\v{r}}ej  and
+      Chatterjee, Rajen  and
+      Federmann, Christian  and
+      Fishel, Mark  and
+      Graham, Yvette  and
+      Haddow, Barry  and
+      Huck, Matthias  and
+      Yepes, Antonio Jimeno  and
+      Koehn, Philipp  and
+      Monz, Christof  and
+      Negri, Matteo  and
+      N{\'e}v{\'e}ol, Aur{\'e}lie  and
+      Neves, Mariana  and
+      Post, Matt  and
+      Specia, Lucia  and
+      Turchi, Marco  and
+      Verspoor, Karin",
+    booktitle = "Proceedings of the Third Conference on Machine Translation: Research Papers",
+    month = oct,
+    year = "2018",
+    address = "Brussels, Belgium",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/W18-6319/",
+    doi = "10.18653/v1/W18-6319",
+    pages = "186--191",
+    abstract = "The field of machine translation faces an under-recognized problem because of inconsistency in the reporting of scores from its dominant metric. Although people refer to ``the'' BLEU score, BLEU is in fact a parameterized metric whose values can vary wildly with changes to these parameters. These parameters are often not reported or are hard to find, and consequently, BLEU scores between papers cannot be directly compared. I quantify this variation, finding differences as high as 1.8 between commonly used configurations. The main culprit is different tokenization and normalization schemes applied to the reference. Pointing to the success of the parsing community, I suggest machine translation researchers settle upon the BLEU scheme used by the annual Conference on Machine Translation (WMT), which does not allow for user-supplied reference processing, and provide a new tool, SACREBLEU, to facilitate this."
 }
 
-@inproceedings{post2018call,
-  title={A Call for Clarity in Reporting BLEU Scores},
-  author={Post, Matt},
-  booktitle={Proceedings of the Third Conference on Machine Translation: Research Papers, WMT 2018},
-  year={2018},
-  pages={186--191},
-  address={Brussels, Belgium},
-  publisher={Association for Computational Linguistics},
-  doi={10.18653/V1/W18-6319},
-  url={https://doi.org/10.18653/V1/W18-6319}
+@inproceedings{lin-2004-rouge,
+    title = "{ROUGE}: A Package for Automatic Evaluation of Summaries",
+    author = "Lin, Chin-Yew",
+    booktitle = "Text Summarization Branches Out",
+    month = jul,
+    year = "2004",
+    address = "Barcelona, Spain",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/W04-1013/",
+    pages = "74--81"
 }
 
-@inproceedings{lin2004rouge,
-  title={ROUGE: A Package for Automatic Evaluation of Summaries},
-  author={Lin, Chin-Yew},
-  booktitle={Text Summarization Branches Out},
-  year={2004},
-  pages={74--81},
-  address={Barcelona, Spain},
-  publisher={Association for Computational Linguistics},
-  url={https://aclanthology.org/W04-1013/}
+@misc{zhang2020bertscoreevaluatingtextgeneration,
+      title={BERTScore: Evaluating Text Generation with BERT}, 
+      author={Tianyi Zhang and Varsha Kishore and Felix Wu and Kilian Q. Weinberger and Yoav Artzi},
+      year={2020},
+      eprint={1904.09675},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/1904.09675}, 
 }
 
-@inproceedings{zhang2020bertscore,
-  title={BERTScore: Evaluating Text Generation with BERT},
-  author={Zhang, Tianyi and Kishore, Varsha and Wu, Felix and Weinberger, Kilian Q. and Artzi, Yoav},
-  booktitle={8th International Conference on Learning Representations (ICLR)},
-  year={2020},
-  address={Addis Ababa, Ethiopia},
-  url={https://openreview.net/forum?id=Byg0sC4tDr}
+@inproceedings{liu-etal-2016-evaluate,
+    title = "How {NOT} To Evaluate Your Dialogue System: An Empirical Study of Unsupervised Evaluation Metrics for Dialogue Response Generation",
+    author = "Liu, Chia-Wei  and
+      Lowe, Ryan  and
+      Serban, Iulian  and
+      Noseworthy, Mike  and
+      Charlin, Laurent  and
+      Pineau, Joelle",
+    editor = "Su, Jian  and
+      Duh, Kevin  and
+      Carreras, Xavier",
+    booktitle = "Proceedings of the 2016 Conference on Empirical Methods in Natural Language Processing",
+    month = nov,
+    year = "2016",
+    address = "Austin, Texas",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/D16-1230/",
+    doi = "10.18653/v1/D16-1230",
+    pages = "2122--2132"
 }
 
-@inproceedings{liu2016not,
-  title={Not All BLEU Scores Are Equal: Automatic Evaluation of Open-Domain Dialogue Systems},
-  author={Liu, Chia-Wei and Lowe, Ryan and Serban, Iulian and Noseworthy, Michael and Charlin, Laurent and Pineau, Joelle},
-  booktitle={Proceedings of the 2016 Conference on Empirical Methods in Natural Language Processing},
-  year={2016},
-  url={https://aclanthology.org/D16-1058/}
+@misc{bai2022traininghelpfulharmlessassistant,
+      title={Training a Helpful and Harmless Assistant with Reinforcement Learning from Human Feedback}, 
+      author={Yuntao Bai and Andy Jones and Kamal Ndousse and Amanda Askell and Anna Chen and Nova DasSarma and Dawn Drain and Stanislav Fort and Deep Ganguli and Tom Henighan and Nicholas Joseph and Saurav Kadavath and Jackson Kernion and Tom Conerly and Sheer El-Showk and Nelson Elhage and Zac Hatfield-Dodds and Danny Hernandez and Tristan Hume and Scott Johnston and Shauna Kravec and Liane Lovitt and Neel Nanda and Catherine Olsson and Dario Amodei and Tom Brown and Jack Clark and Sam McCandlish and Chris Olah and Ben Mann and Jared Kaplan},
+      year={2022},
+      eprint={2204.05862},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2204.05862}, +
 }
 
-@inproceedings{bai2022training,
-  title={Training a Helpful and Harmless Assistant with Reinforcement Learning from Human Feedback},
-  author={Bai, Yuntao and Jones, Andy and Ndousse, Kamal and et al.},
-  booktitle={arXiv preprint arXiv:2204.05862},
-  year={2022},
-  url={https://arxiv.org/abs/2204.05862}
+@misc{thoppilan2022lamdalanguagemodelsdialog,
+      title={LaMDA: Language Models for Dialog Applications}, 
+      author={Romal Thoppilan and Daniel De Freitas and Jamie Hall and Noam Shazeer and Apoorv Kulshreshtha and Heng-Tze Cheng and Alicia Jin and Taylor Bos and Leslie Baker and Yu Du and YaGuang Li and Hongrae Lee and Huaixiu Steven Zheng and Amin Ghafouri and Marcelo Menegali and Yanping Huang and Maxim Krikun and Dmitry Lepikhin and James Qin and Dehao Chen and Yuanzhong Xu and Zhifeng Chen and Adam Roberts and Maarten Bosma and Vincent Zhao and Yanqi Zhou and Chung-Ching Chang and Igor Krivokon and Will Rusch and Marc Pickett and Pranesh Srinivasan and Laichee Man and Kathleen Meier-Hellstern and Meredith Ringel Morris and Tulsee Doshi and Renelito Delos Santos and Toju Duke and Johnny Soraker and Ben Zevenbergen and Vinodkumar Prabhakaran and Mark Diaz and Ben Hutchinson and Kristen Olson and Alejandra Molina and Erin Hoffman-John and Josh Lee and Lora Aroyo and Ravi Rajakumar and Alena Butryna and Matthew Lamm and Viktoriya Kuzmina and Joe Fenton and Aaron Cohen and Rachel Bernstein and Ray Kurzweil and Blaise Aguera-Arcas and Claire Cui and Marian Croak and Ed Chi and Quoc Le},
+      year={2022},
+      eprint={2201.08239},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2201.08239}, 
 }
 
-@inproceedings{thoppilan2022lamda,
-  title={LaMDA: Language Models for Dialog Applications},
-  author={Thoppilan, Rohan and et al.},
-  booktitle={arXiv preprint arXiv:2201.08239},
-  year={2022},
-  url={https://arxiv.org/abs/2201.08239}
+@misc{stiennon2022learningsummarizehumanfeedback,
+      title={Learning to summarize from human feedback}, 
+      author={Nisan Stiennon and Long Ouyang and Jeff Wu and Daniel M. Ziegler and Ryan Lowe and Chelsea Voss and Alec Radford and Dario Amodei and Paul Christiano},
+      year={2022},
+      eprint={2009.01325},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2009.01325}, 
 }
 
-@inproceedings{stiennon2020learning,
-  title={Learning to summarize with human feedback},
-  author={Stiennon, Nisan and Ouyang, Long and Wu, Jeffrey and Ziegler, Daniel and Lowe, Ryan and et al.},
-  booktitle={NeurIPS},
-  year={2020},
-  url={https://arxiv.org/abs/2009.01325}
-}
-
-@inproceedings{gienapp2025viability,
-  title={The Viability of Crowdsourcing for RAG Evaluation},
-  author={Gienapp, Lukas and Stein, Benno and Fröbe, Maik and Potthast, Martin and Scells, Harrisen},
-  booktitle={arXiv preprint arXiv:2501.XXXXX},
-  year={2025},
-  url={https://arxiv.org/abs/2501.XXXXX}
+@inproceedings{Gienapp_2025, series={SIGIR ’25},
+   title={The Viability of Crowdsourcing for RAG Evaluation},
+   url={http://dx.doi.org/10.1145/3726302.3730093},
+   DOI={10.1145/3726302.3730093},
+   booktitle={Proceedings of the 48th International ACM SIGIR Conference on Research and Development in Information Retrieval},
+   publisher={ACM},
+   author={Gienapp, Lukas and Hagen, Tim and Fröbe, Maik and Hagen, Matthias and Stein, Benno and Potthast, Martin and Scells, Harrisen},
+   year={2025},
+   month=jul, pages={159–169},
+   collection={SIGIR ’25} }
 }
