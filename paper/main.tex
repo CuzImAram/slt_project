@@ -354,8 +354,8 @@ To address this, we compare two pipelines operating solely on SERP snippets. The
 	Pipeline~4 expands the initial prompt into an LLM-generated \emph{query pool}, increasing search coverage and expected recall of relevant snippets. Greater coverage should yield answers that are more accurate and on-topic, which, under our evaluation protocol, should translate into higher preference.
 	
 	\paragraph{Primary hypothesis.}
-	\textbf{H\textsubscript{1}:} Pipeline~4’s win rate exceeds $50\%$ over non-tied pairwise comparisons with Pipeline~1.\\
-	\textbf{H\textsubscript{0}:} Pipeline~4’s win rate is $\leq 50\%$.
+	\textbf{H\textsubscript{1}}~\label{hyp:H1}: Pipeline~4’s win rate exceeds $50\%$ over non-tied pairwise comparisons with Pipeline~1.\\
+	\textbf{H\textsubscript{0}}~\label{hyp:H0}: Pipeline~4’s win rate is $\leq 50\%$.
 	
 	\paragraph{Note on latency.}
 	Pipeline~4 may incur higher latency due to multi-query retrieval and increased LLM Overhead. We report latency distributions and mean times in the Results section, but latency is not part of the primary hypothesis test.
@@ -520,20 +520,23 @@ pipeline.
 We compared two RAG pipelines on 20 predefined prompts over the reproducible
 Archive Query Log (AQL) index: a single-query baseline (Pipeline~1) and a
 query-pool variant (Pipeline~4). In randomized, blind human voting, we observed
-a \emph{modest} overall preference for Pipeline~4. However, three factors
-temper this advantage: (i) retrieval coverage gaps where Elasticsearch returned
-no meaningful snippets, limiting any pipeline’s ability to answer from context;
-(ii) occasional hallucinations—especially on sensitive topics—where the model
-answered without sufficient grounding; and (iii) higher LLM runtime for
-Pipeline~4 due to additional expansion/aggregation steps. Timing analysis shows
-that apparent “fast” spikes for Pipeline~4 coincide with poor retrieval (short
-contexts), not genuine efficiency gains.
+a \emph{modest} overall preference for Pipeline~4. 
 
-Overall, query-pool expansion helps when retrieval surfaces relevant evidence,
-but it cannot compensate for weak recall and can be undermined if grounding is
-not strictly followed. Given the marginal win-rate gains and increased latency,
-the cost–quality trade-off may be unfavorable in resource-constrained settings.
+\paragraph{Rationale.}
+Pipeline~4 expands the initial prompt into an LLM-generated \emph{query pool}, 
+increasing search coverage and expected recall of relevant snippets. Greater coverage 
+should yield answers that are more accurate and on-topic, which, under our evaluation protocol, 
+should translate into higher preference.
 
+However, three factors temper this advantage: 
+(i) retrieval coverage gaps where Elasticsearch returned no meaningful snippets, limiting any pipeline’s ability to answer from context;  
+(ii) occasional hallucinations—especially on sensitive topics—where the model answered without sufficient grounding; and  
+(iii) higher LLM runtime for Pipeline~4 due to additional expansion/aggregation steps. Timing analysis shows
+that apparent “fast” spikes for Pipeline~4 coincide with poor retrieval (short contexts), not genuine efficiency gains.
+
+Overall, query-pool expansion helps when retrieval surfaces relevant evidence, and our results support \hyperref[hyp:H1]{H\textsubscript{1}}. 
+Nevertheless, it cannot compensate for weak recall and can be undermined if grounding is not strictly followed. 
+Given the marginal win-rate gains and increased latency, the cost–quality trade-off may be unfavorable in resource-constrained settings.
 
 
 %%
