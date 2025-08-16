@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.5.27)  16 AUG 2025 15:46
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.5.27)  16 AUG 2025 16:33
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1433,17 +1433,31 @@ File: pgfmodulematrix.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \tikz@expandcount=\count347
  (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopaths.code.tex
 File: tikzlibrarytopaths.code.tex 2023-01-15 v3.1.10 (3.1.10)
-))) (/usr/local/texlive/2024/texmf-dist/tex/latex/pgfplots/pgfplots.sty (/usr/local/texlive/2024/texmf-dist/tex/generic/pgfplots/pgfplots.revision.tex)
+))) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.meta.code.tex
+File: pgflibraryarrows.meta.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfarrowinset=\dimen303
+\pgfarrowlength=\dimen304
+\pgfarrowwidth=\dimen305
+\pgfarrowlinewidth=\dimen306
+) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarypositioning.code.tex
+File: tikzlibrarypositioning.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshapes.geometric.code.tex
+File: tikzlibraryshapes.geometric.code.tex 2023-01-15 v3.1.10 (3.1.10)
+
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibraryshapes.geometric.code.tex
+File: pgflibraryshapes.geometric.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryfit.code.tex
+File: tikzlibraryfit.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/pgfplots/pgfplots.sty (/usr/local/texlive/2024/texmf-dist/tex/generic/pgfplots/pgfplots.revision.tex)
 Package: pgfplots 2021/05/15 v1.18.1 Data Visualization (1.18.1)
  (/usr/local/texlive/2024/texmf-dist/tex/generic/pgfplots/pgfplots.code.tex (/usr/local/texlive/2024/texmf-dist/tex/generic/pgfplots/pgfplotscore.code.tex
 \t@pgfplots@toka=\toks49
 \t@pgfplots@tokb=\toks50
 \t@pgfplots@tokc=\toks51
-\pgfplots@tmpa=\dimen303
+\pgfplots@tmpa=\dimen307
 \c@pgfplots@coordindex=\count348
 \c@pgfplots@scanlineindex=\count349
- (/usr/local/texlive/2024/texmf-dist/tex/generic/pgfplots/sys/pgfplotssysgeneric.code.tex))
-(/usr/local/texlive/2024/texmf-dist/tex/generic/pgfplots/libs/pgfplotslibrary.code.tex) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldpgfsupp_loader.code.tex (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/libraries/pgflibraryfpu.code.tex)
+ (/usr/local/texlive/2024/texmf-dist/tex/generic/pgfplots/sys/pgfplotssysgeneric.code.tex)) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgfplots/libs/pgfplotslibrary.code.tex) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldpgfsupp_loader.code.tex (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/libraries/pgflibraryfpu.code.tex)
 Package pgfplots: loading complementary utilities for your pgf version...
 \t@pgf@toka=\toks52
 \t@pgf@tokb=\toks53
@@ -1459,24 +1473,24 @@ Package pgfplots: loading complementary utilities for your pgf version...
 \c@pgfplotslibrarysurf@streamlen=\count353
 )))) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgfplots/util/pgfplotscolormap.code.tex (/usr/local/texlive/2024/texmf-dist/tex/generic/pgfplots/util/pgfplotscolor.code.tex)) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgfplots/pgfplotsstackedplots.code.tex) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgfplots/pgfplotsplothandlers.code.tex (/usr/local/texlive/2024/texmf-dist/tex/generic/pgfplots/pgfplotsmeshplothandler.code.tex (/usr/local/texlive/2024/texmf-dist/tex/generic/pgfplots/pgfplotsmeshplotimage.code.tex))) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgfplots/pgfplots.scaling.code.tex)
 (/usr/local/texlive/2024/texmf-dist/tex/generic/pgfplots/pgfplotscoordprocessing.code.tex) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgfplots/pgfplots.errorbars.code.tex) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgfplots/pgfplots.markers.code.tex) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgfplots/pgfplotsticks.code.tex) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgfplots/pgfplots.paths.code.tex) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.code.tex (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/modules/pgfmoduledecorations.code.tex
-\pgfdecoratedcompleteddistance=\dimen304
-\pgfdecoratedremainingdistance=\dimen305
-\pgfdecoratedinputsegmentcompleteddistance=\dimen306
-\pgfdecoratedinputsegmentremainingdistance=\dimen307
-\pgf@decorate@distancetomove=\dimen308
+\pgfdecoratedcompleteddistance=\dimen308
+\pgfdecoratedremainingdistance=\dimen309
+\pgfdecoratedinputsegmentcompleteddistance=\dimen310
+\pgfdecoratedinputsegmentremainingdistance=\dimen311
+\pgf@decorate@distancetomove=\dimen312
 \pgf@decorate@repeatstate=\count354
-\pgfdecorationsegmentamplitude=\dimen309
-\pgfdecorationsegmentlength=\dimen310
+\pgfdecorationsegmentamplitude=\dimen313
+\pgfdecorationsegmentlength=\dimen314
 )
 \tikz@lib@dec@box=\box74
 ) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.pathmorphing.code.tex (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrarydecorations.pathmorphing.code.tex)) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.pathreplacing.code.tex (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrarydecorations.pathreplacing.code.tex)) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgfplots/libs/tikzlibrarypgfplots.contourlua.code.tex)
 \pgfplots@numplots=\count355
-\pgfplots@xmin@reg=\dimen311
-\pgfplots@xmax@reg=\dimen312
-\pgfplots@ymin@reg=\dimen313
-\pgfplots@ymax@reg=\dimen314
-\pgfplots@zmin@reg=\dimen315
-\pgfplots@zmax@reg=\dimen316
+\pgfplots@xmin@reg=\dimen315
+\pgfplots@xmax@reg=\dimen316
+\pgfplots@ymin@reg=\dimen317
+\pgfplots@ymax@reg=\dimen318
+\pgfplots@zmin@reg=\dimen319
+\pgfplots@zmax@reg=\dimen320
 ) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryplotmarks.code.tex
 File: tikzlibraryplotmarks.code.tex 2023-01-15 v3.1.10 (3.1.10)
  (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/libraries/pgflibraryplotmarks.code.tex
@@ -1655,242 +1669,100 @@ LaTeX Font Info:    Font shape `TU/LinBiolinum(0)/b/n' will be
 (Font)              scaled to size 9.0pt on input line 162.
 LaTeX Font Info:    Font shape `TU/LinLibertine(0)/m/it' will be
 (Font)              scaled to size 9.0pt on input line 170.
- [1.1] [2.2]
-Package pgfplots info on input line 218: Using 'lua backend=false' for axis: x coord trafo unsupported.
-LaTeX Font Info:    Font shape `TU/LibertinusMath-Regular.otf(1)/m/n' will be
-(Font)              scaled to size 7.47354pt on input line 220.
-LaTeX Font Info:    Font shape `TU/LibertinusMath-Regular.otf(1)/m/n' will be
-(Font)              scaled to size 5.60515pt on input line 220.
-LaTeX Font Info:    Font shape `TU/LibertinusMath-Regular.otf(2)/m/n' will be
-(Font)              scaled to size 9.34277pt on input line 220.
-LaTeX Font Info:    Font shape `TU/LibertinusMath-Regular.otf(2)/m/n' will be
-(Font)              scaled to size 7.47421pt on input line 220.
-LaTeX Font Info:    Font shape `TU/LibertinusMath-Regular.otf(2)/m/n' will be
-(Font)              scaled to size 5.60565pt on input line 220.
-LaTeX Font Info:    Font shape `TU/LibertinusMath-Regular.otf(3)/m/n' will be
-(Font)              scaled to size 9.34099pt on input line 220.
-LaTeX Font Info:    Font shape `TU/LibertinusMath-Regular.otf(3)/m/n' will be
-(Font)              scaled to size 7.47278pt on input line 220.
-LaTeX Font Info:    Font shape `TU/LibertinusMath-Regular.otf(3)/m/n' will be
-(Font)              scaled to size 5.60458pt on input line 220.
-LaTeX Font Info:    Font shape `TU/LinBiolinum(0)/m/n' will be
-(Font)              scaled to size 8.0pt on input line 222.
+ [1.1]
+LaTeX Font Info:    Font shape `TU/LinLibertine(0)/b/n' will be
+(Font)              scaled to size 9.0pt on input line 178.
 
 
-Class acmart Warning: A possible image without description on input line 223.
-
-PGFPlots: reading {data/rag_time_long.csv}
-PGFPlots: reading {data/rag_time_long.csv}
-
-Class acmart Warning: A possible image without description on input line 283.
+Package natbib Warning: Citation `lewis2020retrieval' on page 2 undefined on input line 178.
 
 
-Underfull \vbox (badness 2460) has occurred while \output is active []
+Package natbib Warning: Citation `izacard2021leveraging' on page 2 undefined on input line 178.
 
- [3.3]
+
+Package natbib Warning: Citation `karpukhin2020dense' on page 2 undefined on input line 178.
+
+
+Package natbib Warning: Citation `guu2020realm' on page 2 undefined on input line 178.
+
+
+Package natbib Warning: Citation `nogueira2019passage' on page 2 undefined on input line 181.
+
+
+Package natbib Warning: Citation `wang2023query' on page 2 undefined on input line 181.
+
+
+Package natbib Warning: Citation `post2018call' on page 2 undefined on input line 184.
+
+
+Package natbib Warning: Citation `lin2004rouge' on page 2 undefined on input line 184.
+
+
+Package natbib Warning: Citation `zhang2020bertscore' on page 2 undefined on input line 184.
+
+
+Package natbib Warning: Citation `liu2016not' on page 2 undefined on input line 184.
+
+
+Package natbib Warning: Citation `bai2022training' on page 2 undefined on input line 184.
+
+
+Package natbib Warning: Citation `thoppilan2022lamda' on page 2 undefined on input line 184.
+
+
+Package natbib Warning: Citation `stiennon2020learning' on page 2 undefined on input line 184.
+
+[2.2]
+
+Package natbib Warning: Citation `gienapp2025viability' on page 3 undefined on input line 186.
+
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `inconsolata' (encoding: TU).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
- [4.4]
-LaTeX Font Info:    Font shape `TU/LinLibertine(0)/m/it' will be
-(Font)              scaled to size 7.2pt on input line 329.
-LaTeX Font Info:    Font shape `TU/LinLibertine(0)/b/n' will be
-(Font)              scaled to size 9.0pt on input line 355.
- [5.5]
-LaTeX Font Info:    Font shape `TU/LinLibertine(0)/m/n' will be
-(Font)              scaled to size 7.2pt on input line 428.
- [6.6]
-LaTeX Font Info:    Font shape `TU/LinBiolinum(0)/m/it' will be
-(Font)              scaled to size 9.0pt on input line 487.
- [7.7]
+LaTeX Font Info:    Font shape `TU/LibertinusMath-Regular.otf(1)/m/n' will be
+(Font)              scaled to size 7.47354pt on input line 200.
+LaTeX Font Info:    Font shape `TU/LibertinusMath-Regular.otf(1)/m/n' will be
+(Font)              scaled to size 5.60515pt on input line 200.
+LaTeX Font Info:    Font shape `TU/LibertinusMath-Regular.otf(2)/m/n' will be
+(Font)              scaled to size 9.34277pt on input line 200.
+LaTeX Font Info:    Font shape `TU/LibertinusMath-Regular.otf(2)/m/n' will be
+(Font)              scaled to size 7.47421pt on input line 200.
+LaTeX Font Info:    Font shape `TU/LibertinusMath-Regular.otf(2)/m/n' will be
+(Font)              scaled to size 5.60565pt on input line 200.
+LaTeX Font Info:    Font shape `TU/LibertinusMath-Regular.otf(3)/m/n' will be
+(Font)              scaled to size 9.34099pt on input line 200.
+LaTeX Font Info:    Font shape `TU/LibertinusMath-Regular.otf(3)/m/n' will be
+(Font)              scaled to size 7.47278pt on input line 200.
+LaTeX Font Info:    Font shape `TU/LibertinusMath-Regular.otf(3)/m/n' will be
+(Font)              scaled to size 5.60458pt on input line 200.
+LaTeX Font Info:    Font shape `TU/LinBiolinum(0)/m/n' will be
+(Font)              scaled to size 8.0pt on input line 262.
 
-Package natbib Warning: Citation `Lamport:LaTeX' on page 8 undefined on input line 575.
+Class acmart Warning: A possible image without description on input line 263.
 
-LaTeX Font Info:    Font shape `TU/LinLibertine(1)/m/n' will be
-(Font)              scaled to size 9.0pt on input line 578.
-LaTeX Font Info:    Font shape `TU/LinLibertine(1)/m/n' will be
-(Font)              scaled to size 7.2pt on input line 578.
-LaTeX Font Info:    Font shape `TU/LinLibertine(1)/m/n' will be
-(Font)              scaled to size 5.4pt on input line 578.
-[8.8]
-File: sample-franklin.png Graphic file (type bmp)
-<sample-franklin.png>
-LaTeX Font Info:    Font shape `TU/LinLibertine(1)/m/n' will be
-(Font)              scaled to size 8.0pt on input line 619.
-LaTeX Font Info:    Font shape `TU/LinLibertine(1)/m/n' will be
-(Font)              scaled to size 6.0pt on input line 619.
-LaTeX Font Info:    Font shape `TU/LinLibertine(1)/m/n' will be
-(Font)              scaled to size 5.0pt on input line 619.
+[3.3]
+Package pgfplots info on input line 290: Using 'lua backend=false' for axis: x coord trafo unsupported.
 
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+Class acmart Warning: A possible image without description on input line 295.
 
-Missing character: There is no ^^80 (U+0080) in font [LinLibertine_R.otf]/OT:script=latn;language=dflt;+tnum;+lnum;mapping=tex-text;!
-Missing character: There is no ^^99 (U+0099) in font [LinLibertine_R.otf]/OT:script=latn;language=dflt;+tnum;+lnum;mapping=tex-text;!
-Missing character: There is no ^^80 (U+0080) in font [LinLibertine_RB.otf]/OT:script=latn;language=dflt;+tnum;+lnum;mapping=tex-text;!
-Missing character: There is no ^^93 (U+0093) in font [LinLibertine_RB.otf]/OT:script=latn;language=dflt;+tnum;+lnum;mapping=tex-text;!
+PGFPlots: reading {data/rag_time_long.csv}
+PGFPlots: reading {data/rag_time_long.csv}
+
+Class acmart Warning: A possible image without description on input line 355.
+
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [9.9]
-Overfull \hbox (11.93018pt too wide) in paragraph at lines 671--673
-[]\TU/LinLibertine(1)/m/n/9 The bibliography is included in your source document with these two commands, placed just before the [][]\TU/inconsolata(0)/m/n/9 \end{document}
- []
-
-[10.10]
-
-Package natbib Warning: Citation `Abril07' on page 11 undefined on input line 690.
-
-
-Package natbib Warning: Citation `Cohen07' on page 11 undefined on input line 691.
-
-
-Package natbib Warning: Citation `JCohen96' on page 11 undefined on input line 692.
-
-
-Package natbib Warning: Citation `Kosiur01' on page 11 undefined on input line 692.
-
-
-Package natbib Warning: Citation `Harel79' on page 11 undefined on input line 694.
-
-
-Package natbib Warning: Citation `Editor00' on page 11 undefined on input line 695.
-
-
-Package natbib Warning: Citation `Editor00a' on page 11 undefined on input line 696.
-
-
-Package natbib Warning: Citation `Spector90' on page 11 undefined on input line 698.
-
-
-Package natbib Warning: Citation `Douglass98' on page 11 undefined on input line 699.
-
-
-Package natbib Warning: Citation `Knuth97' on page 11 undefined on input line 700.
-
-
-Package natbib Warning: Citation `Andler79' on page 11 undefined on input line 702.
-
-
-Package natbib Warning: Citation `Hagerup1993' on page 11 undefined on input line 702.
-
-
-Package natbib Warning: Citation `Smith10' on page 11 undefined on input line 703.
-
-
-Package natbib Warning: Citation `VanGundy07' on page 11 undefined on input line 704.
-
-
-Package natbib Warning: Citation `Harel78' on page 11 undefined on input line 705.
-
-
-Package natbib Warning: Citation `Bornmann2019' on page 11 undefined on input line 706.
-
-
-Package natbib Warning: Citation `AnzarootPBM14' on page 11 undefined on input line 706.
-
-
-Package natbib Warning: Citation `Clarkson85' on page 11 undefined on input line 706.
-
-
-Package natbib Warning: Citation `anisi03' on page 11 undefined on input line 707.
-
-
-Package natbib Warning: Citation `Thornburg01' on page 11 undefined on input line 708.
-
-
-Package natbib Warning: Citation `Ablamowicz07' on page 11 undefined on input line 708.
-
-
-Package natbib Warning: Citation `Poker06' on page 11 undefined on input line 708.
-
-
-Package natbib Warning: Citation `Obama08' on page 11 undefined on input line 709.
-
-
-Package natbib Warning: Citation `Novak03' on page 11 undefined on input line 709.
-
-
-Package natbib Warning: Citation `Lee05' on page 11 undefined on input line 709.
-
-
-Package natbib Warning: Citation `JoeScientist001' on page 11 undefined on input line 710.
-
-
-Package natbib Warning: Citation `rous08' on page 11 undefined on input line 711.
-
-
-Package natbib Warning: Citation `SaeediMEJ10' on page 11 undefined on input line 712.
-
-
-Package natbib Warning: Citation `SaeediJETC10' on page 11 undefined on input line 712.
-
-
-Package natbib Warning: Citation `Kirschmer:2010:AEI:1958016.1958018' on page 11 undefined on input line 714.
-
-
-Package natbib Warning: Citation `MR781536' on page 11 undefined on input line 715.
-
-
-Package natbib Warning: Citation `MR781537' on page 11 undefined on input line 715.
-
-
-Package natbib Warning: Citation `Reiser2014' on page 11 undefined on input line 716.
-
-
-Package natbib Warning: Citation `Baggett2025' on page 11 undefined on input line 717.
-
-
-Package natbib Warning: Citation `2004:ITE:1009386.1010128' on page 11 undefined on input line 719.
-
-
-Package natbib Warning: Citation `Kirschmer:2010:AEI:1958016.1958018' on page 11 undefined on input line 719.
-
-
-Package natbib Warning: Citation `TUGInstmem' on page 11 undefined on input line 720.
-
-
-Package natbib Warning: Citation `Thornburg01' on page 11 undefined on input line 720.
-
-
-Package natbib Warning: Citation `CTANacmart' on page 11 undefined on input line 720.
-
-
-Package natbib Warning: Citation `R' on page 11 undefined on input line 721.
-
-
-Package natbib Warning: Citation `UMassCitations' on page 11 undefined on input line 721.
-
-[11.11]
-Overfull \hbox (22.8914pt too wide) in paragraph at lines 772--780
-[]\TU/LinLibertine(1)/m/n/9 The title, subtitle, keywords and abstract will be typeset in the main language of the paper. The commands [][]\TU/inconsolata(0)/m/n/9 \translatedXXX[]\TU/LinLibertine(1)/m/n/9 ,
- []
-
-Processing 'acks' comment.
+ [4.4] Processing 'acks' comment.
 \openout3 = `comment.cut'.
 
  Comment 'acks' writing to comment.cut. Straight input of comment.cut. (/Users/domenic/repos/slt_project/paper/.texpadtmp/comment.cut) (/Users/domenic/repos/slt_project/paper/.texpadtmp/main.bbl
-LaTeX Font Info:    Font shape `TU/LinLibertine(0)/m/it' will be
-(Font)              scaled to size 7.0pt on input line 43.
-LaTeX Font Info:    Font shape `TU/LinLibertine(1)/m/n' will be
-(Font)              scaled to size 7.0pt on input line 48.
-LaTeX Info: Redefining \tempurl on input line 57.
-LaTeX Info: Redefining \tempurl on input line 68.
-LaTeX Info: Redefining \tempurl on input line 79.
-LaTeX Info: Redefining \tempurl on input line 90.
-LaTeX Info: Redefining \tempurl on input line 100.
-LaTeX Info: Redefining \tempurl on input line 110.
-LaTeX Info: Redefining \tempurl on input line 121.
-LaTeX Info: Redefining \tempurl on input line 132.
-LaTeX Info: Redefining \tempurl on input line 143.
-LaTeX Info: Redefining \tempurl on input line 154.
-LaTeX Info: Redefining \tempurl on input line 165.
-LaTeX Info: Redefining \tempurl on input line 176.
- [12.12]
-LaTeX Info: Redefining \tempurl on input line 187.
-LaTeX Info: Redefining \tempurl on input line 198.
-)
+
+Package natbib Warning: Empty `thebibliography' environment on input line 40.
+
+) [5.5]
 
 Package natbib Warning: There were undefined citations.
 
@@ -1903,21 +1775,21 @@ Class acmart Warning: Some images may lack descriptions.
 File: se-pdfdoc.def 2019/11/29 v1.12 stringenc: PDFDocEncoding
 ) (/usr/local/texlive/2024/texmf-dist/tex/generic/stringenc/se-utf32be.def
 File: se-utf32be.def 2019/11/29 v1.12 stringenc: UTF-32BE
-) [13.13] (/Users/domenic/repos/slt_project/paper/.texpadtmp/main.aux)
+) [6.6] (/Users/domenic/repos/slt_project/paper/.texpadtmp/main.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: C01FA390108F0150E33AA02643319D1B;7430.
+(rerunfilecheck)             Checksum: A34BE90CAFEC1D407011784DDC71BF0D;4105.
  ) 
 Here is how much of TeX's memory you used:
- 52762 strings out of 474773
- 1204589 string characters out of 5757724
- 1947839 words of memory out of 5000000
- 73996 multiletter control sequences out of 15000+600000
- 566511 words of font info for 152 fonts, out of 8000000 for 9000
+ 53640 strings out of 474773
+ 1226144 string characters out of 5757724
+ 1944839 words of memory out of 5000000
+ 74866 multiletter control sequences out of 15000+600000
+ 566219 words of font info for 144 fonts, out of 8000000 for 9000
  1509 hyphenation exceptions out of 8191
  105i,17n,135p,1353b,32979s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on /Users/domenic/repos/slt_project/paper/.texpadtmp/main.pdf (13 pages).
+Output written on /Users/domenic/repos/slt_project/paper/.texpadtmp/main.pdf (6 pages).

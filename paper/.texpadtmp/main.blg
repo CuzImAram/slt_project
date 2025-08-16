@@ -6,127 +6,69 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
 Database file #1: ../cites.bib
-Warning--I didn't find a database entry for "Lamport:LaTeX"
-Warning--I didn't find a database entry for "Abril07"
-Warning--I didn't find a database entry for "Cohen07"
-Warning--I didn't find a database entry for "JCohen96"
-Warning--I didn't find a database entry for "Kosiur01"
-Warning--I didn't find a database entry for "Harel79"
-Warning--I didn't find a database entry for "Editor00"
-Warning--I didn't find a database entry for "Editor00a"
-Warning--I didn't find a database entry for "Spector90"
-Warning--I didn't find a database entry for "Douglass98"
-Warning--I didn't find a database entry for "Knuth97"
-Warning--I didn't find a database entry for "Andler79"
-Warning--I didn't find a database entry for "Hagerup1993"
-Warning--I didn't find a database entry for "Smith10"
-Warning--I didn't find a database entry for "VanGundy07"
-Warning--I didn't find a database entry for "Harel78"
-Warning--I didn't find a database entry for "Bornmann2019"
-Warning--I didn't find a database entry for "AnzarootPBM14"
-Warning--I didn't find a database entry for "Clarkson85"
-Warning--I didn't find a database entry for "anisi03"
-Warning--I didn't find a database entry for "Thornburg01"
-Warning--I didn't find a database entry for "Ablamowicz07"
-Warning--I didn't find a database entry for "Poker06"
-Warning--I didn't find a database entry for "Obama08"
-Warning--I didn't find a database entry for "Novak03"
-Warning--I didn't find a database entry for "Lee05"
-Warning--I didn't find a database entry for "JoeScientist001"
-Warning--I didn't find a database entry for "rous08"
-Warning--I didn't find a database entry for "SaeediMEJ10"
-Warning--I didn't find a database entry for "SaeediJETC10"
-Warning--I didn't find a database entry for "Kirschmer:2010:AEI:1958016.1958018"
-Warning--I didn't find a database entry for "MR781536"
-Warning--I didn't find a database entry for "MR781537"
-Warning--I didn't find a database entry for "Reiser2014"
-Warning--I didn't find a database entry for "Baggett2025"
-Warning--I didn't find a database entry for "2004:ITE:1009386.1010128"
-Warning--I didn't find a database entry for "TUGInstmem"
-Warning--I didn't find a database entry for "CTANacmart"
-Warning--I didn't find a database entry for "R"
-Warning--I didn't find a database entry for "UMassCitations"
+I was expecting an "="---line 178 of file ../cites.bib
+ : 
+ : }
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Warning--I didn't find a database entry for "lewis2020retrieval"
+Warning--I didn't find a database entry for "izacard2021leveraging"
+Warning--I didn't find a database entry for "karpukhin2020dense"
+Warning--I didn't find a database entry for "guu2020realm"
+Warning--I didn't find a database entry for "nogueira2019passage"
+Warning--I didn't find a database entry for "wang2023query"
+Warning--I didn't find a database entry for "post2018call"
+Warning--I didn't find a database entry for "lin2004rouge"
+Warning--I didn't find a database entry for "zhang2020bertscore"
+Warning--I didn't find a database entry for "liu2016not"
+Warning--I didn't find a database entry for "bai2022training"
+Warning--I didn't find a database entry for "thoppilan2022lamda"
+Warning--I didn't find a database entry for "stiennon2020learning"
+Warning--I didn't find a database entry for "gienapp2025viability"
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated glb_str_ptr (elt_size=4) to 20 items from 10.
 Reallocated global_strs (elt_size=200001) to 20 items from 10.
 Reallocated glb_str_end (elt_size=4) to 20 items from 10.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
-Warning--empty publisher in bai2022training
-Warning--empty address in bai2022training
-Warning--page numbers missing in both pages and numpages fields in bai2022training
-Warning--empty publisher in gienapp2025viability
-Warning--empty address in gienapp2025viability
-Warning--page numbers missing in both pages and numpages fields in gienapp2025viability
-Warning--empty publisher in guu2020realm
-Warning--empty address in guu2020realm
-Warning--page numbers missing in both pages and numpages fields in guu2020realm
-Warning--empty publisher in izacard2021leveraging
-Warning--empty address in izacard2021leveraging
-Warning--page numbers missing in both pages and numpages fields in izacard2021leveraging
-Warning--empty publisher in karpukhin2020dense
-Warning--empty address in karpukhin2020dense
-Warning--page numbers missing in both pages and numpages fields in karpukhin2020dense
-Warning--empty publisher in lewis2020retrieval
-Warning--empty address in lewis2020retrieval
-Warning--page numbers missing in both pages and numpages fields in lewis2020retrieval
-Warning--empty publisher in liu2016not
-Warning--empty address in liu2016not
-Warning--page numbers missing in both pages and numpages fields in liu2016not
-Warning--empty publisher in nogueira2019passage
-Warning--empty address in nogueira2019passage
-Warning--page numbers missing in both pages and numpages fields in nogueira2019passage
-Warning--no number and no volume in rocchio1971relevance
-Warning--page numbers missing in both pages and numpages fields in rocchio1971relevance
-Warning--empty publisher in stiennon2020learning
-Warning--empty address in stiennon2020learning
-Warning--page numbers missing in both pages and numpages fields in stiennon2020learning
-Warning--empty publisher in thoppilan2022lamda
-Warning--empty address in thoppilan2022lamda
-Warning--page numbers missing in both pages and numpages fields in thoppilan2022lamda
-Warning--empty publisher in wang2023query
-Warning--empty address in wang2023query
-Warning--page numbers missing in both pages and numpages fields in wang2023query
-Warning--empty publisher in zhang2020bertscore
-Warning--page numbers missing in both pages and numpages fields in zhang2020bertscore
-You've used 15 entries,
+You've used 0 entries,
             5981 wiz_defined-function locations,
-            1644 strings with 22126 characters,
-and the built_in function-call counts, 16377 in all, are:
-= -- 1589
-> -- 599
+            1486 strings with 18186 characters,
+and the built_in function-call counts, 105 in all, are:
+= -- 0
+> -- 0
 < -- 0
-+ -- 206
-- -- 215
-* -- 1194
-:= -- 1596
-add.period$ -- 64
-call.type$ -- 15
-change.case$ -- 117
-chr.to.int$ -- 15
-cite$ -- 52
-duplicate$ -- 1599
-empty$ -- 1129
-format.name$ -- 263
-if$ -- 3805
++ -- 0
+- -- 0
+* -- 2
+:= -- 14
+add.period$ -- 0
+call.type$ -- 0
+change.case$ -- 0
+chr.to.int$ -- 0
+cite$ -- 0
+duplicate$ -- 1
+empty$ -- 1
+format.name$ -- 0
+if$ -- 2
 int.to.chr$ -- 2
 int.to.str$ -- 1
-missing$ -- 74
-newline$ -- 203
-num.names$ -- 105
-pop$ -- 828
+missing$ -- 0
+newline$ -- 40
+num.names$ -- 0
+pop$ -- 1
 preamble$ -- 1
-purify$ -- 237
+purify$ -- 0
 quote$ -- 0
-skip$ -- 557
+skip$ -- 1
 stack$ -- 0
-substring$ -- 907
-swap$ -- 93
+substring$ -- 0
+swap$ -- 0
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 436
-warning$ -- 37
-while$ -- 79
+type$ -- 0
+warning$ -- 0
+while$ -- 0
 width$ -- 0
-write$ -- 359
-(There were 77 warnings)
+write$ -- 39
+(There was 1 error message)
