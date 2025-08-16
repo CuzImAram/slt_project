@@ -270,7 +270,7 @@ Recent work has shown that crowdsourcing can be a viable approach for evaluating
 	\subsection{LLM Configuration}
 	
 	\subsection{Evaluation Protocol}
-	xxx
+
 	
 	\subsection{Metrics \& Hypotheses}
 	\begin{figure}[H]
@@ -360,7 +360,14 @@ Recent work has shown that crowdsourcing can be a viable approach for evaluating
 	xxx
 	
 	\subsection{Annotator Remarks}
-	xxx
+	Annotators were asked to compare two anonymous answers for each prompt and select the better one according to three criteria. The primary dimension was \textbf{Correctness}, i.e., factual
+accuracy, avoidance of hallucinations, and consistency with the question. Secondary criteria were \textbf{Relevance}, assessing whether the answer stays on-topic, and \textbf{Conciseness}, evaluating whether the response is complete but compact without unnecessary repetition.  
+
+The evaluation followed a strict priority order: Correctness $\rightarrow$ Relevance $\rightarrow$ Conciseness. When criteria conflicted, annotators were instructed to prefer the answer that was more accurate and cautious, even if it was less polished or shorter. If both answers were equally good (or bad), annotators could indicate “No preference.”  
+
+After each vote, annotators briefly justified their decision with a short explanation referring to the criteria (e.g., correctness of facts, conciseness, or topicality). Critical errors or omissions were highlighted in these comments.  
+
+Finally, annotators were reminded to judge only the written content itself, penalize unsupported or incorrect claims more heavily than cautious ones, and not rely on external searches. Style and formatting were not to influence voting unless they affected clarity.  
 	
 	\subsection{Cost-Quality Tradeoff}
 	xxx
