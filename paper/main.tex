@@ -278,13 +278,50 @@ A central obstacle in this setting lies in how queries are handled. Traditional 
 	\paragraph{Data.}
 	We retrieve over an Elasticsearch index built from the \emph{Archive Query Log (AQL-22)}~\citep{reimer:2023}, a corpus of archived search engine result pages (SERPs) containing historical queries and their snippet-level results (titles, snippets, target URLs). Crucially, because these SERPs are captured from the Internet Archive, the queries and their retrieved contexts are \emph{reproducible}; unlike commercial engines (e.g., Google) whose indices and ranking algorithms change over time, AQL provides a stable snapshot that makes our comparative analysis possible.
 	
-	\paragraph{Source retriever.}
+	\paragraph{Source retriever}
 	Our retriever queries the AQL-backed Elasticsearch index to collect snippet contexts that ground LLM answers. In \textbf{Pipeline~1}, the user prompt is issued as a single ES query; we take the top-$k$ snippets and pass them to the LLM with an instruction to answer \emph{only} from those snippets. In \textbf{Pipeline~4}, the LLM first generates a pool of reformulated queries; we execute each against the same index, merge and deduplicate the returned snippets, then feed the aggregated context to the LLM. Both pipelines operate on the identical index and use the same $k$ and filtering/cleanup steps to isolate the effect of the query strategy itself.
-
-
 	
 	\subsection{LLM Configuration}
 	\label{subsec:llm-config}
+	
+	This subsection describes the configuration and prompting strategy used for the large language models (LLMs) in our pipelines. Each LLM instance operates with a specialized system prompt that defines its role, objectives, and constraints. The general workflow across different pipelines includes generating relevant queries, retrieving or aggregating context snippets, and producing answers grounded in those snippets.
+	
+	All LLM calls in this work are performed using the Helmholtz-Blablador API~\cite{blablador_api} at the endpoint \texttt{"https://api.helmholtz-blablador.fz-juelich.de/v1/"} with the model \texttt{"alias-large"}~\cite{qwen3_model}, also referred as Qwen3-30B-A3B, which is optimized for information retrieval and question-answering tasks.
+	
+	The following subsubsections detail the three main stages of the LLM configuration: \textit{Query Pool Generation}, \textit{Snippet Aggregation}, and \textit{Answer Generation}. Specific pipelines may implement subsets of these stages or additional mechanisms.
+	
+		\subsubsection{Query Pool Generation}
+		\label{subsubsec:query-pool-generation}
+		
+		The system prompt used for query pool generation is designed to guide the LLM in producing precise and meaningful search queries from a user's question. Its primary objective is to extract the core subjects of the question—typically the most important nouns, entities, or concepts—and combine them into space-separated query phrases that maximize information retrieval relevance.
+		
+		The prompt begins by instructing the model to remember the original user question and identify the core subjects. It explicitly asks the LLM to generate combinations of these core subjects while ignoring less meaningful words such as conjunctions ("and", "or", "but"). This ensures that the generated queries are concise and focused on essential terms only.
+		
+		To standardize outputs and facilitate automated processing, the prompt requires the model to return its results in a strict JSON format, where each query is a string in a list under the key \texttt{queries}. Several examples are provided within the prompt to illustrate how different types of questions—ranging from simple factual queries to questions involving named entities or contextual terms—should be converted into structured queries.
+		
+		Overall, this system prompt enforces a controlled and consistent query generation process. By combining clear instructions, concrete examples, and a strict output format, it ensures that the LLM produces reliable, high-quality query pools for downstream retrieval and aggregation tasks.
+	
+		\subsubsection{Snippet Aggregation}
+		\label{subsubsec:snippet-aggregation}
+		
+		In \hyperref[fig:pipeline4]{Pipeline 4}, after generating a query pool and retrieving candidate snippets, the system evaluates the relevance of each snippet with respect to the user's question. The system prompt for this step instructs the LLM to act as an expert in assessing text relevance for question-answering tasks. Its main objective is to identify which snippets should be included in the context for final answer generation.
+		
+		The prompt emphasizes inclusivity over strictness: the model is encouraged to retain any snippet that might provide useful information, including direct answers, relevant facts, supporting examples, background context, or references to the same entities and concepts. Only snippets that are entirely unrelated to the question should be excluded. This approach ensures that potentially informative content is not prematurely discarded.
+		
+		To facilitate structured processing, the prompt requires the model to return a JSON object containing a single key, \texttt{relevant\_indices}, which lists the indices of snippets deemed relevant. Several illustrative examples are included in the prompt to guide the model in distinguishing relevant from irrelevant content, including cases with multiple, single, or no relevant snippets.
+		
+		Overall, this system prompt provides a controlled framework for snippet selection in Pipeline 4. By combining explicit relevance criteria, examples, and a strict JSON output format, it ensures that the LLM consistently aggregates the most informative snippets for downstream answer generation.
+		
+		\subsubsection{Answer Generation}
+		\label{subsubsec:answer-generation}
+		
+		In both \hyperref[fig:pipeline1]{Pipeline 1} and \hyperref[fig:pipeline4]{Pipeline 4}, the final step is to generate a concise answer based strictly on the selected context snippets. The system prompt instructs the LLM to act as a helpful AI assistant and to provide a clear and direct response in no more than five sentences.
+		
+		The user prompt explicitly emphasizes that the model must only use information found within the provided context snippets. Any content outside of these snippets is strictly forbidden, ensuring that the generated answers are fully grounded in retrieved or aggregated evidence. In cases where the context snippets do not contain sufficient information, the model is instructed to acknowledge the absence of an answer rather than fabricating information.
+		
+		The context snippets are presented as a structured list within the prompt, followed by the user’s question. This setup guides the LLM to systematically scan the snippets, extract relevant information, and generate a coherent, evidence-based answer.
+		
+		By combining a clear, sentence-limited instruction with strict reliance on the provided snippets, this configuration ensures that the output remains concise, factual, and verifiable, regardless of whether it originates from a straightforward retrieval (Pipeline 1) or a more complex query pooling and aggregation process (Pipeline 4).
 	
 	\subsection{Evaluation Protocol}
 	\label{subsec:eval-protocol}
