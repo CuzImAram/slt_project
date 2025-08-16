@@ -278,7 +278,7 @@ A central obstacle in this setting lies in how queries are handled. Traditional 
 	\paragraph{Data.}
 	We retrieve over an Elasticsearch index built from the \emph{Archive Query Log (AQL-22)}~\citep{reimer:2023}, a corpus of archived search engine result pages (SERPs) containing historical queries and their snippet-level results (titles, snippets, target URLs). Crucially, because these SERPs are captured from the Internet Archive, the queries and their retrieved contexts are \emph{reproducible}; unlike commercial engines (e.g., Google) whose indices and ranking algorithms change over time, AQL provides a stable snapshot that makes our comparative analysis possible.
 	
-	\paragraph{Source retriever}
+	\paragraph{Source retriever.}
 	Our retriever queries the AQL-backed Elasticsearch index to collect snippet contexts that ground LLM answers. In \textbf{Pipeline~1}, the user prompt is issued as a single ES query; we take the top-$k$ snippets and pass them to the LLM with an instruction to answer \emph{only} from those snippets. In \textbf{Pipeline~4}, the LLM first generates a pool of reformulated queries; we execute each against the same index, merge and deduplicate the returned snippets, then feed the aggregated context to the LLM. Both pipelines operate on the identical index and use the same $k$ and filtering/cleanup steps to isolate the effect of the query strategy itself.
 	
 	\subsection{LLM Configuration}
@@ -347,15 +347,34 @@ A central obstacle in this setting lies in how queries are handled. Traditional 
 	\paragraph{What we measure.}
 	To assess our secondary latency hypothesis (Section~\ref{subsec:hypotheses}), we record the
 	\emph{LLM runtime} per prompt and pipeline: the \textbf{sum of time passed during all LLM
-	calls} involved in producing an answer. For \textbf{Pipeline~1} this is the single
+		calls} involved in producing an answer. For \textbf{Pipeline~1} this is the single
 	answer-generation call. For \textbf{Pipeline~4} this includes the query-pool \emph{expansion}
-	call, the filtering and aggregation call and the final \emph{answer-generation} call. Measurements are taken at the application level and
+	call, the filtering and aggregation call, and the final \emph{answer-generation} call. Measurements are taken at the application level and
 	therefore include model inference time plus client–server overhead for the LLM service.
 	
 	\paragraph{Scope and aggregation.}
 	We do not include Elasticsearch retrieval time or disk I/O—only LLM-invocation time. For each
 	of the 20 questions and each pipeline, we compute the mean runtime across runs; we also report
 	overall means and show per-question comparisons in the timing figures.
+	
+	\paragraph{Cost perspective.}
+	From a computational cost perspective, Pipeline~1 represents the lower bound, as it triggers
+	exactly one inference step. Pipeline~4, in contrast, invokes the model three times, which
+	increases latency and energy cost but provides improved answer grounding through diversified
+	queries and snippet filtering. The filtering step is likely the decisive cost factor, since it
+	receives the largest raw input of retrieved snippets. However, this step also reduces the final
+	context length for the subsequent answer-generation call. Because both Pipeline~1 and
+	Pipeline~4 ultimately perform answer generation on the provided context, but Pipeline~4 uses a
+	\emph{much smaller filtered context}, the additional filtering overhead can be partially
+	compensated by lower token counts in the last step.
+	
+	Given that the underlying model (\texttt{Qwen3-30B-A3B}) is a Mixture-of-Experts (MoE)
+	architecture with 128 experts and 8 activated per token~\cite{qwen3_model}, its effective
+	inference cost per token is already substantially reduced compared to dense alternatives.
+	Recent work~\cite{yun2024inferenceoptimalmixtureofexpertlargelanguage} shows that activating 8 experts instead of running a
+	dense model can save 31--52\% inference cost depending on the comparison baseline. Thus, while
+	Pipeline~4 requires multiple calls, the underlying MoE structure amortizes per-call cost, and
+	the filtering-induced context reduction helps balance the overall expense compared to Pipeline~1.
 	
 	\paragraph{Limitations.}
 	Runtimes are not normalized by token counts and will co-vary with prompt/context length
