@@ -2,7 +2,7 @@
 %%% Do NOT edit. File created by BibTeX with style
 %%% ACM-Reference-Format-Journals [18-Jan-2012].
 
-\begin{thebibliography}{17}
+\begin{thebibliography}{16}
 
 %%% ====================================================================
 %%% NOTE TO THE USER: you can override these defaults by providing
@@ -182,19 +182,6 @@
 \showeprint[arxiv]{2009.01325}~[cs.CL]
 \urldef\tempurl%
 \url{https://arxiv.org/abs/2009.01325}
-\showURL{%
-\tempurl}
-
-
-\bibitem[Thoppilan et~al\mbox{.}(2022)]%
-        {thoppilan2022lamdalanguagemodelsdialog}
-\bibfield{author}{\bibinfo{person}{Romal Thoppilan}, \bibinfo{person}{Daniel~De Freitas}, \bibinfo{person}{Jamie Hall}, \bibinfo{person}{Noam Shazeer}, \bibinfo{person}{Apoorv Kulshreshtha}, \bibinfo{person}{Heng-Tze Cheng}, \bibinfo{person}{Alicia Jin}, \bibinfo{person}{Taylor Bos}, \bibinfo{person}{Leslie Baker}, \bibinfo{person}{Yu Du}, \bibinfo{person}{YaGuang Li}, \bibinfo{person}{Hongrae Lee}, \bibinfo{person}{Huaixiu~Steven Zheng}, \bibinfo{person}{Amin Ghafouri}, \bibinfo{person}{Marcelo Menegali}, \bibinfo{person}{Yanping Huang}, \bibinfo{person}{Maxim Krikun}, \bibinfo{person}{Dmitry Lepikhin}, \bibinfo{person}{James Qin}, \bibinfo{person}{Dehao Chen}, \bibinfo{person}{Yuanzhong Xu}, \bibinfo{person}{Zhifeng Chen}, \bibinfo{person}{Adam Roberts}, \bibinfo{person}{Maarten Bosma}, \bibinfo{person}{Vincent Zhao}, \bibinfo{person}{Yanqi Zhou}, \bibinfo{person}{Chung-Ching Chang}, \bibinfo{person}{Igor Krivokon}, \bibinfo{person}{Will Rusch}, \bibinfo{person}{Marc Pickett}, \bibinfo{person}{Pranesh Srinivasan}, \bibinfo{person}{Laichee Man}, \bibinfo{person}{Kathleen Meier-Hellstern}, \bibinfo{person}{Meredith~Ringel Morris}, \bibinfo{person}{Tulsee Doshi}, \bibinfo{person}{Renelito~Delos Santos}, \bibinfo{person}{Toju Duke}, \bibinfo{person}{Johnny Soraker}, \bibinfo{person}{Ben Zevenbergen}, \bibinfo{person}{Vinodkumar Prabhakaran}, \bibinfo{person}{Mark Diaz}, \bibinfo{person}{Ben Hutchinson}, \bibinfo{person}{Kristen Olson}, \bibinfo{person}{Alejandra Molina}, \bibinfo{person}{Erin Hoffman-John}, \bibinfo{person}{Josh Lee}, \bibinfo{person}{Lora Aroyo}, \bibinfo{person}{Ravi Rajakumar}, \bibinfo{person}{Alena Butryna}, \bibinfo{person}{Matthew Lamm}, \bibinfo{person}{Viktoriya Kuzmina}, \bibinfo{person}{Joe Fenton}, \bibinfo{person}{Aaron Cohen}, \bibinfo{person}{Rachel Bernstein}, \bibinfo{person}{Ray Kurzweil}, \bibinfo{person}{Blaise Aguera-Arcas}, \bibinfo{person}{Claire Cui}, \bibinfo{person}{Marian Croak}, \bibinfo{person}{Ed Chi}, {and} \bibinfo{person}{Quoc Le}.} \bibinfo{year}{2022}\natexlab{}.
-\newblock \bibinfo{title}{LaMDA: Language Models for Dialog Applications}.
-\newblock
-\newblock
-\showeprint[arxiv]{2201.08239}~[cs.CL]
-\urldef\tempurl%
-\url{https://arxiv.org/abs/2201.08239}
 \showURL{%
 \tempurl}
 

@@ -21,45 +21,45 @@ Warning--empty year in qwen3_model
 Warning--empty address in NEURIPS2020_6b493230
 Warning--empty year in blablador_api
 Warning--empty address in reimer:2023
-You've used 17 entries,
+You've used 16 entries,
             5981 wiz_defined-function locations,
-            1598 strings with 24774 characters,
-and the built_in function-call counts, 23558 in all, are:
-= -- 2264
-> -- 1557
+            1593 strings with 23563 characters,
+and the built_in function-call counts, 19992 in all, are:
+= -- 2002
+> -- 1070
 < -- 0
-+ -- 550
-- -- 553
-* -- 2307
-:= -- 2880
-add.period$ -- 85
-call.type$ -- 17
-change.case$ -- 236
-chr.to.int$ -- 17
-cite$ -- 22
-duplicate$ -- 1633
-empty$ -- 1145
-format.name$ -- 605
-if$ -- 5001
++ -- 369
+- -- 373
+* -- 1783
+:= -- 2279
+add.period$ -- 80
+call.type$ -- 16
+change.case$ -- 171
+chr.to.int$ -- 16
+cite$ -- 21
+duplicate$ -- 1563
+empty$ -- 1094
+format.name$ -- 421
+if$ -- 4364
 int.to.chr$ -- 2
 int.to.str$ -- 1
 missing$ -- 40
-newline$ -- 238
-num.names$ -- 131
-pop$ -- 737
+newline$ -- 225
+num.names$ -- 124
+pop$ -- 656
 preamble$ -- 1
-purify$ -- 355
+purify$ -- 283
 quote$ -- 0
-skip$ -- 655
+skip$ -- 626
 stack$ -- 0
-substring$ -- 1303
-swap$ -- 169
+substring$ -- 1249
+swap$ -- 165
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 510
+type$ -- 480
 warning$ -- 5
-while$ -- 103
+while$ -- 100
 width$ -- 0
-write$ -- 436
+write$ -- 413
 (There was 1 error message)

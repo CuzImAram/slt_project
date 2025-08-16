@@ -107,7 +107,7 @@
 %% other information printed in the page headers. This command allows
 %% the author to define a more concise list
 %% of authors' names for this purpose.
-\renewcommand{\shortauthors}{Bremmer et al.}
+\renewcommand{\shortauthors}{A. Aytekin, M. Dietrich, M. Bennedik, D. Bremmer}
 
 %%
 %% The abstract is a short summary of the work to be presented in the
@@ -379,23 +379,11 @@ To address this, we compare two pipelines operating solely on SERP snippets. The
 	overall means and show per-question comparisons in the timing figures.
 	
 	\paragraph{Cost perspective.}
-	From a computational cost perspective, Pipeline~1 represents the lower bound, as it triggers
-	exactly one inference step. Pipeline~4, in contrast, invokes the model three times, which
-	increases latency and energy cost but provides improved answer grounding through diversified
-	queries and snippet filtering. The filtering step is likely the decisive cost factor, since it
-	receives the largest raw input of retrieved snippets. However, this step also reduces the final
-	context length for the subsequent answer-generation call. Because both Pipeline~1 and
-	Pipeline~4 ultimately perform answer generation on the provided context, but Pipeline~4 uses a
-	\emph{much smaller filtered context}, the additional filtering overhead can be partially
-	compensated by lower token counts in the last step.
+	Pipeline~1 is the lower bound, issuing exactly one LLM call. Pipeline~4 typically makes three (query expansion, snippet filtering/summarization, final answer), which raises latency and energy use. The filtering stage is the heaviest, since it ingests the largest raw snippet set; however, it often \emph{shrinks} the final context, partially offsetting token cost in the last generation step. In short: Pipeline~4 pays extra up front to reduce the payload of the final call.
 	
-	Given that the underlying model (\texttt{Qwen3-30B-A3B}) is a Mixture-of-Experts (MoE)
-	architecture with 128 experts and 8 activated per token~\cite{qwen3_model}, its effective
-	inference cost per token is already substantially reduced compared to dense alternatives.
-	Recent work~\cite{yun2024inferenceoptimalmixtureofexpertlargelanguage} shows that activating 8 experts instead of running a
-	dense model can save 31--52\% inference cost depending on the comparison baseline. Thus, while
-	Pipeline~4 requires multiple calls, the underlying MoE structure amortizes per-call cost, and
-	the filtering-induced context reduction helps balance the overall expense compared to Pipeline~1.
+	% (shortened a lot)
+	Given that our model (\texttt{Qwen3-30B-A3B}) is an MoE (128 experts, 8 active), per-token compute is lower than dense models; prior work reports roughly 30–50\% savings, which helps amortize Pipeline~4’s additional calls~\cite{qwen3_model,yun2024inferenceoptimalmixtureofexpertlargelanguage}.
+
 	
 	\paragraph{Limitations.}
 	Runtimes are not normalized by token counts and will co-vary with prompt/context length
@@ -526,9 +514,26 @@ or terse reply), reducing measured LLM runtime. These dips therefore reflect a
 \emph{retrieval failure}, not an efficiency gain of the multi-query
 pipeline.
 
-	
-\section {Conclusion}
-xxx
+\section{Conclusion}
+\label{sec:conclusion}
+
+We compared two RAG pipelines on 20 predefined prompts over the reproducible
+Archive Query Log (AQL) index: a single-query baseline (Pipeline~1) and a
+query-pool variant (Pipeline~4). In randomized, blind human voting, we observed
+a \emph{modest} overall preference for Pipeline~4. However, three factors
+temper this advantage: (i) retrieval coverage gaps where Elasticsearch returned
+no meaningful snippets, limiting any pipeline’s ability to answer from context;
+(ii) occasional hallucinations—especially on sensitive topics—where the model
+answered without sufficient grounding; and (iii) higher LLM runtime for
+Pipeline~4 due to additional expansion/aggregation steps. Timing analysis shows
+that apparent “fast” spikes for Pipeline~4 coincide with poor retrieval (short
+contexts), not genuine efficiency gains.
+
+Overall, query-pool expansion helps when retrieval surfaces relevant evidence,
+but it cannot compensate for weak recall and can be undermined if grounding is
+not strictly followed. Given the marginal win-rate gains and increased latency,
+the cost–quality trade-off may be unfavorable in resource-constrained settings.
+
 
 
 %%
@@ -536,9 +541,6 @@ xxx
 %% (and NOT an unnumbered section). This ensures the proper
 %% identification of the section in the article metadata, and the
 %% consistent spelling of the heading.
-\begin{acks}
-To Maximilian, thanks for nothing.
-\end{acks}
 
 %%
 %% The next two lines define the bibliography style to be used, and
