@@ -11,6 +11,7 @@ I was expecting an "="---line 178 of file ../cites.bib
  : }
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
+Warning--I didn't find a database entry for "reimer:2023"
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated glb_str_ptr (elt_size=4) to 20 items from 10.
 Reallocated global_strs (elt_size=200001) to 20 items from 10.
@@ -20,7 +21,7 @@ Warning--empty address in Gienapp_2025
 Warning--empty address in NEURIPS2020_6b493230
 You've used 13 entries,
             5981 wiz_defined-function locations,
-            1575 strings with 23739 characters,
+            1576 strings with 23750 characters,
 and the built_in function-call counts, 19692 in all, are:
 = -- 1874
 > -- 1385
