@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.5.27)  16 AUG 2025 16:55
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.5.27)  16 AUG 2025 17:18
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1696,23 +1696,20 @@ Class acmart Warning: A possible image without description on input line 227.
 Class acmart Warning: A possible image without description on input line 263.
 
 [3.3]
-Package pgfplots info on input line 292: Using 'lua backend=false' for axis: x coord trafo unsupported.
+Package pgfplots info on input line 290: Using 'lua backend=false' for axis: x coord trafo unsupported.
 
 
-Class acmart Warning: A possible image without description on input line 297.
+Class acmart Warning: A possible image without description on input line 295.
 
 PGFPlots: reading {data/rag_time_long.csv}
 PGFPlots: reading {data/rag_time_long.csv}
 
-Class acmart Warning: A possible image without description on input line 357.
+Class acmart Warning: A possible image without description on input line 355.
 
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [4.4] Processing 'acks' comment.
+[4.4] Processing 'acks' comment.
 \openout3 = `comment.cut'.
 
- Comment 'acks' writing to comment.cut. Straight input of comment.cut. (/Users/domenic/repos/slt_project/paper/.texpadtmp/comment.cut) (/Users/domenic/repos/slt_project/paper/.texpadtmp/main.bbl [5.5]
+ Comment 'acks' writing to comment.cut. Straight input of comment.cut. (/Users/domenic/repos/slt_project/paper/.texpadtmp/comment.cut) (/Users/domenic/repos/slt_project/paper/.texpadtmp/main.bbl
 LaTeX Font Info:    Font shape `TU/LinLibertine(0)/m/it' will be
 (Font)              scaled to size 7.0pt on input line 56.
 LaTeX Info: Redefining \tempurl on input line 59.
@@ -1725,12 +1722,10 @@ LaTeX Info: Redefining \tempurl on input line 126.
 LaTeX Info: Redefining \tempurl on input line 137.
 LaTeX Info: Redefining \tempurl on input line 149.
 LaTeX Info: Redefining \tempurl on input line 162.
+ [5.5]
 LaTeX Info: Redefining \tempurl on input line 173.
 LaTeX Info: Redefining \tempurl on input line 185.
 )
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [6.6]
 
 Class acmart Warning: Some images may lack descriptions.
 (acmart)              ACM is committed to complying with the upcoming US ADA https://accessiblyapp.com/accessibility-compliance/ada/ and European Accessibility Act (EAA) https://accessiblyapp.com/accessibility-compliance/eaa/ regulations by actively working to ensure our publications and application services are accessible to individuals with disabilities, adhering to the WCAG guidelines to provide a seamless experience for all users, and regularly reviewing our accessibility practices to maintain compliance with evolving standards. 
@@ -1740,21 +1735,21 @@ Class acmart Warning: Some images may lack descriptions.
 File: se-pdfdoc.def 2019/11/29 v1.12 stringenc: PDFDocEncoding
 ) (/usr/local/texlive/2024/texmf-dist/tex/generic/stringenc/se-utf32be.def
 File: se-utf32be.def 2019/11/29 v1.12 stringenc: UTF-32BE
-) [7.7] (/Users/domenic/repos/slt_project/paper/.texpadtmp/main.aux)
+) [6.6] (/Users/domenic/repos/slt_project/paper/.texpadtmp/main.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 8C1B03236CB0E55E3C635DDABE6A117E;4105.
+(rerunfilecheck)             Checksum: 6E9898BDEAC90AAA191D605612A441AA;4057.
  ) 
 Here is how much of TeX's memory you used:
  53669 strings out of 474773
  1227417 string characters out of 5757724
- 1953839 words of memory out of 5000000
+ 1948839 words of memory out of 5000000
  74897 multiletter control sequences out of 15000+600000
  566211 words of font info for 143 fonts, out of 8000000 for 9000
  1509 hyphenation exceptions out of 8191
  105i,17n,135p,2098b,32979s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on /Users/domenic/repos/slt_project/paper/.texpadtmp/main.pdf (7 pages).
+Output written on /Users/domenic/repos/slt_project/paper/.texpadtmp/main.pdf (6 pages).

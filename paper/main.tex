@@ -245,9 +245,9 @@ Recent work has shown that crowdsourcing can be a viable approach for evaluating
 		  process/.style={box}, io/.style={box, trapezium, trapezium left angle=70, trapezium right angle=110}
 		]
 		\node[process] (p4_prompt) {User Prompt};
-		\node[process, right=of p4_prompt] (p4_qpool) {LLM:\\Generate Query Pool};
+		\node[process, right=of p4_prompt] (p4_qpool) {LLM\\Generate Query Pool};
 		\node[process, right=of p4_qpool] (p4_retr) {Elasticsearch\\(multi-query)};
-		\node[process, right=of p4_retr] (p4_snips) {Aggregate Snippets\\(merge/dedupe)};
+		\node[process, right=of p4_retr] (p4_snips) {LLM\\Aggregate Snippets};
 		\node[process, right=of p4_snips] (p4_llm) {LLM\\(Answer \emph{only} from snippets)};
 		\node[io,      right=of p4_llm] (p4_out) {Answer};
 		
@@ -264,12 +264,10 @@ Recent work has shown that crowdsourcing can be a viable approach for evaluating
 
 
 
-	
-	\subsection{Data \& Task Setup}
-
-
-	\subsection{Retrieval \& LLM Configuration}
+	\subsection{Retrieval Configuration}
 	xxx
+	
+	\subsection{LLM Configuration}
 	
 	\subsection{Evaluation Protocol}
 	xxx
