@@ -290,17 +290,17 @@ A central obstacle in this setting lies in how queries are handled. Traditional 
 	
 	The following subsubsections detail the three main stages of LLM configuration: \textit{Query Pool Generation}, \textit{Snippet Aggregation}, and \textit{Answer Generation}. Specific pipelines may implement subsets of these stages or additional mechanisms.
 	
-		\subsubsection{Query Pool Generation}
+		\paragraph{Query Pool Generation}
 		\label{subsubsec:query-pool-generation}
 		
 		The system prompt guides the LLM in producing concise and meaningful search queries from a user's question by extracting core subjects, typically the most important nouns, entities, or concepts. This ensures that generated queries are focused on essential terms for downstream retrieval.
 		
-		\subsubsection{Snippet Aggregation}
+		\paragraph{Snippet Aggregation}
 		\label{subsubsec:snippet-aggregation}
 		
 		After generating a query pool and retrieving candidate snippets, the LLM evaluates which snippets are relevant for answering the user's question. The model is instructed to retain any snippet that might provide useful information, including direct answers, relevant facts, supporting examples, or background context, and to exclude only unrelated content.
 		
-		\subsubsection{Answer Generation}
+		\paragraph{Answer Generation}
 		\label{subsubsec:answer-generation}
 		
 		In both Pipelines 1 and 4, the final step is to generate a concise answer strictly based on the selected context snippets. The system prompt instructs the LLM to provide clear, direct responses in no more than five sentences. Only information present in the snippets may be used; if the context lacks sufficient information, the model indicates that no answer is available.
@@ -337,7 +337,7 @@ A central obstacle in this setting lies in how queries are handled. Traditional 
 	\textbf{H\textsubscript{0}:} Pipeline~4’s win rate is $\leq 50\%$.
 	
 	\paragraph{Note on latency.}
-	Pipeline~4 may incur higher latency due to multi-query retrieval. We report latency distributions and mean times in the Results section, but latency is not part of the primary hypothesis test.
+	Pipeline~4 may incur higher latency due to multi-query retrieval and increased LLM Overhead. We report latency distributions and mean times in the Results section, but latency is not part of the primary hypothesis test.
 
 
 		
@@ -539,41 +539,6 @@ To Robert, for the bagels and explaining CMYK and color spaces.
 %% the bibliography file.
 \bibliographystyle{ACM-Reference-Format}
 \bibliography{cites}
-
-
-%%
-%% If your work has an appendix, this is the place to put it.
-\appendix
-
-\section{Research Methods}
-
-\subsection{Part One}
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
-malesuada, quam in pulvinar varius, metus nunc fermentum urna, id
-sollicitudin purus odio sit amet enim. Aliquam ullamcorper eu ipsum
-vel mollis. Curabitur quis dictum nisl. Phasellus vel semper risus, et
-lacinia dolor. Integer ultricies commodo sem nec semper.
-
-\subsection{Part Two}
-
-Etiam commodo feugiat nisl pulvinar pellentesque. Etiam auctor sodales
-ligula, non varius nibh pulvinar semper. Suspendisse nec lectus non
-ipsum convallis congue hendrerit vitae sapien. Donec at laoreet
-eros. Vivamus non purus placerat, scelerisque diam eu, cursus
-ante. Etiam aliquam tortor auctor efficitur mattis.
-
-\section{Online Resources}
-
-Nam id fermentum dui. Suspendisse sagittis tortor a nulla mollis, in
-pulvinar ex pretium. Sed interdum orci quis metus euismod, et sagittis
-enim maximus. Vestibulum gravida massa ut felis suscipit
-congue. Quisque mattis elit a risus ultrices commodo venenatis eget
-dui. Etiam sagittis eleifend elementum.
-
-Nam interdum magna at lectus dignissim, ac dignissim lorem
-rhoncus. Maecenas eu arcu ac neque placerat aliquam. Nunc pulvinar
-massa et mattis lacinia.
 
 \end{document}
 \endinput
