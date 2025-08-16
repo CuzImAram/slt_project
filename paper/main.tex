@@ -92,7 +92,7 @@
 \affiliation{%
   \institution{Universität Kassel}
   \country{Germany}}
-\email{ukxxx@student.uni-kassel.de}
+\email{uk095879@student.uni-kassel.de}
 
 \author{Domenic Bremmer}
 \affiliation{%
@@ -196,12 +196,35 @@ Recent work has shown that crowdsourcing can be a viable approach for evaluating
 	
 	\paragraph{Pipeline 1: Direct Retrieval and Answering.}
 	In this baseline approach, the system directly takes the user’s input prompt
-	and submits it as a query to the Elasticsearch retriever
-	(\texttt{SourceRetriever.py}). The retriever returns the top-$k$ relevant text
-	snippets, which are then provided to the LLM (\texttt{LLM.py}) together with a
+	and submits it as a query to the Elasticsearch retriever. The retriever returns the top-$k$ relevant text
+	snippets, which are then provided to the LLM together with a
 	strict system instruction: the model must formulate its answer \emph{only based
 	on the retrieved snippets}. This ensures that the output is grounded in the
 	search results without additional query expansion or prompt reformulation.
+	
+	\begin{figure}[H] % or [htbp]
+		\centering
+		\resizebox{\textwidth}{!}{%
+		\begin{tikzpicture}[
+		  node distance=7mm and 10mm, >=Latex,
+		  box/.style={draw, rounded corners, align=center, minimum height=8mm, inner sep=3pt},
+		  process/.style={box}, io/.style={box, trapezium, trapezium left angle=70, trapezium right angle=110}
+		]
+		\node[process] (p1_prompt) {User Prompt};
+		\node[process, right=of p1_prompt] (p1_retr) {Elasticsearch\\(direct query)};
+		\node[process, right=of p1_retr] (p1_snips) {Top-$k$ Snippets};
+		\node[process, right=of p1_snips] (p1_llm) {LLM\\(Answer \emph{only} from snippets)};
+		\node[io,      right=of p1_llm] (p1_out) {Answer};
+		
+		\draw[->] (p1_prompt) -- (p1_retr);
+		\draw[->] (p1_retr) -- (p1_snips);
+		\draw[->] (p1_snips) -- (p1_llm);
+		\draw[->] (p1_llm) -- (p1_out);
+		\end{tikzpicture}%
+		}
+		\caption{Pipeline~1 — direct retrieval from Elasticsearch and grounded answering from retrieved snippets.}
+		\label{fig:pipeline1}
+	\end{figure}
 	
 	\paragraph{Pipeline 4: Query Pool Expansion.}
 	This enhanced approach adds an intermediate reasoning step before retrieval.
@@ -212,59 +235,38 @@ Recent work has shown that crowdsourcing can be a viable approach for evaluating
 	are aggregated and passed to the LLM, which produces the final answer. By
 	broadening the retrieval space, Pipeline~4 aims to increase coverage and
 	relevance compared to the single-query baseline.
-
-	\begin{figure}[H] % or [htbp]
-	\centering
-	\resizebox{\textwidth}{!}{%
-	\begin{tikzpicture}[
-	  node distance=7mm and 10mm,
-	  >=Latex,
-	  box/.style={draw, rounded corners, align=center, minimum height=8mm, inner sep=3pt},
-	  io/.style={box, trapezium, trapezium left angle=70, trapezium right angle=110},
-	  process/.style={box},
-	  group/.style={draw, rounded corners, inner sep=6pt}
-	]
 	
-	% ---------------- Pipeline 1 ----------------
-	\node[process] (p1_prompt) {User Prompt};
-	\node[process, right=of p1_prompt] (p1_retr) {Elasticsearch\\(direct query)};
-	\node[process, right=of p1_retr] (p1_snips) {Top-$k$ Snippets};
-	\node[process, right=of p1_snips] (p1_llm) {LLM\\(Answer \emph{only} from snippets)};
-	\node[io,      right=of p1_llm] (p1_out) {Answer};
-	
-	\draw[->] (p1_prompt) -- (p1_retr);
-	\draw[->] (p1_retr) -- (p1_snips);
-	\draw[->] (p1_snips) -- (p1_llm);
-	\draw[->] (p1_llm) -- (p1_out);
-	
-	\node[group, fit=(p1_prompt)(p1_retr)(p1_snips)(p1_llm)(p1_out), 
-	      label=above:{\textbf{Pipeline 1 — Direct Retrieval + Answering}}] (g1) {};
-	
-	% ---------------- Pipeline 4 ----------------
-	\node[process, below=18mm of p1_prompt] (p4_prompt) {User Prompt};
-	\node[process, right=of p4_prompt] (p4_qpool) {LLM:\\Generate Query Pool};
-	\node[process, right=of p4_qpool] (p4_retr) {Elasticsearch\\(multi-query)};
-	\node[process, right=of p4_retr] (p4_snips) {Aggregate Snippets\\(merge/dedupe)};
-	\node[process, right=of p4_snips] (p4_llm) {LLM\\(Answer \emph{only} from snippets)};
-	\node[io,      right=of p4_llm] (p4_out) {Answer};
-	
-	\draw[->] (p4_prompt) -- (p4_qpool);
-	\draw[->] (p4_qpool) -- (p4_retr);
-	\draw[->] (p4_retr) -- (p4_snips);
-	\draw[->] (p4_snips) -- (p4_llm);
-	\draw[->] (p4_llm) -- (p4_out);
-	
-	\node[group, fit=(p4_prompt)(p4_qpool)(p4_retr)(p4_snips)(p4_llm)(p4_out), 
-	      label=above:{\textbf{Pipeline 4 — Query Pool Expansion + Answering}}] (g4) {};
-	
-	\end{tikzpicture}%
-	}
-	\caption{Method overview. Pipeline 1 queries Elasticsearch once and answers strictly from the retrieved snippets. Pipeline 4 first asks the LLM to generate a pool of queries, retrieves with multiple queries, aggregates snippets, and then answers grounded in those snippets.}
+	\begin{figure}[H]
+		\centering
+		\resizebox{\textwidth}{!}{%
+		\begin{tikzpicture}[
+		  node distance=7mm and 10mm, >=Latex,
+		  box/.style={draw, rounded corners, align=center, minimum height=8mm, inner sep=3pt},
+		  process/.style={box}, io/.style={box, trapezium, trapezium left angle=70, trapezium right angle=110}
+		]
+		\node[process] (p4_prompt) {User Prompt};
+		\node[process, right=of p4_prompt] (p4_qpool) {LLM:\\Generate Query Pool};
+		\node[process, right=of p4_qpool] (p4_retr) {Elasticsearch\\(multi-query)};
+		\node[process, right=of p4_retr] (p4_snips) {Aggregate Snippets\\(merge/dedupe)};
+		\node[process, right=of p4_snips] (p4_llm) {LLM\\(Answer \emph{only} from snippets)};
+		\node[io,      right=of p4_llm] (p4_out) {Answer};
+		
+		\draw[->] (p4_prompt) -- (p4_qpool);
+		\draw[->] (p4_qpool) -- (p4_retr);
+		\draw[->] (p4_retr) -- (p4_snips);
+		\draw[->] (p4_snips) -- (p4_llm);
+		\draw[->] (p4_llm) -- (p4_out);
+		\end{tikzpicture}%
+		}
+		\caption{Pipeline~4 — LLM-generated query pool, multi-query retrieval, snippet aggregation, and grounded answering.}
+		\label{fig:pipeline4}
 	\end{figure}
+
+
 
 	
 	\subsection{Data \& Task Setup}
-	xxx
+
 
 	\subsection{Retrieval \& LLM Configuration}
 	xxx
