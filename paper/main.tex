@@ -73,13 +73,13 @@
 \affiliation{%
   \institution{Universität Kassel}
   \country{Germany}}
-\email{ukxxx@student.uni-kassel.de}
+\email{uk097201@student.uni-kassel.de}
 
 \author{Moritz Dietrich}
 \affiliation{%
   \institution{Universität Kassel}
   \country{Germany}}
-\email{ukxxx@student.uni-kassel.de}
+\email{uk097299@student.uni-kassel.de}
 
 \author{Maximilian Bennedik}
 \affiliation{%
@@ -91,7 +91,7 @@
 \affiliation{%
   \institution{Universität Kassel}
   \country{Germany}}
-\email{ukxxx@student.uni-kassel.de}
+\email{uk095482@student.uni-kassel.de}
 
 
 %%
@@ -106,7 +106,7 @@
 %% The abstract is a short summary of the work to be presented in the
 %% article.
 \begin{abstract}
-Lorem ipsum nice abstract insert it here
+This work investigates the research question: Does a RAG pipeline that expands the initial prompt into an LLM-generated query pool produce answers that humans prefer—on correctness, conciseness, and relevance—over a baseline that directly queries Elasticsearch once? To explore this, we implement two retrieval-augmented generation (RAG) pipelines that operate exclusively on search engine result page (SERP) snippets, which are often incomplete and inconsistent. The baseline pipeline (P1) retrieves snippets from a single query and directly conditions an LLM on this evidence. The advanced pipeline (P4), in contrast, employs LLM-based query expansion to generate a pool of reformulated queries, filters the resulting snippets, and integrates them for answer inference. Human evaluation indicates that P4 produces answers that are slightly more coherent, contextually appropriate, and preferred overall, though the improvements remain moderate. However, these gains come at the cost of significantly longer execution time, highlighting a trade-off between answer quality and system efficiency. These findings demonstrate the potential of query-expansion-based RAG pipelines for enhancing answer quality from fragmented snippet collections, while also pointing to open challenges in efficiency, evidence integration, and domain adaptation.
 \end{abstract}
 
 %%
@@ -114,28 +114,29 @@ Lorem ipsum nice abstract insert it here
 %% Please copy and paste the code instead of the example below.
 %%
 \begin{CCSXML}
+\begin{CCSXML}
 <ccs2012>
    <concept>
-       <concept_id>10002951.10003317.10003338.10003340</concept_id>
-       <concept_desc>Information systems~Probabilistic retrieval models</concept_desc>
+       <concept_id>10002951.10003317.10003338</concept_id>
+       <concept_desc>Information systems~Retrieval models and ranking</concept_desc>
        <concept_significance>500</concept_significance>
        </concept>
    <concept>
-       <concept_id>10002951.10003317.10003359.10003361</concept_id>
-       <concept_desc>Information systems~Relevance assessment</concept_desc>
+       <concept_id>10002951.10003317.10003359</concept_id>
+       <concept_desc>Information systems~Evaluation of retrieval results</concept_desc>
        <concept_significance>500</concept_significance>
        </concept>
    <concept>
-       <concept_id>10002951.10003317.10003359.10011699</concept_id>
-       <concept_desc>Information systems~Presentation of retrieval results</concept_desc>
+       <concept_id>10010147.10010178.10010179</concept_id>
+       <concept_desc>Computing methodologies~Natural language processing</concept_desc>
        <concept_significance>300</concept_significance>
        </concept>
  </ccs2012>
 \end{CCSXML}
 
-\ccsdesc[500]{Information systems~Probabilistic retrieval models}
-\ccsdesc[500]{Information systems~Relevance assessment}
-\ccsdesc[300]{Information systems~Presentation of retrieval results}
+\ccsdesc[500]{Information systems~Retrieval models and ranking}
+\ccsdesc[500]{Information systems~Evaluation of retrieval results}
+\ccsdesc[300]{Computing methodologies~Natural language processing}
 
 %%
 %% Keywords. The author(s) should pick words that accurately describe
@@ -152,12 +153,17 @@ Lorem ipsum nice abstract insert it here
 \maketitle
 
 \section{Introduction}
-xxx
-	\subsection{Research Question}
-	xxx
-	
-	\subsection{Contribution}
-	xxx
+
+Information retrieval and answer generation have been transformed in recent years by large language models (LLMs) and retrieval-augmented generation (RAG). While these approaches typically rely on access to the full underlying documents, many real-world scenarios—such as search engines—only provide access to fragmented snippets contained in search engine result pages (SERPs). These snippets are often incomplete, inconsistent, and heterogeneous in style, making coherent answer generation particularly challenging. Nevertheless, being able to synthesize high-quality answers from such fragments is of both practical and theoretical interest.
+
+A central obstacle in this setting lies in how queries are handled. Traditional retrieval methods issue a single query and directly return associated results, which often fails to capture the full breadth of relevant information. Recent advances in LLM prompting, however, allow for automatic query reformulation and expansion, potentially improving coverage and evidence diversity. Whether such query pooling strategies can indeed enhance answer generation quality from SERP snippets remains an open question.
+
+\subsection{Research Question}
+Against this background, our study investigates the following research question: 
+\emph{Does a RAG pipeline that expands the initial prompt into an LLM-generated query pool produce answers that humans prefer—on correctness, conciseness, and relevance—over a baseline that directly queries Elasticsearch once?}
+
+\subsection{Contribution}
+To answer this question, we implement and evaluate two RAG pipelines that operate solely on SERP snippets. The baseline pipeline (P1) issues a single query and generates answers from the retrieved snippets without further reformulation. The advanced pipeline (P4), in contrast, expands the initial query into a pool of reformulated queries using an LLM, retrieves and filters a broader snippet set, and conditions answer generation on this richer evidence. We evaluate both pipelines through human preference judgments along correctness, conciseness, and relevance, and further measure computational cost. Our findings show that while P4 produces answers that are slightly more coherent and preferred overall, it incurs substantially higher runtime costs, highlighting a trade-off between answer quality and efficiency. This contribution provides insight into the potential and the limitations of query-expansion-based RAG pipelines when applied to fragmented snippet data.
 
 \section{Background \& Related Work}
 xxx
