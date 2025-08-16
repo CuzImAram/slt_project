@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.5.27)  16 AUG 2025 17:42
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.5.27)  16 AUG 2025 18:46
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1501,9 +1501,6 @@ Package hyperref Info: Option `pdfdisplaydoctitle' set `true' on input line 72.
 \c@theorem=\count356
  Include comment 'screenonly' Excluding comment 'printonly' Include comment 'anonsuppress' (/Users/domenic/repos/slt_project/paper/.texpadtmp/main.aux
 
-LaTeX Warning: Label `subsec:annotator-remarks' multiply defined.
-
-
 LaTeX Warning: Label `subsec:cost-quality-tradeoff' multiply defined.
 
 )
@@ -1702,26 +1699,37 @@ Class acmart Warning: A possible image without description on input line 235.
 
 Class acmart Warning: A possible image without description on input line 271.
 
-LaTeX Font Info:    Font shape `TU/LinLibertine(0)/b/n' will be
-(Font)              scaled to size 9.0pt on input line 279.
-
-Package natbib Warning: Citation `reimer:2023' on page 3 undefined on input line 279.
-
 [3.3]
-Package pgfplots info on input line 322: Using 'lua backend=false' for axis: x coord trafo unsupported.
+LaTeX Font Info:    Font shape `TU/LinLibertine(0)/b/n' will be
+(Font)              scaled to size 9.0pt on input line 282.
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `inconsolata' (encoding: TU).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+LaTeX Font Info:    Font shape `TU/LinBiolinum(0)/m/it' will be
+(Font)              scaled to size 9.0pt on input line 296.
+ [4.4]
+LaTeX Font Info:    Font shape `TU/LinLibertine(0)/b/n' will be
+(Font)              scaled to size 7.2pt on input line 336.
+Package pgfplots info on input line 396: Using 'lua backend=false' for axis: x coord trafo unsupported.
 
 
-Class acmart Warning: A possible image without description on input line 327.
+Class acmart Warning: A possible image without description on input line 402.
 
+
+Underfull \vbox (badness 4048) has occurred while \output is active []
+
+ [5.5]
 PGFPlots: reading {data/rag_time_long.csv}
 PGFPlots: reading {data/rag_time_long.csv}
 
-Class acmart Warning: A possible image without description on input line 392.
+
+Class acmart Warning: A possible image without description on input line 486.
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [4.4] [5.5] Processing 'acks' comment.
+ [6.6] [7.7] Processing 'acks' comment.
 \openout3 = `comment.cut'.
 
  Comment 'acks' writing to comment.cut. Straight input of comment.cut. (/Users/domenic/repos/slt_project/paper/.texpadtmp/comment.cut) (/Users/domenic/repos/slt_project/paper/.texpadtmp/main.bbl
@@ -1731,19 +1739,19 @@ LaTeX Info: Redefining \tempurl on input line 59.
 LaTeX Info: Redefining \tempurl on input line 71.
 LaTeX Info: Redefining \tempurl on input line 82.
 LaTeX Info: Redefining \tempurl on input line 92.
-LaTeX Info: Redefining \tempurl on input line 102.
-LaTeX Info: Redefining \tempurl on input line 113.
-LaTeX Info: Redefining \tempurl on input line 126.
-LaTeX Info: Redefining \tempurl on input line 137.
-LaTeX Info: Redefining \tempurl on input line 149.
-LaTeX Info: Redefining \tempurl on input line 162.
- [6.6]
-LaTeX Info: Redefining \tempurl on input line 173.
-LaTeX Info: Redefining \tempurl on input line 185.
+LaTeX Info: Redefining \tempurl on input line 103.
+LaTeX Info: Redefining \tempurl on input line 114.
+LaTeX Info: Redefining \tempurl on input line 125.
+LaTeX Info: Redefining \tempurl on input line 138.
+LaTeX Info: Redefining \tempurl on input line 150.
+LaTeX Info: Redefining \tempurl on input line 161.
+LaTeX Info: Redefining \tempurl on input line 172.
+LaTeX Info: Redefining \tempurl on input line 184.
+LaTeX Info: Redefining \tempurl on input line 197.
+ [8.8]
+LaTeX Info: Redefining \tempurl on input line 208.
+LaTeX Info: Redefining \tempurl on input line 220.
 )
-
-Package natbib Warning: There were undefined citations.
-
 
 Class acmart Warning: Some images may lack descriptions.
 (acmart)              ACM is committed to complying with the upcoming US ADA https://accessiblyapp.com/accessibility-compliance/ada/ and European Accessibility Act (EAA) https://accessiblyapp.com/accessibility-compliance/eaa/ regulations by actively working to ensure our publications and application services are accessible to individuals with disabilities, adhering to the WCAG guidelines to provide a seamless experience for all users, and regularly reviewing our accessibility practices to maintain compliance with evolving standards. 
@@ -1753,7 +1761,7 @@ Class acmart Warning: Some images may lack descriptions.
 File: se-pdfdoc.def 2019/11/29 v1.12 stringenc: PDFDocEncoding
 ) (/usr/local/texlive/2024/texmf-dist/tex/generic/stringenc/se-utf32be.def
 File: se-utf32be.def 2019/11/29 v1.12 stringenc: UTF-32BE
-) [7.7] (/Users/domenic/repos/slt_project/paper/.texpadtmp/main.aux)
+) [9.9] (/Users/domenic/repos/slt_project/paper/.texpadtmp/main.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
@@ -1763,15 +1771,15 @@ L3 programming layer <2024-02-20>
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: F30A246540A7531A68F2D1547EEF9A02;4416.
+(rerunfilecheck)             Checksum: D9662A2F18F89A85AF30AB32E5EDA1EE;4178.
  ) 
 Here is how much of TeX's memory you used:
- 53691 strings out of 474773
- 1228012 string characters out of 5757724
- 1950839 words of memory out of 5000000
- 74918 multiletter control sequences out of 15000+600000
- 566219 words of font info for 144 fonts, out of 8000000 for 9000
+ 53719 strings out of 474773
+ 1228861 string characters out of 5757724
+ 1955839 words of memory out of 5000000
+ 74942 multiletter control sequences out of 15000+600000
+ 566243 words of font info for 147 fonts, out of 8000000 for 9000
  1509 hyphenation exceptions out of 8191
  105i,17n,135p,2098b,32979s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on /Users/domenic/repos/slt_project/paper/.texpadtmp/main.pdf (7 pages).
+Output written on /Users/domenic/repos/slt_project/paper/.texpadtmp/main.pdf (9 pages).

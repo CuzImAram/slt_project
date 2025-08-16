@@ -2,7 +2,7 @@
 %%% Do NOT edit. File created by BibTeX with style
 %%% ACM-Reference-Format-Journals [18-Jan-2012].
 
-\begin{thebibliography}{13}
+\begin{thebibliography}{16}
 
 %%% ====================================================================
 %%% NOTE TO THE USER: you can override these defaults by providing
@@ -93,6 +93,18 @@
 \showDOI{\tempurl}
 
 
+\bibitem[Lab({[n.\,d.]})]%
+        {qwen3_model}
+\bibfield{author}{\bibinfo{person}{Tencent~AI Lab}.} \bibinfo{year}{[n.\,d.]}\natexlab{}.
+\newblock \bibinfo{title}{Qwen3 30B A3B Model}.
+\newblock
+\newblock
+\urldef\tempurl%
+\url{https://huggingface.co/Qwen/Qwen3-30B-A3B}
+\showURL{%
+\tempurl}
+
+
 \bibitem[Lewis et~al\mbox{.}(2020)]%
         {NEURIPS2020_6b493230}
 \bibfield{author}{\bibinfo{person}{Patrick Lewis}, \bibinfo{person}{Ethan Perez}, \bibinfo{person}{Aleksandra Piktus}, \bibinfo{person}{Fabio Petroni}, \bibinfo{person}{Vladimir Karpukhin}, \bibinfo{person}{Naman Goyal}, \bibinfo{person}{Heinrich K\"{u}ttler}, \bibinfo{person}{Mike Lewis}, \bibinfo{person}{Wen-tau Yih}, \bibinfo{person}{Tim Rockt\"{a}schel}, \bibinfo{person}{Sebastian Riedel}, {and} \bibinfo{person}{Douwe Kiela}.} \bibinfo{year}{2020}\natexlab{}.
@@ -128,6 +140,18 @@
 \tempurl}
 
 
+\bibitem[Platform({[n.\,d.]})]%
+        {blablador_api}
+\bibfield{author}{\bibinfo{person}{Helmholtz~AI Platform}.} \bibinfo{year}{[n.\,d.]}\natexlab{}.
+\newblock \bibinfo{title}{Blablador API Access Guide}.
+\newblock
+\newblock
+\urldef\tempurl%
+\url{https://sdlaml.pages.jsc.fz-juelich.de/ai/guides/blablador_api_access/#step-2-obtain-an-api-key}
+\showURL{%
+\tempurl}
+
+
 \bibitem[Post(2018)]%
         {post-2018-call}
 \bibfield{author}{\bibinfo{person}{Matt Post}.} \bibinfo{year}{2018}\natexlab{}.
@@ -135,6 +159,17 @@
 \newblock
 \urldef\tempurl%
 \url{https://doi.org/10.18653/v1/W18-6319}
+\showDOI{\tempurl}
+
+
+\bibitem[Reimer et~al\mbox{.}(2023)]%
+        {reimer:2023}
+\bibfield{author}{\bibinfo{person}{{Jan Heinrich} Reimer}, \bibinfo{person}{Sebastian Schmidt}, \bibinfo{person}{Maik Fr{\"o}be}, \bibinfo{person}{Lukas Gienapp}, \bibinfo{person}{Harrisen Scells}, \bibinfo{person}{Benno Stein}, \bibinfo{person}{Matthias Hagen}, {and} \bibinfo{person}{Martin Potthast}.} \bibinfo{year}{2023}\natexlab{}.
+\newblock \showarticletitle{{The Archive Query Log: Mining Millions of Search Result Pages of Hundreds of Search Engines from 25 Years of Web Archives}}. In \bibinfo{booktitle}{\emph{46th International ACM SIGIR Conference on Research and Development in Information Retrieval (SIGIR 2023)}}, \bibfield{editor}{\bibinfo{person}{Hsin-Hsi Chen}, \bibinfo{person}{{Wei-Jou (Edward)} Duh}, \bibinfo{person}{Hen-Hsen Huang}, \bibinfo{person}{{Makoto P.} Kato}, \bibinfo{person}{Josiane Mothe}, {and} \bibinfo{person}{Barbara Poblete}} (Eds.). \bibinfo{publisher}{ACM}, \bibinfo{pages}{2848--2860}.
+\newblock
+\showISBNx{9781450394086}
+\urldef\tempurl%
+\url{https://doi.org/10.1145/3539618.3591890}
 \showDOI{\tempurl}
 
 

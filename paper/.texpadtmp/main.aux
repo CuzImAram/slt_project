@@ -38,30 +38,46 @@
 \@writefile{toc}{\contentsline {paragraph}{Pipeline 4: Query Pool Expansion.}{3}{section*.4}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Pipeline\nonbreakingspace 4 — LLM-generated query pool, multi-query retrieval, snippet aggregation, and grounded answering.}}{3}{figure.caption.5}\protected@file@percent }
 \newlabel{fig:pipeline4}{{2}{3}{Pipeline~4 — LLM-generated query pool, multi-query retrieval, snippet aggregation, and grounded answering}{figure.caption.5}{}}
+\citation{blablador_api}
+\citation{qwen3_model}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Retrieval configuration}{4}{subsection.3.2}\protected@file@percent }
 \newlabel{subsec:retrieval-config}{{3.2}{4}{Retrieval configuration}{subsection.3.2}{}}
 \@writefile{toc}{\contentsline {paragraph}{Data.}{4}{section*.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Source retriever.}{4}{section*.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Source retriever}{4}{section*.7}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.3}LLM Configuration}{4}{subsection.3.3}\protected@file@percent }
 \newlabel{subsec:llm-config}{{3.3}{4}{LLM Configuration}{subsection.3.3}{}}
+\newlabel{subsubsec:query-pool-generation}{{3.3.1}{4}{Query Pool Generation}{subsubsection.3.3.1}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.1}Query Pool Generation}{4}{subsubsection.3.3.1}\protected@file@percent }
+\newlabel{subsubsec:snippet-aggregation}{{3.3.2}{4}{Snippet Aggregation}{subsubsection.3.3.2}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.2}Snippet Aggregation}{4}{subsubsection.3.3.2}\protected@file@percent }
+\newlabel{subsubsec:answer-generation}{{3.3.3}{4}{Answer Generation}{subsubsection.3.3.3}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.3}Answer Generation}{4}{subsubsection.3.3.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Evaluation Protocol}{4}{subsection.3.4}\protected@file@percent }
-\newlabel{subsec:eval-protocol}{{3.4}{4}{Evaluation Protocol}{subsection.3.4}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.5}Metrics \& Hypotheses}{4}{subsection.3.5}\protected@file@percent }
-\newlabel{subsec:metrics-hypo}{{3.5}{4}{Metrics \& Hypotheses}{subsection.3.5}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.6}Cost Measurement}{4}{subsection.3.6}\protected@file@percent }
-\newlabel{subsec:cost-measure}{{3.6}{4}{Cost Measurement}{subsection.3.6}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4}Results}{4}{section.4}\protected@file@percent }
-\newlabel{sec:results}{{4}{4}{Results}{section.4}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Overall Preference}{4}{subsection.4.1}\protected@file@percent }
-\newlabel{subsec:preference}{{4.1}{4}{Overall Preference}{subsection.4.1}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Win rate comparison between Pipeline 1 and Pipeline 4.}}{4}{figure.caption.8}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Annotator Remarks}{5}{subsection.4.2}\protected@file@percent }
-\newlabel{subsec:annotator-remarks}{{4.2}{5}{Annotator Remarks}{subsection.4.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Cost-Quality Tradeoff}{5}{subsection.4.3}\protected@file@percent }
-\newlabel{subsec:cost-quality-tradeoff}{{4.3}{5}{Cost-Quality Tradeoff}{subsection.4.3}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Mean LLM response times per question (s) for the two pipelines.}}{5}{figure.caption.9}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Annotator Remarks}{5}{subsection.4.4}\protected@file@percent }
-\newlabel{subsec:annotator-remarks}{{4.4}{5}{Annotator Remarks}{subsection.4.4}{}}
+\newlabel{subsec:evaluation-protocol}{{3.4}{4}{Evaluation Protocol}{subsection.3.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5}Hypotheses}{5}{subsection.3.5}\protected@file@percent }
+\newlabel{subsec:hypotheses}{{3.5}{5}{Hypotheses}{subsection.3.5}{}}
+\@writefile{toc}{\contentsline {paragraph}{Rationale.}{5}{section*.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Primary hypothesis.}{5}{section*.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Note on latency.}{5}{section*.10}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.6}Cost Measurement}{5}{subsection.3.6}\protected@file@percent }
+\newlabel{subsec:cost-measure}{{3.6}{5}{Cost Measurement}{subsection.3.6}{}}
+\@writefile{toc}{\contentsline {paragraph}{What we measure.}{5}{section*.11}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Scope and aggregation.}{5}{section*.12}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Limitations.}{5}{section*.13}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4}Results}{5}{section.4}\protected@file@percent }
+\newlabel{sec:results}{{4}{5}{Results}{section.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Overall Findings}{5}{subsection.4.1}\protected@file@percent }
+\newlabel{subsec:overall-findings}{{4.1}{5}{Overall Findings}{subsection.4.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Win rate comparison between Pipeline 1 and Pipeline 4.}}{6}{figure.caption.14}\protected@file@percent }
+\newlabel{fig:winrate-overall}{{3}{6}{Win rate comparison between Pipeline 1 and Pipeline 4}{figure.caption.14}{}}
+\@writefile{toc}{\contentsline {paragraph}{Retrieval coverage limits.}{6}{section*.15}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Hallucinations on sensitive topics.}{6}{section*.16}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Cost–latency perspective.}{6}{section*.17}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Cost-Quality Tradeoff}{7}{subsection.4.2}\protected@file@percent }
+\newlabel{subsec:cost-quality-tradeoff}{{4.2}{7}{Cost-Quality Tradeoff}{subsection.4.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Mean LLM response times per question (s) for the two pipelines.}}{7}{figure.caption.18}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Annotator Remarks}{7}{subsection.4.3}\protected@file@percent }
+\newlabel{subsec:annotator-remarks}{{4.3}{7}{Annotator Remarks}{subsection.4.3}{}}
 \bibstyle{ACM-Reference-Format}
 \bibdata{cites}
 \bibcite{bai2022traininghelpfulharmlessassistant}{{1}{2022}{{Bai et~al\mbox  {.}}}{{}}}
@@ -69,29 +85,32 @@
 \bibcite{guu2020realmretrievalaugmentedlanguagemodel}{{3}{2020}{{Guu et~al\mbox  {.}}}{{}}}
 \bibcite{izacard-grave-2021-leveraging}{{4}{2021}{{Izacard and Grave}}{{}}}
 \bibcite{karpukhin-etal-2020-dense}{{5}{2020}{{Karpukhin et~al\mbox  {.}}}{{}}}
-\bibcite{NEURIPS2020_6b493230}{{6}{2020}{{Lewis et~al\mbox  {.}}}{{}}}
-\bibcite{lin-2004-rouge}{{7}{2004}{{Lin}}{{}}}
-\bibcite{nogueira2020passagererankingbert}{{8}{2020}{{Nogueira and Cho}}{{}}}
-\bibcite{post-2018-call}{{9}{2018}{{Post}}{{}}}
-\bibcite{stiennon2022learningsummarizehumanfeedback}{{10}{2022}{{Stiennon et~al\mbox  {.}}}{{}}}
-\bibcite{thoppilan2022lamdalanguagemodelsdialog}{{11}{2022}{{Thoppilan et~al\mbox  {.}}}{{}}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.5}Cost-Quality Tradeoff}{6}{subsection.4.5}\protected@file@percent }
-\newlabel{subsec:cost-quality-tradeoff}{{4.5}{6}{Cost-Quality Tradeoff}{subsection.4.5}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {5}Conclusion}{6}{section.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{Acknowledgments}{6}{section*.11}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{References}{6}{section*.13}\protected@file@percent }
-\bibcite{wang-etal-2023-query2doc}{{12}{2023}{{Wang et~al\mbox  {.}}}{{}}}
-\bibcite{zhang2020bertscoreevaluatingtextgeneration}{{13}{2020}{{Zhang et~al\mbox  {.}}}{{}}}
+\bibcite{qwen3_model}{{6}{[n.\,d.]}{{Lab}}{{}}}
+\bibcite{NEURIPS2020_6b493230}{{7}{2020}{{Lewis et~al\mbox  {.}}}{{}}}
+\bibcite{lin-2004-rouge}{{8}{2004}{{Lin}}{{}}}
+\bibcite{nogueira2020passagererankingbert}{{9}{2020}{{Nogueira and Cho}}{{}}}
+\bibcite{blablador_api}{{10}{[n.\,d.]}{{Platform}}{{}}}
+\bibcite{post-2018-call}{{11}{2018}{{Post}}{{}}}
+\bibcite{reimer:2023}{{12}{2023}{{Reimer et~al\mbox  {.}}}{{}}}
+\bibcite{stiennon2022learningsummarizehumanfeedback}{{13}{2022}{{Stiennon et~al\mbox  {.}}}{{}}}
+\bibcite{thoppilan2022lamdalanguagemodelsdialog}{{14}{2022}{{Thoppilan et~al\mbox  {.}}}{{}}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Cost-Quality Tradeoff}{8}{subsection.4.4}\protected@file@percent }
+\newlabel{subsec:cost-quality-tradeoff}{{4.4}{8}{Cost-Quality Tradeoff}{subsection.4.4}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Conclusion}{8}{section.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{Acknowledgments}{8}{section*.20}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{References}{8}{section*.22}\protected@file@percent }
+\bibcite{wang-etal-2023-query2doc}{{15}{2023}{{Wang et~al\mbox  {.}}}{{}}}
+\bibcite{zhang2020bertscoreevaluatingtextgeneration}{{16}{2020}{{Zhang et~al\mbox  {.}}}{{}}}
 \newlabel{tocindent-1}{0pt}
 \newlabel{tocindent0}{0pt}
 \newlabel{tocindent1}{6.255pt}
 \newlabel{tocindent2}{12.42pt}
-\newlabel{tocindent3}{0pt}
+\newlabel{tocindent3}{18.198pt}
 \newlabel{tocindent4}{0pt}
 \newlabel{tocindent5}{0pt}
-\@writefile{toc}{\contentsline {section}{\numberline {A}Research Methods}{7}{appendix.A}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {A.1}Part One}{7}{subsection.A.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {A.2}Part Two}{7}{subsection.A.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {B}Online Resources}{7}{appendix.B}\protected@file@percent }
-\newlabel{TotPages}{{7}{7}{}{page.7}{}}
-\gdef \@abspage@last{7}
+\@writefile{toc}{\contentsline {section}{\numberline {A}Research Methods}{9}{appendix.A}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.1}Part One}{9}{subsection.A.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.2}Part Two}{9}{subsection.A.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {B}Online Resources}{9}{appendix.B}\protected@file@percent }
+\newlabel{TotPages}{{9}{9}{}{page.9}{}}
+\gdef \@abspage@last{9}

@@ -11,53 +11,55 @@ I was expecting an "="---line 178 of file ../cites.bib
  : }
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
-Warning--I didn't find a database entry for "reimer:2023"
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated glb_str_ptr (elt_size=4) to 20 items from 10.
 Reallocated global_strs (elt_size=200001) to 20 items from 10.
 Reallocated glb_str_end (elt_size=4) to 20 items from 10.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Warning--empty address in Gienapp_2025
+Warning--empty year in qwen3_model
 Warning--empty address in NEURIPS2020_6b493230
-You've used 13 entries,
+Warning--empty year in blablador_api
+Warning--empty address in reimer:2023
+You've used 16 entries,
             5981 wiz_defined-function locations,
-            1576 strings with 23750 characters,
-and the built_in function-call counts, 19692 in all, are:
-= -- 1874
-> -- 1385
+            1591 strings with 24537 characters,
+and the built_in function-call counts, 22632 in all, are:
+= -- 2167
+> -- 1510
 < -- 0
-+ -- 495
-- -- 494
-* -- 1997
-:= -- 2439
-add.period$ -- 65
-call.type$ -- 13
-change.case$ -- 204
-chr.to.int$ -- 13
-cite$ -- 15
-duplicate$ -- 1317
-empty$ -- 917
-format.name$ -- 538
-if$ -- 4147
++ -- 534
+- -- 538
+* -- 2223
+:= -- 2774
+add.period$ -- 80
+call.type$ -- 16
+change.case$ -- 226
+chr.to.int$ -- 16
+cite$ -- 21
+duplicate$ -- 1563
+empty$ -- 1094
+format.name$ -- 586
+if$ -- 4804
 int.to.chr$ -- 2
 int.to.str$ -- 1
-missing$ -- 35
-newline$ -- 190
-num.names$ -- 101
-pop$ -- 585
+missing$ -- 40
+newline$ -- 225
+num.names$ -- 124
+pop$ -- 711
 preamble$ -- 1
-purify$ -- 302
+purify$ -- 338
 quote$ -- 0
-skip$ -- 535
+skip$ -- 626
 stack$ -- 0
-substring$ -- 1070
-swap$ -- 141
+substring$ -- 1249
+swap$ -- 165
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 390
-warning$ -- 2
-while$ -- 79
+type$ -- 480
+warning$ -- 5
+while$ -- 100
 width$ -- 0
-write$ -- 345
+write$ -- 413
 (There was 1 error message)
