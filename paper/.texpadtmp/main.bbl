@@ -2,7 +2,7 @@
 %%% Do NOT edit. File created by BibTeX with style
 %%% ACM-Reference-Format-Journals [18-Jan-2012].
 
-\begin{thebibliography}{16}
+\begin{thebibliography}{17}
 
 %%% ====================================================================
 %%% NOTE TO THE USER: you can override these defaults by providing
@@ -207,6 +207,19 @@
 \urldef\tempurl%
 \url{https://doi.org/10.18653/v1/2023.emnlp-main.585}
 \showDOI{\tempurl}
+
+
+\bibitem[Yun et~al\mbox{.}(2024)]%
+        {yun2024inferenceoptimalmixtureofexpertlargelanguage}
+\bibfield{author}{\bibinfo{person}{Longfei Yun}, \bibinfo{person}{Yonghao Zhuang}, \bibinfo{person}{Yao Fu}, \bibinfo{person}{Eric~P Xing}, {and} \bibinfo{person}{Hao Zhang}.} \bibinfo{year}{2024}\natexlab{}.
+\newblock \bibinfo{title}{Toward Inference-optimal Mixture-of-Expert Large Language Models}.
+\newblock
+\newblock
+\showeprint[arxiv]{2404.02852}~[cs.LG]
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2404.02852}
+\showURL{%
+\tempurl}
 
 
 \bibitem[Zhang et~al\mbox{.}(2020)]%

@@ -288,7 +288,7 @@ A central obstacle in this setting lies in how queries are handled. Traditional 
 	
 	All LLM calls in this work are performed using the Helmholtz-Blablador API~\cite{blablador_api} with the model \texttt{"alias-large"}~\cite{qwen3_model}, also referred to as Qwen3-30B-A3B, optimized for information retrieval and question-answering tasks.
 	
-	The following subsubsections detail the three main stages of LLM configuration: \textit{Query Pool Generation}, \textit{Snippet Aggregation}, and \textit{Answer Generation}. Specific pipelines may implement subsets of these stages or additional mechanisms.
+	The following sections detail the three main stages of LLM configuration: \textit{Query Pool Generation}, \textit{Snippet Aggregation}, and \textit{Answer Generation}. Specific pipelines may implement subsets of these stages or additional mechanisms.
 	
 		\paragraph{Query Pool Generation}
 		\label{subsubsec:query-pool-generation}
@@ -324,6 +324,36 @@ A central obstacle in this setting lies in how queries are handled. Traditional 
 	Our primary metric is the \emph{win rate}: the proportion of pairwise
 	comparisons in which a pipeline’s answer was preferred, computed over
 	non-tied votes. We report win rates per pipeline to compare overall preference.
+	
+	\subsection{Annotator Remarks}
+	\label{subsec:annotator-remarks}
+	
+	Annotators compared two anonymous answers for each prompt and selected the
+	better one according to three criteria. The primary dimension was
+	\textbf{Correctness}, i.e., factual accuracy, avoidance of hallucinations, and
+	consistency with the question. Secondary criteria were:
+	
+	\begin{itemize}
+	  \item \textbf{Relevance}: whether the answer stays on-topic and addresses the prompt,
+	  \item \textbf{Conciseness}: whether the response is complete yet compact, without unnecessary repetition.
+	\end{itemize}
+	
+	The evaluation followed a strict priority order:
+	\textbf{Correctness} $\rightarrow$ \textbf{Relevance} $\rightarrow$
+	\textbf{Conciseness}. When criteria conflicted, annotators were instructed to
+	prefer the answer that was more accurate and cautious, even if it was less
+	polished. If both answers were equally good (or equally poor), annotators could
+	indicate \emph{No preference}.
+	
+	After each vote, annotators briefly justified their decision with a short
+	comment referring to the criteria (e.g., correctness of facts, conciseness, or
+	topicality). Critical errors or omissions were expected to be highlighted in
+	these remarks.
+	
+	Finally, annotators were reminded to judge only the written content itself:
+	unsupported or incorrect claims were to be penalized more heavily than cautious
+	ones, and external searches were not permitted. Stylistic polish or formatting
+	was not to influence voting unless it directly affected clarity.
 
 	
 	\subsection{Hypotheses}
@@ -386,159 +416,125 @@ A central obstacle in this setting lies in how queries are handled. Traditional 
 	
 \section{Results}
 \label{sec:results}
+	
+The win-rate figure (Fig.~\ref{fig:winrate-overall}) aggregates all non-tied
+pairwise votes across the 20 prompts and shows a \emph{marginal} but significant average
+advantage for \textbf{Pipeline~4} over \textbf{Pipeline~1}. As defined in
+Section~\ref{subsec:evaluation-protocol}, “win rate” reflects the fraction of
+comparisons in which a pipeline’s answer was preferred under our annotator
+guidelines (Section~\ref{subsec:annotator-remarks}).
 
-	\subsection{Overall Findings}
-	\label{subsec:overall-findings}
-	
-	The win-rate figure (Fig.~\ref{fig:winrate-overall}) aggregates all non-tied
-	pairwise votes across the 20 prompts and shows a \emph{marginal} but significant average
-	advantage for \textbf{Pipeline~4} over \textbf{Pipeline~1}. As defined in
-	Section~\ref{subsec:evaluation-protocol}, “win rate” reflects the fraction of
-	comparisons in which a pipeline’s answer was preferred under our annotator
-	guidelines (Section~\ref{subsec:annotator-remarks}).
-	
-	% Figure: Winrate
-	\begin{figure}[H]
-	\centering
-	\begin{tikzpicture}
-	\begin{axis}[
-	  xbar,
-	  width=0.7\textwidth,
-	  height=4cm,
-	  xlabel={Win rate (\%)},
-	  xmin=0, xmax=100,
-	  symbolic y coords={Pipeline 1,Pipeline 4},
-	  ytick=data,
-	  nodes near coords,
-	  nodes near coords align={horizontal},
-	  bar width=15pt,
-	]
-	\addplot coordinates {(38.7,Pipeline 1) (61.3,Pipeline 4)};
-	\end{axis}
-	\end{tikzpicture}
-	\caption{Win rate comparison between Pipeline 1 and Pipeline 4.}
-	\label{fig:winrate-overall}
-	\end{figure}
-	
-	\paragraph{Retrieval coverage limits.}
-	Not infrequently, Elasticsearch retrieved \emph{no accurate, on-topic snippets}
-	for a given prompt. In such cases, answers could not be fully grounded in the
-	provided context, compressing the attainable performance of either pipeline and
-	dampening any advantage from Pipeline~4’s broader query coverage.
-	
-	\paragraph{Hallucinations on sensitive topics.}
-	We observed instances where the model answered \emph{regardless} of available
-	context, i.e., hallucinated content, particularly for highly sensitive topics
-	(e.g., COVID-19, climate change). This behavior violates the “answer only from
-	snippets” instruction and directly harms the \textbf{Correctness} criterion,
-	introducing variance in human preference that can overshadow small win-rate
-	differences.
-	
-	\paragraph{Cost–latency perspective.}
-	Pipeline~4’s additional LLM calls for query-pool expansion (and occasional
-	aggregation) increase runtime and token usage roughly linearly with the extra
-	steps. Given the marginal improvement in win rate, the benefit may be
-	questionable when resources or latency budgets are tight; we return to this
-	trade-off in the timing results (Section~\ref{subsec:cost-quality-tradeoff}).
+% Figure: Winrate
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+  xbar,
+  width=0.7\textwidth,
+  height=4cm,
+  xlabel={Win rate (\%)},
+  xmin=0, xmax=100,
+  symbolic y coords={Pipeline 1,Pipeline 4},
+  ytick=data,
+  nodes near coords,
+  nodes near coords align={horizontal},
+  bar width=15pt,
+]
+\addplot coordinates {(38.7,Pipeline 1) (61.3,Pipeline 4)};
+\end{axis}
+\end{tikzpicture}
+\caption{Win rate comparison between Pipeline 1 and Pipeline 4.}
+\label{fig:winrate-overall}
+\end{figure}
 
+\paragraph{Retrieval coverage limits.}
+Not infrequently, Elasticsearch retrieved \emph{no accurate, on-topic snippets}
+for a given prompt. In such cases, answers could not be fully grounded in the
+provided context, compressing the attainable performance of either pipeline and
+dampening any advantage from Pipeline~4’s broader query coverage.
 
-	
-	\subsection{Cost-Quality Tradeoff}
-	\label{subsec:cost-quality-tradeoff}
-	
-	% Figure: line plot of mean time per question (1..20)
-	\begin{figure}[H]
-	\centering
-	\begin{tikzpicture}
-	\begin{axis}[
-	  width=\textwidth,
-	  height=0.5\textheight,
-	  xlabel={Question (qid)},
-	  ylabel={Mean time (s)},
-	  xmin=1, xmax=20,
-	  xtick={1,...,20},
-	  ymajorgrids, xmajorgrids,
-	  legend style={at={(0.5,1.05)},anchor=south,legend columns=-1},
-	  enlarge x limits=0.02,
-	  unbounded coords=jump, % <-- prevents interpolation over NaNs
-	]
-	
-	% Pipeline 1
-	\addplot+[
-	  mark=*,
-	  thick,
-	  color=blue,           % <-- force distinct color
-	  y filter/.code={%
-	    \edef\p{\thisrow{pipeline}}%
-	    \ifnum\pdfstrcmp{\p}{Pipeline 1}=0
-	      % keep value
-	    \else
-	      \def\pgfmathresult{nan}% hide non-matching rows
-	    \fi
-	  }
-	] table[
-	  x=qid, y=mean_time_seconds, col sep=comma
-	]{data/rag_time_long.csv};
-	\addlegendentry{Pipeline 1}
-	
-	% Pipeline 4
-	\addplot+[
-	  mark=square*,
-	  thick,
-	  color=red,            % <-- force distinct color
-	  y filter/.code={%
-	    \edef\p{\thisrow{pipeline}}%
-	    \ifnum\pdfstrcmp{\p}{Pipeline 4}=0
-	      % keep value
-	    \else
-	      \def\pgfmathresult{nan}%
-	    \fi
-	  }
-	] table[
-	  x=qid, y=mean_time_seconds, col sep=comma
-	]{data/rag_time_long.csv};
-	\addlegendentry{Pipeline 4}
-	
-	\end{axis}
-	\end{tikzpicture}
-	\caption{Mean LLM response times per question (s) for the two pipelines.}
-	\end{figure}
+\paragraph{Hallucinations on sensitive topics.}
+We observed instances where the model answered \emph{regardless} of available
+context, i.e., hallucinated content, particularly for highly sensitive topics
+(e.g., COVID-19, climate change). This behavior violates the “answer only from
+snippets” instruction and directly harms the \textbf{Correctness} criterion,
+introducing variance in human preference that can overshadow small win-rate
+differences.
 
-	
-	\subsection{Annotator Remarks}
-	\label{subsec:annotator-remarks}
-	
-	Annotators compared two anonymous answers for each prompt and selected the
-	better one according to three criteria. The primary dimension was
-	\textbf{Correctness}, i.e., factual accuracy, avoidance of hallucinations, and
-	consistency with the question. Secondary criteria were:
-	
-	\begin{itemize}
-	  \item \textbf{Relevance}: whether the answer stays on-topic and addresses the prompt,
-	  \item \textbf{Conciseness}: whether the response is complete yet compact, without unnecessary repetition.
-	\end{itemize}
-	
-	The evaluation followed a strict priority order:
-	\textbf{Correctness} $\rightarrow$ \textbf{Relevance} $\rightarrow$
-	\textbf{Conciseness}. When criteria conflicted, annotators were instructed to
-	prefer the answer that was more accurate and cautious, even if it was less
-	polished. If both answers were equally good (or equally poor), annotators could
-	indicate \emph{No preference}.
-	
-	After each vote, annotators briefly justified their decision with a short
-	comment referring to the criteria (e.g., correctness of facts, conciseness, or
-	topicality). Critical errors or omissions were expected to be highlighted in
-	these remarks.
-	
-	Finally, annotators were reminded to judge only the written content itself:
-	unsupported or incorrect claims were to be penalized more heavily than cautious
-	ones, and external searches were not permitted. Stylistic polish or formatting
-	was not to influence voting unless it directly affected clarity.
+\paragraph{Cost–latency perspective.}
+Pipeline~4’s additional LLM calls for query-pool expansion (and occasional
+aggregation) increase runtime and token usage roughly linearly with the extra
+steps. Given the marginal improvement in win rate, the benefit may be
+questionable when resources or latency budgets are tight.
 
-	
-	\subsection{Cost-Quality Tradeoff}
-	\label{subsec:cost-quality-tradeoff}
-	xxx
+% Figure: line plot of mean time per question (1..20)
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+  width=\textwidth,
+  height=0.5\textheight,
+  xlabel={Question (qid)},
+  ylabel={Mean time (s)},
+  xmin=1, xmax=20,
+  xtick={1,...,20},
+  ymajorgrids, xmajorgrids,
+  legend style={at={(0.5,1.05)},anchor=south,legend columns=-1},
+  enlarge x limits=0.02,
+  unbounded coords=jump, % <-- prevents interpolation over NaNs
+]
+
+% Pipeline 1
+\addplot+[
+  mark=*,
+  thick,
+  color=blue,           % <-- force distinct color
+  y filter/.code={%
+    \edef\p{\thisrow{pipeline}}%
+    \ifnum\pdfstrcmp{\p}{Pipeline 1}=0
+      % keep value
+    \else
+      \def\pgfmathresult{nan}% hide non-matching rows
+    \fi
+  }
+] table[
+  x=qid, y=mean_time_seconds, col sep=comma
+]{data/rag_time_long.csv};
+\addlegendentry{Pipeline 1}
+
+% Pipeline 4
+\addplot+[
+  mark=square*,
+  thick,
+  color=red,            % <-- force distinct color
+  y filter/.code={%
+    \edef\p{\thisrow{pipeline}}%
+    \ifnum\pdfstrcmp{\p}{Pipeline 4}=0
+      % keep value
+    \else
+      \def\pgfmathresult{nan}%
+    \fi
+  }
+] table[
+  x=qid, y=mean_time_seconds, col sep=comma
+]{data/rag_time_long.csv};
+\addlegendentry{Pipeline 4}
+
+\end{axis}
+\end{tikzpicture}
+\caption{Mean LLM response times per question (s) for the two pipelines.}
+\label{fig:time-per-question}
+\end{figure}
+
+\paragraph{Interpreting downward spikes.}
+In Fig.~\ref{fig:time-per-question}, the sharp \emph{downward} spikes for
+Pipeline~4 coincide with cases where Elasticsearch failed to retrieve
+meaningful snippets. With little or no usable context, the expansion step
+yields minimal material and the final answer call is short (often an abstention
+or terse reply), reducing measured LLM runtime. These dips therefore reflect a
+\emph{retrieval failure}, not an efficiency gain of the multi-query
+pipeline.
+
 	
 \section {Conclusion}
 xxx
@@ -550,7 +546,7 @@ xxx
 %% identification of the section in the article metadata, and the
 %% consistent spelling of the heading.
 \begin{acks}
-To Robert, for the bagels and explaining CMYK and color spaces.
+To Maximilian, thanks for nothing.
 \end{acks}
 
 %%
