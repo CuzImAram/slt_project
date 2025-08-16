@@ -39,18 +39,24 @@
 
 \bibitem[Bai et~al\mbox{.}(2022)]%
         {bai2022training}
-\bibfield{author}{\bibinfo{person}{Yuntao Bai}, \bibinfo{person}{Daniel~M. Ziegler}, \bibinfo{person}{Nicholas Chen}, {and} \bibinfo{person}{et al.}} \bibinfo{year}{2022}\natexlab{}.
+\bibfield{author}{\bibinfo{person}{Yuntao Bai}, \bibinfo{person}{Andy Jones}, \bibinfo{person}{Kamal Ndousse}, {and} \bibinfo{person}{et al.}} \bibinfo{year}{2022}\natexlab{}.
 \newblock \showarticletitle{Training a Helpful and Harmless Assistant with Reinforcement Learning from Human Feedback}. In \bibinfo{booktitle}{\emph{arXiv preprint arXiv:2204.05862}}.
 \newblock
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2204.05862}
+\showURL{%
+\tempurl}
 
 
 \bibitem[Gienapp et~al\mbox{.}(2025)]%
         {gienapp2025viability}
 \bibfield{author}{\bibinfo{person}{Lukas Gienapp}, \bibinfo{person}{Benno Stein}, \bibinfo{person}{Maik Fröbe}, \bibinfo{person}{Martin Potthast}, {and} \bibinfo{person}{Harrisen Scells}.} \bibinfo{year}{2025}\natexlab{}.
-\newblock \showarticletitle{The Viability of Crowdsourcing for RAG Evaluation}. In \bibinfo{booktitle}{\emph{arXiv preprint}}.
+\newblock \showarticletitle{The Viability of Crowdsourcing for RAG Evaluation}. In \bibinfo{booktitle}{\emph{arXiv preprint arXiv:2501.XXXXX}}.
 \newblock
-\newblock
-\shownote{Leipzig University, University of Kassel, Friedrich-Schiller-Universität Jena, Bauhaus-Universität Weimar}.
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2501.XXXXX}
+\showURL{%
+\tempurl}
 
 
 \bibitem[Guu et~al\mbox{.}(2020)]%
@@ -58,27 +64,41 @@
 \bibfield{author}{\bibinfo{person}{Kelvin Guu}, \bibinfo{person}{Kenton Lee}, \bibinfo{person}{Zora Tung}, \bibinfo{person}{Panupong Pasupat}, {and} \bibinfo{person}{Ming-Wei Chang}.} \bibinfo{year}{2020}\natexlab{}.
 \newblock \showarticletitle{REALM: Retrieval-Augmented Language Model Pre-Training}. In \bibinfo{booktitle}{\emph{ICLR}}.
 \newblock
+\urldef\tempurl%
+\url{https://openreview.net/forum?id=rkgNKkHtvB}
+\showURL{%
+\tempurl}
 
 
 \bibitem[Izacard and Grave(2021)]%
         {izacard2021leveraging}
 \bibfield{author}{\bibinfo{person}{Gautier Izacard} {and} \bibinfo{person}{Edouard Grave}.} \bibinfo{year}{2021}\natexlab{}.
-\newblock \showarticletitle{Leveraging Passage Retrieval with Generative Models for Open Domain Question Answering}. In \bibinfo{booktitle}{\emph{arXiv preprint arXiv:2102.00050}}.
+\newblock \showarticletitle{Leveraging Passage Retrieval with Generative Models for Open Domain Question Answering}. In \bibinfo{booktitle}{\emph{arXiv preprint arXiv:2102.00026}}.
 \newblock
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2102.00026}
+\showURL{%
+\tempurl}
 
 
 \bibitem[Karpukhin et~al\mbox{.}(2020)]%
         {karpukhin2020dense}
 \bibfield{author}{\bibinfo{person}{Vladimir Karpukhin}, \bibinfo{person}{Barlas Oguz}, \bibinfo{person}{Sewon Min}, \bibinfo{person}{Patrick Lewis}, \bibinfo{person}{Ledell Wu}, \bibinfo{person}{Sergey Edunov}, \bibinfo{person}{Danqi Chen}, {and} \bibinfo{person}{Wen-tau Yih}.} \bibinfo{year}{2020}\natexlab{}.
-\newblock \showarticletitle{Dense Passage Retrieval for Open-Domain Question Answering}. In \bibinfo{booktitle}{\emph{Proceedings of EMNLP}}. \bibinfo{pages}{6769--6781}.
+\newblock \showarticletitle{Dense Passage Retrieval for Open-Domain Question Answering}. In \bibinfo{booktitle}{\emph{Proceedings of EMNLP}}.
 \newblock
+\urldef\tempurl%
+\url{https://doi.org/10.18653/v1/2020.emnlp-main.550}
+\showDOI{\tempurl}
 
 
 \bibitem[Lewis et~al\mbox{.}(2020)]%
         {lewis2020retrieval}
-\bibfield{author}{\bibinfo{person}{Patrick Lewis}, \bibinfo{person}{Ethan Perez}, \bibinfo{person}{Aleksandra Piktus}, \bibinfo{person}{Fabio Petroni}, \bibinfo{person}{Vladimir Karpukhin}, \bibinfo{person}{Naman Goyal}, \bibinfo{person}{Holger Küttler}, \bibinfo{person}{Mike Lewis}, \bibinfo{person}{Wen-tau Yih}, \bibinfo{person}{Tim Rocktäschel}, {and} \bibinfo{person}{Sebastian Riedel}.} \bibinfo{year}{2020}\natexlab{}.
-\newblock \showarticletitle{Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks}. In \bibinfo{booktitle}{\emph{Advances in Neural Information Processing Systems (NeurIPS)}}.
+\bibfield{author}{\bibinfo{person}{Patrick Lewis}, \bibinfo{person}{Ethan Perez}, \bibinfo{person}{Aleksandra Piktus}, \bibinfo{person}{Fabio Petroni}, \bibinfo{person}{Vladimir Karpukhin}, \bibinfo{person}{Naman Goyal}, {and} \bibinfo{person}{et al.}} \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks}. In \bibinfo{booktitle}{\emph{NeurIPS}}.
 \newblock
+\urldef\tempurl%
+\url{https://doi.org/10.5555/3454287.3455183}
+\showDOI{\tempurl}
 
 
 \bibitem[Lin(2004)]%
@@ -86,21 +106,32 @@
 \bibfield{author}{\bibinfo{person}{Chin-Yew Lin}.} \bibinfo{year}{2004}\natexlab{}.
 \newblock \showarticletitle{ROUGE: A Package for Automatic Evaluation of Summaries}. In \bibinfo{booktitle}{\emph{Text Summarization Branches Out}}. \bibinfo{publisher}{Association for Computational Linguistics}, \bibinfo{address}{Barcelona, Spain}, \bibinfo{pages}{74--81}.
 \newblock
+\urldef\tempurl%
+\url{https://aclanthology.org/W04-1013/}
+\showURL{%
+\tempurl}
 
 
 \bibitem[Liu et~al\mbox{.}(2016)]%
         {liu2016not}
-\bibfield{author}{\bibinfo{person}{Chia-Wei Liu}, \bibinfo{person}{Ryan Lowe}, \bibinfo{person}{Iulian Serban}, \bibinfo{person}{Mike Noseworthy}, \bibinfo{person}{Laurent Charlin}, {and} \bibinfo{person}{Joelle Pineau}.} \bibinfo{year}{2016}\natexlab{}.
-\newblock \showarticletitle{Not All BLEU Scores Are Created Equal: Evaluating Metrics for Open-Ended Generation}.
-\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:1603.08023}} (\bibinfo{year}{2016}).
+\bibfield{author}{\bibinfo{person}{Chia-Wei Liu}, \bibinfo{person}{Ryan Lowe}, \bibinfo{person}{Iulian Serban}, \bibinfo{person}{Michael Noseworthy}, \bibinfo{person}{Laurent Charlin}, {and} \bibinfo{person}{Joelle Pineau}.} \bibinfo{year}{2016}\natexlab{}.
+\newblock \showarticletitle{Not All BLEU Scores Are Equal: Automatic Evaluation of Open-Domain Dialogue Systems}. In \bibinfo{booktitle}{\emph{Proceedings of the 2016 Conference on Empirical Methods in Natural Language Processing}}.
 \newblock
+\urldef\tempurl%
+\url{https://aclanthology.org/D16-1058/}
+\showURL{%
+\tempurl}
 
 
 \bibitem[Nogueira and Cho(2019)]%
         {nogueira2019passage}
 \bibfield{author}{\bibinfo{person}{Rodrigo Nogueira} {and} \bibinfo{person}{Kyunghyun Cho}.} \bibinfo{year}{2019}\natexlab{}.
-\newblock \showarticletitle{Passage Re-ranking with BERT}. In \bibinfo{booktitle}{\emph{arXiv preprint arXiv:1901.04085}}.
+\newblock \showarticletitle{Passage Re-Ranking with BERT}. In \bibinfo{booktitle}{\emph{arXiv preprint arXiv:1901.04085}}.
 \newblock
+\urldef\tempurl%
+\url{https://arxiv.org/abs/1901.04085}
+\showURL{%
+\tempurl}
 
 
 \bibitem[Post(2018)]%
@@ -117,29 +148,45 @@
         {rocchio1971relevance}
 \bibfield{author}{\bibinfo{person}{J.~J. Rocchio}.} \bibinfo{year}{1971}\natexlab{}.
 \newblock \showarticletitle{Relevance Feedback in Information Retrieval}.
-\newblock \bibinfo{journal}{\emph{The SMART Retrieval System—Experiments in Automatic Document Processing}} (\bibinfo{year}{1971}).
+\newblock \bibinfo{journal}{\emph{The SMART Retrieval System: Experiments in Automatic Document Processing}} (\bibinfo{year}{1971}).
 \newblock
+\urldef\tempurl%
+\url{https://ci.nii.ac.jp/naid/10024734288/}
+\showURL{%
+\tempurl}
 
 
 \bibitem[Stiennon et~al\mbox{.}(2020)]%
         {stiennon2020learning}
-\bibfield{author}{\bibinfo{person}{Nisan Stiennon}, \bibinfo{person}{Long Ouyang}, \bibinfo{person}{Jeffrey Wu}, \bibinfo{person}{Daniel~M. Ziegler}, \bibinfo{person}{Ryan Lowe}, {and} \bibinfo{person}{et al.}} \bibinfo{year}{2020}\natexlab{}.
-\newblock \showarticletitle{Learning to Summarize with Human Feedback}. In \bibinfo{booktitle}{\emph{NeurIPS}}.
+\bibfield{author}{\bibinfo{person}{Nisan Stiennon}, \bibinfo{person}{Long Ouyang}, \bibinfo{person}{Jeffrey Wu}, \bibinfo{person}{Daniel Ziegler}, \bibinfo{person}{Ryan Lowe}, {and} \bibinfo{person}{et al.}} \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{Learning to summarize with human feedback}. In \bibinfo{booktitle}{\emph{NeurIPS}}.
 \newblock
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2009.01325}
+\showURL{%
+\tempurl}
 
 
 \bibitem[Thoppilan and et~al.(2022)]%
         {thoppilan2022lamda}
-\bibfield{author}{\bibinfo{person}{Rishi Thoppilan} {and} \bibinfo{person}{et al.}} \bibinfo{year}{2022}\natexlab{}.
+\bibfield{author}{\bibinfo{person}{Rohan Thoppilan} {and} \bibinfo{person}{et al.}} \bibinfo{year}{2022}\natexlab{}.
 \newblock \showarticletitle{LaMDA: Language Models for Dialog Applications}. In \bibinfo{booktitle}{\emph{arXiv preprint arXiv:2201.08239}}.
 \newblock
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2201.08239}
+\showURL{%
+\tempurl}
 
 
-\bibitem[Wang and Author2(2023)]%
+\bibitem[Wang and et~al.(2023)]%
         {wang2023query}
-\bibfield{author}{\bibinfo{person}{Author1 Wang} {and} \bibinfo{person}{Author2}.} \bibinfo{year}{2023}\natexlab{}.
-\newblock \showarticletitle{Query Expansion with Large Language Models for Improved Retrieval}. In \bibinfo{booktitle}{\emph{arXiv preprint arXiv:2301.XXXXX}}.
+\bibfield{author}{\bibinfo{person}{Author Wang} {and} \bibinfo{person}{et al.}} \bibinfo{year}{2023}\natexlab{}.
+\newblock \showarticletitle{Query Expansion with Large Language Models for Open-Domain Question Answering}. In \bibinfo{booktitle}{\emph{arXiv preprint arXiv:2301.XXXX}}.
 \newblock
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2301.XXXX}
+\showURL{%
+\tempurl}
 
 
 \bibitem[Zhang et~al\mbox{.}(2020)]%
@@ -147,8 +194,10 @@
 \bibfield{author}{\bibinfo{person}{Tianyi Zhang}, \bibinfo{person}{Varsha Kishore}, \bibinfo{person}{Felix Wu}, \bibinfo{person}{Kilian~Q. Weinberger}, {and} \bibinfo{person}{Yoav Artzi}.} \bibinfo{year}{2020}\natexlab{}.
 \newblock \showarticletitle{BERTScore: Evaluating Text Generation with BERT}. In \bibinfo{booktitle}{\emph{8th International Conference on Learning Representations (ICLR)}}. \bibinfo{address}{Addis Ababa, Ethiopia}.
 \newblock
-\newblock
-\shownote{OpenReview.net}.
+\urldef\tempurl%
+\url{https://openreview.net/forum?id=Byg0sC4tDr}
+\showURL{%
+\tempurl}
 
 
 \end{thebibliography}

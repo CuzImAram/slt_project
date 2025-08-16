@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.5.27)  16 AUG 2025 15:14
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.5.27)  16 AUG 2025 15:46
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1874,8 +1874,23 @@ Processing 'acks' comment.
 LaTeX Font Info:    Font shape `TU/LinLibertine(0)/m/it' will be
 (Font)              scaled to size 7.0pt on input line 43.
 LaTeX Font Info:    Font shape `TU/LinLibertine(1)/m/n' will be
-(Font)              scaled to size 7.0pt on input line 113.
- [12.12])
+(Font)              scaled to size 7.0pt on input line 48.
+LaTeX Info: Redefining \tempurl on input line 57.
+LaTeX Info: Redefining \tempurl on input line 68.
+LaTeX Info: Redefining \tempurl on input line 79.
+LaTeX Info: Redefining \tempurl on input line 90.
+LaTeX Info: Redefining \tempurl on input line 100.
+LaTeX Info: Redefining \tempurl on input line 110.
+LaTeX Info: Redefining \tempurl on input line 121.
+LaTeX Info: Redefining \tempurl on input line 132.
+LaTeX Info: Redefining \tempurl on input line 143.
+LaTeX Info: Redefining \tempurl on input line 154.
+LaTeX Info: Redefining \tempurl on input line 165.
+LaTeX Info: Redefining \tempurl on input line 176.
+ [12.12]
+LaTeX Info: Redefining \tempurl on input line 187.
+LaTeX Info: Redefining \tempurl on input line 198.
+)
 
 Package natbib Warning: There were undefined citations.
 
@@ -1899,7 +1914,7 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 Here is how much of TeX's memory you used:
  52762 strings out of 474773
  1204589 string characters out of 5757724
- 1944839 words of memory out of 5000000
+ 1947839 words of memory out of 5000000
  73996 multiletter control sequences out of 15000+600000
  566511 words of font info for 152 fonts, out of 8000000 for 9000
  1509 hyphenation exceptions out of 8191
