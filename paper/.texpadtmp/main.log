@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.5.27)  17 AUG 2025 16:17
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.5.27)  17 AUG 2025 16:22
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1707,21 +1707,21 @@ Package microtype Info: Loading generic protrusion settings for font family
 LaTeX Font Info:    Font shape `TU/LinLibertine(0)/b/n' will be
 (Font)              scaled to size 7.2pt on input line 364.
  [4.4]
-Package pgfplots info on input line 434: Using 'lua backend=false' for axis: x coord trafo unsupported.
+Package pgfplots info on input line 424: Using 'lua backend=false' for axis: x coord trafo unsupported.
 
 
-Class acmart Warning: A possible image without description on input line 440.
+Class acmart Warning: A possible image without description on input line 430.
 
 [5.5]
 PGFPlots: reading {data/rag_time_long.csv}
 PGFPlots: reading {data/rag_time_long.csv}
 
 
-Class acmart Warning: A possible image without description on input line 522.
+Class acmart Warning: A possible image without description on input line 512.
 
 [6.6]
 LaTeX Font Info:    Font shape `TU/LinLibertine(0)/m/n' will be
-(Font)              scaled to size 7.2pt on input line 553.
+(Font)              scaled to size 7.2pt on input line 543.
  (/Users/domenic/repos/slt_project/paper/.texpadtmp/main.bbl
 LaTeX Info: Redefining \tempurl on input line 59.
 LaTeX Info: Redefining \tempurl on input line 72.
