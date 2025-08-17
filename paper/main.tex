@@ -428,6 +428,13 @@ The win-rate figure (Fig.~\ref{fig:winrate-overall}) aggregates all pairwise vot
 \label{fig:winrate-overall}
 \end{figure}
 
+\paragraph{Performance comparison.}
+\label{performance-comparison}
+Pipeline~4 achieves approximately 57\% higher win rate than Pipeline~1, as shown in 
+\hyperref[fig:winrate-overall]{Fig.~\ref{fig:winrate-overall}}, indicating a significant and consistent 
+preference in randomized, blind human voting. The additional query-pool expansion steps 
+also lead to roughly four times longer runtime per question (\hyperref[fig:time-per-question]{Fig.~\ref{fig:time-per-question}}), highlighting a clear cost–quality trade-off.
+
 \paragraph{Retrieval coverage limits.}
 \label{retrieval-coverage-limits}
 Not infrequently, Elasticsearch retrieved \emph{no accurate, on-topic snippets}
@@ -519,13 +526,6 @@ or terse reply), reducing measured LLM runtime. These dips therefore reflect a
 \emph{retrieval failure}, not an efficiency gain of the multi-query
 pipeline.
 
-\paragraph{Performance comparison.}
-\label{performance-comparison}
-Pipeline~4 achieves approximately 57\% higher win rate than Pipeline~1, as shown in 
-\hyperref[fig:winrate-overall]{Fig.~\ref{fig:winrate-overall}}, indicating a significant and consistent 
-preference in randomized, blind human voting. The additional query-pool expansion steps 
-also lead to roughly four times longer runtime per question (\hyperref[fig:time-per-question]{Fig.~\ref{fig:time-per-question}}), highlighting a clear cost–quality trade-off.
-
 \section{Conclusion}
 \label{sec:conclusion}
 
@@ -541,10 +541,9 @@ should translate into higher preference.
 
 \paragraph{Limitations.}
 Three factors temper this advantage: 
-\newline(i) retrieval coverage gaps where Elasticsearch returned no meaningful snippets;  
-\newline(ii) occasional hallucinations—especially on sensitive topics—where the model answered without sufficient grounding; and  
-\newline(iii) higher LLM runtime for Pipeline~4 due to additional expansion/aggregation steps. Timing analysis shows
-that apparent “fast” spikes for Pipeline~4 coincide with poor retrieval (short contexts), not genuine efficiency gains.
+\newline(i) retrieval coverage gaps where Elasticsearch returned no meaningful snippets 
+\newline(ii) occasional hallucinations—especially on sensitive topics—where the model answered without sufficient grounding  
+\newline(iii) higher LLM runtime for Pipeline~4 due to additional expansion/aggregation steps. Timing analysis shows that apparent “fast” spikes for Pipeline~4 coincide with poor retrieval (short contexts), not genuine efficiency gains.
 
 \paragraph{Overall.}
 Despite the limitations, query-pool expansion provides consistent benefits in well-grounded settings. 
