@@ -379,6 +379,7 @@ To address this, we compare two pipelines operating solely on SERP snippets. The
 	overall means and show per-question comparisons in the timing figures.
 	
 	\paragraph{Cost perspective.}
+	\label{cost-perspective}
 	Pipeline~1 is the lower bound, issuing exactly one LLM call. Pipeline~4 typically makes three (query expansion, snippet filtering/summarization, final answer), which raises latency and energy use. The filtering stage is the heaviest, since it ingests the largest raw snippet set; however, it often \emph{shrinks} the final context, partially offsetting token cost in the last generation step. In short: Pipeline~4 pays extra up front to reduce the payload of the final call.
 	
 	% (shortened a lot)
@@ -427,6 +428,7 @@ guidelines (Section~\ref{subsec:annotator-remarks}).
 \end{figure}
 
 \paragraph{Retrieval coverage limits.}
+\label{retrieval-coverage-limits}
 Not infrequently, Elasticsearch retrieved \emph{no accurate, on-topic snippets}
 for a given prompt. In such cases, answers could not be fully grounded in the
 provided context, compressing the attainable performance of either pipeline and
@@ -535,8 +537,9 @@ However, three factors temper this advantage:
 that apparent “fast” spikes for Pipeline~4 coincide with poor retrieval (short contexts), not genuine efficiency gains.
 
 Overall, query-pool expansion helps when retrieval surfaces relevant evidence, and our results support \hyperref[hyp:H1]{H\textsubscript{1}}. 
-Nevertheless, it cannot compensate for weak recall and can be undermined if grounding is not strictly followed. 
-Given the marginal win-rate gains and increased latency, the cost–quality trade-off may be unfavorable in resource-constrained settings.
+While it cannot fully compensate for \hyperref[retrieval-coverage-limits]{weak recall} and may be undermined if grounding is not strictly followed, it provides consistent benefits in well-grounded settings. 
+The \hyperref[fig:winrate-overall]{win-rate} gains remain modest, but the additional steps partly align with the rationale from the \hyperref[cost-perspective]{cost perspective}: paying more up front can sometimes shrink the final payload and improve answer focus. 
+Still, in resource-constrained environments, the cost–quality trade-off requires careful consideration.
 
 
 %%
