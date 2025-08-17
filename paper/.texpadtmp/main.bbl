@@ -37,9 +37,9 @@
 \providecommand\natexlab[1]{#1}
 \providecommand\showeprint[2][]{arXiv:#2}
 
-\bibitem[Aram~Aytekin(2025a)]%
+\bibitem[Aytekin et~al\mbox{.}(2025a)]%
         {eval}
-\bibfield{author}{\bibinfo{person}{Moritz Dietrich Maximilian~Bennedik Aram~Aytekin, Domenic~Bremmer}.} \bibinfo{year}{2025}\natexlab{a}.
+\bibfield{author}{\bibinfo{person}{Aram Aytekin}, \bibinfo{person}{Domenic Bremmer}, \bibinfo{person}{Moritz Dietrich}, {and} \bibinfo{person}{Maximilian Bennedik}.} \bibinfo{year}{2025}\natexlab{a}.
 \newblock \bibinfo{title}{Evaluation SLT Project}.
 \newblock
 \newblock
@@ -49,9 +49,9 @@
 \tempurl}
 
 
-\bibitem[Aram~Aytekin(2025b)]%
+\bibitem[Aytekin et~al\mbox{.}(2025b)]%
         {repo}
-\bibfield{author}{\bibinfo{person}{Moritz Dietrich Maximilian~Bennedik Aram~Aytekin, Domenic~Bremmer}.} \bibinfo{year}{2025}\natexlab{b}.
+\bibfield{author}{\bibinfo{person}{Aram Aytekin}, \bibinfo{person}{Domenic Bremmer}, \bibinfo{person}{Moritz Dietrich}, {and} \bibinfo{person}{Maximilian Bennedik}.} \bibinfo{year}{2025}\natexlab{b}.
 \newblock \bibinfo{title}{SLT Project}.
 \newblock
 \newblock

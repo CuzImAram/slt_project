@@ -12,36 +12,10 @@ I was expecting an "="---line 178 of file ../cites.bib
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
 Reallocated singl_function (elt_size=4) to 100 items from 50.
-Too many commas in name 1 of "Aram Aytekin, Domenic Bremmer, Moritz Dietrich, Maximilian Bennedik" for entry repo
-while executing---line 2913 of file ACM-Reference-Format.bst
-Too many commas in name 1 of "Aram Aytekin, Domenic Bremmer, Moritz Dietrich, Maximilian Bennedik" for entry repo
-while executing---line 2913 of file ACM-Reference-Format.bst
-Too many commas in name 1 of "Aram Aytekin, Domenic Bremmer, Moritz Dietrich, Maximilian Bennedik" for entry repo
-while executing---line 2913 of file ACM-Reference-Format.bst
-Too many commas in name 1 of "Aram Aytekin, Domenic Bremmer, Moritz Dietrich, Maximilian Bennedik" for entry eval
-while executing---line 2913 of file ACM-Reference-Format.bst
-Too many commas in name 1 of "Aram Aytekin, Domenic Bremmer, Moritz Dietrich, Maximilian Bennedik" for entry eval
-while executing---line 2913 of file ACM-Reference-Format.bst
-Too many commas in name 1 of "Aram Aytekin, Domenic Bremmer, Moritz Dietrich, Maximilian Bennedik" for entry eval
-while executing---line 2913 of file ACM-Reference-Format.bst
 Reallocated glb_str_ptr (elt_size=4) to 20 items from 10.
 Reallocated global_strs (elt_size=200001) to 20 items from 10.
 Reallocated glb_str_end (elt_size=4) to 20 items from 10.
-Too many commas in name 1 of "Aram Aytekin, Domenic Bremmer, Moritz Dietrich, Maximilian Bennedik" for entry eval
-while executing---line 2974 of file ACM-Reference-Format.bst
-Too many commas in name 1 of "Aram Aytekin, Domenic Bremmer, Moritz Dietrich, Maximilian Bennedik" for entry eval
-while executing---line 2974 of file ACM-Reference-Format.bst
-Too many commas in name 1 of "Aram Aytekin, Domenic Bremmer, Moritz Dietrich, Maximilian Bennedik" for entry repo
-while executing---line 2974 of file ACM-Reference-Format.bst
 Reallocated singl_function (elt_size=4) to 100 items from 50.
-Too many commas in name 1 of "Aram Aytekin, Domenic Bremmer, Moritz Dietrich, Maximilian Bennedik" for entry eval
-while executing---line 3072 of file ACM-Reference-Format.bst
-Too many commas in name 1 of "Aram Aytekin, Domenic Bremmer, Moritz Dietrich, Maximilian Bennedik" for entry eval
-while executing---line 3072 of file ACM-Reference-Format.bst
-Too many commas in name 1 of "Aram Aytekin, Domenic Bremmer, Moritz Dietrich, Maximilian Bennedik" for entry repo
-while executing---line 3072 of file ACM-Reference-Format.bst
-Too many commas in name 1 of "Aram Aytekin, Domenic Bremmer, Moritz Dietrich, Maximilian Bennedik" for entry repo
-while executing---line 3072 of file ACM-Reference-Format.bst
 Warning--empty address in Gienapp_2025
 Warning--empty year in qwen3_model
 Warning--empty address in NEURIPS2020_6b493230
@@ -49,32 +23,32 @@ Warning--empty year in blablador_api
 Warning--empty address in reimer:2023
 You've used 18 entries,
             5981 wiz_defined-function locations,
-            1600 strings with 23766 characters,
-and the built_in function-call counts, 21353 in all, are:
-= -- 2152
-> -- 1102
+            1600 strings with 23775 characters,
+and the built_in function-call counts, 21633 in all, are:
+= -- 2174
+> -- 1147
 < -- 0
-+ -- 378
-- -- 386
-* -- 1855
-:= -- 2430
++ -- 396
+- -- 397
+* -- 1914
+:= -- 2470
 add.period$ -- 90
 call.type$ -- 18
-change.case$ -- 181
+change.case$ -- 187
 chr.to.int$ -- 17
 cite$ -- 23
 duplicate$ -- 1692
 empty$ -- 1188
-format.name$ -- 434
-if$ -- 4663
+format.name$ -- 452
+if$ -- 4719
 int.to.chr$ -- 3
 int.to.str$ -- 1
 missing$ -- 40
 newline$ -- 249
 num.names$ -- 137
-pop$ -- 702
+pop$ -- 708
 preamble$ -- 1
-purify$ -- 307
+purify$ -- 313
 quote$ -- 0
 skip$ -- 678
 stack$ -- 0
@@ -85,7 +59,7 @@ text.prefix$ -- 0
 top$ -- 0
 type$ -- 534
 warning$ -- 5
-while$ -- 113
+while$ -- 106
 width$ -- 0
 write$ -- 457
-(There were 14 error messages)
+(There was 1 error message)
