@@ -520,13 +520,19 @@ or terse reply), reducing measured LLM runtime. These dips therefore reflect a
 \emph{retrieval failure}, not an efficiency gain of the multi-query
 pipeline.
 
+\paragraph{Performance comparison.}
+\label{performance-comparison}
+Pipeline~4 achieves approximately X\% higher win rate than Pipeline~1, as shown in 
+\hyperref[fig:winrate-overall]{Fig.~\ref{fig:winrate-overall}}, indicating a modest but consistent 
+preference in randomized, blind human voting. The additional query-pool expansion steps 
+also lead to roughly four times longer runtime per question (\hyperref[fig:time-per-question]{Fig.~\ref{fig:time-per-question}}), highlighting a clear cost–quality trade-off.
+
 \section{Conclusion}
 \label{sec:conclusion}
 
 We compared two RAG pipelines on 20 predefined prompts over the reproducible
 Archive Query Log (AQL) index: a single-query baseline (Pipeline~1) and a
-query-pool variant (Pipeline~4). In randomized, blind human voting, we observed
-a \emph{modest} overall preference for Pipeline~4. 
+query-pool variant (Pipeline~4). 
 
 \paragraph{Rationale.}
 Pipeline~4 expands the initial prompt into an LLM-generated \emph{query pool}, 
@@ -534,18 +540,18 @@ increasing search coverage and expected recall of relevant snippets. Greater cov
 should yield answers that are more accurate and on-topic, which, under our evaluation protocol, 
 should translate into higher preference.
 
-However, three factors temper this advantage: 
-\newline(i) retrieval coverage gaps where Elasticsearch returned no meaningful snippets, limiting any pipeline’s ability to answer from context;  
+\paragraph{Limitations.}
+Three factors temper this advantage: 
+\newline(i) retrieval coverage gaps where Elasticsearch returned no meaningful snippets;  
 \newline(ii) occasional hallucinations—especially on sensitive topics—where the model answered without sufficient grounding; and  
 \newline(iii) higher LLM runtime for Pipeline~4 due to additional expansion/aggregation steps. Timing analysis shows
 that apparent “fast” spikes for Pipeline~4 coincide with poor retrieval (short contexts), not genuine efficiency gains.
 
-\newline Overall, query-pool expansion helps when retrieval surfaces relevant evidence, and our results support \hyperref[hyp:H1]{H\textsubscript{1}}. 
-While it cannot fully compensate for \hyperref[retrieval-coverage-limits]{weak recall} and may be undermined if grounding is not strictly followed, it provides consistent benefits in well-grounded settings. 
-The \hyperref[fig:winrate-overall]{win-rate} gains remain modest, but the additional steps partly align with the rationale from the \hyperref[cost-perspective]{cost perspective}: paying more up front can sometimes shrink the final payload and improve answer focus. 
-A visual comparison of the trade-off is particularly informative: the two plots (win rate and latency) illustrate the tension clearly. One could emphasize the cost–benefit balance even more by directly contrasting the relative win-rate improvement with the relative increase in average latency—visible in Fig.~\ref{fig:time-per-question}, where Pipeline~4 takes roughly four times longer per question. 
-Still, in resource-constrained environments, the cost–quality trade-off requires careful consideration.
-
+\paragraph{Overall.}
+Despite the limitations, query-pool expansion provides consistent benefits in well-grounded settings. 
+Our \hyperref[performance-comparison]{results} support \hyperref[hyp:H1]{H\textsubscript{1}} and show that 
+Pipeline~4 has a modest advantage, though at the cost of increased runtime. 
+In resource-constrained environments, this cost–quality trade-off requires careful consideration.
 
 %%
 %% The acknowledgments section is defined using the "acks" environment
