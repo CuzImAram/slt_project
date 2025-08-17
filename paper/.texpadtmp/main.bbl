@@ -2,7 +2,7 @@
 %%% Do NOT edit. File created by BibTeX with style
 %%% ACM-Reference-Format-Journals [18-Jan-2012].
 
-\begin{thebibliography}{17}
+\begin{thebibliography}{18}
 
 %%% ====================================================================
 %%% NOTE TO THE USER: you can override these defaults by providing
@@ -37,9 +37,21 @@
 \providecommand\natexlab[1]{#1}
 \providecommand\showeprint[2][]{arXiv:#2}
 
-\bibitem[Aram~Aytekin({[n.\,d.]})]%
+\bibitem[Aram~Aytekin(2025a)]%
+        {eval}
+\bibfield{author}{\bibinfo{person}{Moritz Dietrich Maximilian~Bennedik Aram~Aytekin, Domenic~Bremmer}.} \bibinfo{year}{2025}\natexlab{a}.
+\newblock \bibinfo{title}{Evaluation SLT Project}.
+\newblock
+\newblock
+\urldef\tempurl%
+\url{https://github.com/CuzImAram/slt_project/tree/main/eval}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Aram~Aytekin(2025b)]%
         {repo}
-\bibfield{author}{\bibinfo{person}{Moritz Dietrich Maximilian~Bennedik Aram~Aytekin, Domenic~Bremmer}.} \bibinfo{year}{[n.\,d.]}\natexlab{}.
+\bibfield{author}{\bibinfo{person}{Moritz Dietrich Maximilian~Bennedik Aram~Aytekin, Domenic~Bremmer}.} \bibinfo{year}{2025}\natexlab{b}.
 \newblock \bibinfo{title}{SLT Project}.
 \newblock
 \newblock

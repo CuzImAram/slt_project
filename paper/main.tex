@@ -434,17 +434,22 @@ direction, reducing the risk that individual annotator bias drives the outcome.
 \paragraph{Retrieval coverage limits.}
 \label{retrieval-coverage-limits}
 Not infrequently, Elasticsearch retrieved \emph{no accurate, on-topic snippets}
-for a given prompt. In such cases, answers could not be fully grounded in the
-provided context, compressing the attainable performance of either pipeline and
-dampening any advantage from Pipeline~4’s broader query coverage.
+for a given prompt. As documented in our evaluation set~\citep{eval}, for example,
+the question “How does photosynthesis work?”, both pipelines struggled to obtain
+relevant SERP evidence, leading to the LLM being unable to answer. In such cases,
+the attainable performance of either pipeline is compressed, dampening any
+advantage from Pipeline~4’s broader query coverage.
+
 
 \paragraph{Hallucinations on sensitive topics.}
 We observed instances where the model answered \emph{regardless} of available
 context, i.e., hallucinated content, particularly for highly sensitive topics
-(e.g., COVID-19, climate change). This behavior violates the “answer only from
-snippets” instruction and directly harms the \textbf{Correctness} criterion,
-introducing variance in human preference that can overshadow small win-rate
-differences.
+(e.g., COVID-19, climate change). As documented in our evaluation set~\citep{eval}, the question “How does the greenhouse effect work?”, both pipelines
+produced detailed answers with little to no support in the retrieved snippets,
+violating the “answer only from snippets” instruction and directly harming the
+\textbf{Correctness} criterion. This introduces variance in human preference
+that can overshadow small win-rate differences.
+
 
 \paragraph{Cost–latency perspective.}
 Pipeline~4’s additional LLM calls for query-pool expansion (and occasional

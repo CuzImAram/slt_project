@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.5.27)  16 AUG 2025 20:10
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.5.27)  17 AUG 2025 15:51
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1706,44 +1706,45 @@ Package microtype Info: Loading generic protrusion settings for font family
 LaTeX Font Info:    Font shape `TU/LinLibertine(0)/b/n' will be
 (Font)              scaled to size 7.2pt on input line 357.
  [4.4]
-Package pgfplots info on input line 421: Using 'lua backend=false' for axis: x coord trafo unsupported.
+Package pgfplots info on input line 426: Using 'lua backend=false' for axis: x coord trafo unsupported.
 
 
-Class acmart Warning: A possible image without description on input line 427.
+Class acmart Warning: A possible image without description on input line 432.
 
 [5.5]
 PGFPlots: reading {data/rag_time_long.csv}
 PGFPlots: reading {data/rag_time_long.csv}
 
 
-Class acmart Warning: A possible image without description on input line 506.
+Class acmart Warning: A possible image without description on input line 517.
 
 [6.6]
 LaTeX Font Info:    Font shape `TU/LinLibertine(0)/m/n' will be
-(Font)              scaled to size 7.2pt on input line 537.
+(Font)              scaled to size 7.2pt on input line 548.
  (/Users/domenic/repos/slt_project/paper/.texpadtmp/main.bbl
-LaTeX Info: Redefining \tempurl on input line 60.
+LaTeX Info: Redefining \tempurl on input line 59.
+LaTeX Info: Redefining \tempurl on input line 72.
 LaTeX Font Info:    Font shape `TU/LinLibertine(0)/m/it' will be
-(Font)              scaled to size 7.0pt on input line 68.
-LaTeX Info: Redefining \tempurl on input line 71.
+(Font)              scaled to size 7.0pt on input line 80.
 LaTeX Info: Redefining \tempurl on input line 83.
-LaTeX Info: Redefining \tempurl on input line 94.
-LaTeX Info: Redefining \tempurl on input line 104.
-LaTeX Info: Redefining \tempurl on input line 115.
-LaTeX Info: Redefining \tempurl on input line 126.
-LaTeX Info: Redefining \tempurl on input line 137.
-LaTeX Info: Redefining \tempurl on input line 150.
-LaTeX Info: Redefining \tempurl on input line 162.
-LaTeX Info: Redefining \tempurl on input line 173.
-LaTeX Info: Redefining \tempurl on input line 184.
-LaTeX Info: Redefining \tempurl on input line 196.
+LaTeX Info: Redefining \tempurl on input line 95.
+LaTeX Info: Redefining \tempurl on input line 106.
+LaTeX Info: Redefining \tempurl on input line 116.
+LaTeX Info: Redefining \tempurl on input line 127.
+LaTeX Info: Redefining \tempurl on input line 138.
+LaTeX Info: Redefining \tempurl on input line 149.
 
-Underfull \vbox (badness 5260) has occurred while \output is active []
+Underfull \vbox (badness 2529) has occurred while \output is active []
 
  [7.7]
-LaTeX Info: Redefining \tempurl on input line 207.
+LaTeX Info: Redefining \tempurl on input line 162.
+LaTeX Info: Redefining \tempurl on input line 174.
+LaTeX Info: Redefining \tempurl on input line 185.
+LaTeX Info: Redefining \tempurl on input line 196.
+LaTeX Info: Redefining \tempurl on input line 208.
 LaTeX Info: Redefining \tempurl on input line 219.
-LaTeX Info: Redefining \tempurl on input line 232.
+LaTeX Info: Redefining \tempurl on input line 231.
+LaTeX Info: Redefining \tempurl on input line 244.
 )
 
 Class acmart Warning: Some images may lack descriptions.
@@ -1763,10 +1764,10 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 7AACF107E542993056282FAC905B98A6;2673.
  ) 
 Here is how much of TeX's memory you used:
- 53710 strings out of 474773
- 1228616 string characters out of 5757724
- 1955839 words of memory out of 5000000
- 74936 multiletter control sequences out of 15000+600000
+ 53715 strings out of 474773
+ 1228697 string characters out of 5757724
+ 1948839 words of memory out of 5000000
+ 74941 multiletter control sequences out of 15000+600000
  566300 words of font info for 147 fonts, out of 8000000 for 9000
  1509 hyphenation exceptions out of 8191
  105i,17n,135p,1353b,32979s stack positions out of 10000i,1000n,20000p,200000b,200000s
