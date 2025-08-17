@@ -52,6 +52,13 @@
 % pgfplots (the plotting package on top of TikZ)
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.18}
+% Read overall means: expects columns "pipeline,overall_mean_seconds"
+\pgfplotstableread[col sep=comma]{data/rag_time_overall.csv}\overallmeans
+% Assume row 0 = Pipeline 1, row 1 = Pipeline 4 (adjust if your file differs)
+\pgfplotstablegetelem{0}{overall_mean_seconds}\of{\overallmeans}
+\edef\PoneMean{\pgfplotsretval}
+\pgfplotstablegetelem{1}{overall_mean_seconds}\of{\overallmeans}
+\edef\PfourMean{\pgfplotsretval}
 
 \usepackage{booktabs}
 %%
@@ -462,44 +469,41 @@ questionable when resources or latency budgets are tight.
   ymajorgrids, xmajorgrids,
   legend style={at={(0.5,1.05)},anchor=south,legend columns=-1},
   enlarge x limits=0.02,
-  unbounded coords=jump, % <-- prevents interpolation over NaNs
+  unbounded coords=jump,
 ]
 
 % Pipeline 1
 \addplot+[
   mark=*,
   thick,
-  color=blue,           % <-- force distinct color
+  color=blue,
   y filter/.code={%
     \edef\p{\thisrow{pipeline}}%
     \ifnum\pdfstrcmp{\p}{Pipeline 1}=0
-      % keep value
-    \else
-      \def\pgfmathresult{nan}% hide non-matching rows
-    \fi
+    \else \def\pgfmathresult{nan}\fi
   }
-] table[
-  x=qid, y=mean_time_seconds, col sep=comma
-]{data/rag_time_long.csv};
+] table[x=qid, y=mean_time_seconds, col sep=comma]{data/rag_time_long.csv};
 \addlegendentry{Pipeline 1}
 
 % Pipeline 4
 \addplot+[
   mark=square*,
   thick,
-  color=red,            % <-- force distinct color
+  color=red,
   y filter/.code={%
     \edef\p{\thisrow{pipeline}}%
     \ifnum\pdfstrcmp{\p}{Pipeline 4}=0
-      % keep value
-    \else
-      \def\pgfmathresult{nan}%
-    \fi
+    \else \def\pgfmathresult{nan}\fi
   }
-] table[
-  x=qid, y=mean_time_seconds, col sep=comma
-]{data/rag_time_long.csv};
+] table[x=qid, y=mean_time_seconds, col sep=comma]{data/rag_time_long.csv};
 \addlegendentry{Pipeline 4}
+
+% --- NEW: semi-transparent mean lines ---
+\addplot+[domain=1:20, samples=2, blue, densely dashed, very thick, opacity=0.35] {\PoneMean};
+\addlegendentry{P1 mean}
+
+\addplot+[domain=1:20, samples=2, red, densely dashed, very thick, opacity=0.35] {\PfourMean};
+\addlegendentry{P4 mean}
 
 \end{axis}
 \end{tikzpicture}
