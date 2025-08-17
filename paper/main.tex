@@ -282,7 +282,7 @@ To address this, we compare two pipelines operating solely on SERP snippets. The
 	
 	This subsection describes the configuration and prompting strategy used for the large language models (LLMs) in our pipelines. Each LLM instance operates with a specialized system prompt defining its role, objectives, and constraints. The general workflow across pipelines includes generating relevant queries, retrieving or aggregating context snippets, and producing answers grounded in those snippets.
 	
-	All LLM calls in this work are performed using the Helmholtz-Blablador API~\cite{blablador_api} with the model \texttt{"alias-large"}~\cite{qwen3_model}, also referred to as Qwen3-30B-A3B, optimized for information retrieval and question-answering tasks.
+	All LLM calls in this work are performed using the Helmholtz-Blablador API~\cite{blablador_api} with the model \texttt{"alias-large"}~\cite{yang2025qwen3technicalreport}, also referred to as Qwen3-30B-A3B, optimized for information retrieval and question-answering tasks.
 	
 	The following sections detail the three main stages of LLM configuration: \textit{Query Pool Generation}, \textit{Snippet Aggregation}, and \textit{Answer Generation}. Specific pipelines may implement subsets of these stages or additional mechanisms.
 	
@@ -388,7 +388,7 @@ To address this, we compare two pipelines operating solely on SERP snippets. The
 	Pipeline~1 is the lower bound, issuing exactly one LLM call. Pipeline~4 typically makes three (query expansion, snippet filtering/summarization, final answer), which raises latency and energy use. The filtering stage is the heaviest, since it ingests the largest raw snippet set; however, it often \emph{shrinks} the final context, partially offsetting token cost in the last generation step. In short: Pipeline~4 pays extra up front to reduce the payload of the final call.
 	
 	% (shortened a lot)
-	Given that our model (\texttt{Qwen3-30B-A3B}) is an MoE (128 experts, 8 active), per-token compute is lower than dense models; prior work reports roughly 30–50\% savings, which helps amortize Pipeline~4’s additional calls~\cite{qwen3_model,yun2024inferenceoptimalmixtureofexpertlargelanguage}.
+	Given that our model (\texttt{Qwen3-30B-A3B}) is an MoE (128 experts, 8 active), per-token compute is lower than dense models; prior work reports roughly 30–50\% savings, which helps amortize Pipeline~4’s additional calls~\cite{yang2025qwen3technicalreport,yun2024inferenceoptimalmixtureofexpertlargelanguage}.
 
 	
 	\paragraph{Limitations.}
