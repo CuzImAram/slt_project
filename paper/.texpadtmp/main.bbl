@@ -117,18 +117,6 @@
 \showDOI{\tempurl}
 
 
-\bibitem[Lab({[n.\,d.]})]%
-        {qwen3_model}
-\bibfield{author}{\bibinfo{person}{Tencent~AI Lab}.} \bibinfo{year}{[n.\,d.]}\natexlab{}.
-\newblock \bibinfo{title}{Qwen3 30B A3B Model}.
-\newblock
-\newblock
-\urldef\tempurl%
-\url{https://huggingface.co/Qwen/Qwen3-30B-A3B}
-\showURL{%
-\tempurl}
-
-
 \bibitem[Lewis et~al\mbox{.}(2020)]%
         {NEURIPS2020_6b493230}
 \bibfield{author}{\bibinfo{person}{Patrick Lewis}, \bibinfo{person}{Ethan Perez}, \bibinfo{person}{Aleksandra Piktus}, \bibinfo{person}{Fabio Petroni}, \bibinfo{person}{Vladimir Karpukhin}, \bibinfo{person}{Naman Goyal}, \bibinfo{person}{Heinrich K\"{u}ttler}, \bibinfo{person}{Mike Lewis}, \bibinfo{person}{Wen-tau Yih}, \bibinfo{person}{Tim Rockt\"{a}schel}, \bibinfo{person}{Sebastian Riedel}, {and} \bibinfo{person}{Douwe Kiela}.} \bibinfo{year}{2020}\natexlab{}.
@@ -218,6 +206,19 @@
 \urldef\tempurl%
 \url{https://doi.org/10.18653/v1/2023.emnlp-main.585}
 \showDOI{\tempurl}
+
+
+\bibitem[Yang et~al\mbox{.}(2025)]%
+        {yang2025qwen3technicalreport}
+\bibfield{author}{\bibinfo{person}{An Yang}, \bibinfo{person}{Anfeng Li}, \bibinfo{person}{Baosong Yang}, \bibinfo{person}{Beichen Zhang}, \bibinfo{person}{Binyuan Hui}, \bibinfo{person}{Bo Zheng}, \bibinfo{person}{Bowen Yu}, \bibinfo{person}{Chang Gao}, \bibinfo{person}{Chengen Huang}, \bibinfo{person}{Chenxu Lv}, \bibinfo{person}{Chujie Zheng}, \bibinfo{person}{Dayiheng Liu}, \bibinfo{person}{Fan Zhou}, \bibinfo{person}{Fei Huang}, \bibinfo{person}{Feng Hu}, \bibinfo{person}{Hao Ge}, \bibinfo{person}{Haoran Wei}, \bibinfo{person}{Huan Lin}, \bibinfo{person}{Jialong Tang}, \bibinfo{person}{Jian Yang}, \bibinfo{person}{Jianhong Tu}, \bibinfo{person}{Jianwei Zhang}, \bibinfo{person}{Jianxin Yang}, \bibinfo{person}{Jiaxi Yang}, \bibinfo{person}{Jing Zhou}, \bibinfo{person}{Jingren Zhou}, \bibinfo{person}{Junyang Lin}, \bibinfo{person}{Kai Dang}, \bibinfo{person}{Keqin Bao}, \bibinfo{person}{Kexin Yang}, \bibinfo{person}{Le Yu}, \bibinfo{person}{Lianghao Deng}, \bibinfo{person}{Mei Li}, \bibinfo{person}{Mingfeng Xue}, \bibinfo{person}{Mingze Li}, \bibinfo{person}{Pei Zhang}, \bibinfo{person}{Peng Wang}, \bibinfo{person}{Qin Zhu}, \bibinfo{person}{Rui Men}, \bibinfo{person}{Ruize Gao}, \bibinfo{person}{Shixuan Liu}, \bibinfo{person}{Shuang Luo}, \bibinfo{person}{Tianhao Li}, \bibinfo{person}{Tianyi Tang}, \bibinfo{person}{Wenbiao Yin}, \bibinfo{person}{Xingzhang Ren}, \bibinfo{person}{Xinyu Wang}, \bibinfo{person}{Xinyu Zhang}, \bibinfo{person}{Xuancheng Ren}, \bibinfo{person}{Yang Fan}, \bibinfo{person}{Yang Su}, \bibinfo{person}{Yichang Zhang}, \bibinfo{person}{Yinger Zhang}, \bibinfo{person}{Yu Wan}, \bibinfo{person}{Yuqiong Liu}, \bibinfo{person}{Zekun Wang}, \bibinfo{person}{Zeyu Cui}, \bibinfo{person}{Zhenru Zhang}, \bibinfo{person}{Zhipeng Zhou}, {and} \bibinfo{person}{Zihan Qiu}.} \bibinfo{year}{2025}\natexlab{}.
+\newblock \bibinfo{title}{Qwen3 Technical Report}.
+\newblock
+\newblock
+\showeprint[arxiv]{2505.09388}~[cs.CL]
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2505.09388}
+\showURL{%
+\tempurl}
 
 
 \bibitem[Yun et~al\mbox{.}(2024)]%

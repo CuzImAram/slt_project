@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.5.27)  17 AUG 2025 20:28
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.5.27)  18 AUG 2025 16:22
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1703,6 +1703,11 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `inconsolata' (encoding: TU).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
+
+Overfull \hbox (2.37665pt too wide) in paragraph at lines 285--286
+[]\TU/LinLibertine(0)/m/n/9 All LLM calls in this work are performed using the Helmholtz-Blablador API [[]] with the model \TU/inconsolata(0)/m/n/9 "alias-large" \TU/LinLibertine(0)/m/n/9 [[]],
+ []
+
 [3.3]
 LaTeX Font Info:    Font shape `TU/LinLibertine(0)/b/n' will be
 (Font)              scaled to size 7.2pt on input line 362.
@@ -1725,10 +1730,10 @@ Class acmart Warning: A possible image without description on input line 518.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [6.6]
+ [6.6] [7.7]
 LaTeX Font Info:    Font shape `TU/LinLibertine(0)/m/n' will be
 (Font)              scaled to size 7.2pt on input line 550.
- (/Users/domenic/repos/slt_project/paper/.texpadtmp/main.bbl [7.7]
+ (/Users/domenic/repos/slt_project/paper/.texpadtmp/main.bbl
 LaTeX Info: Redefining \tempurl on input line 59.
 LaTeX Info: Redefining \tempurl on input line 72.
 LaTeX Font Info:    Font shape `TU/LinLibertine(0)/m/it' will be
@@ -1737,17 +1742,18 @@ LaTeX Info: Redefining \tempurl on input line 83.
 LaTeX Info: Redefining \tempurl on input line 95.
 LaTeX Info: Redefining \tempurl on input line 106.
 LaTeX Info: Redefining \tempurl on input line 116.
-LaTeX Info: Redefining \tempurl on input line 127.
-LaTeX Info: Redefining \tempurl on input line 138.
-LaTeX Info: Redefining \tempurl on input line 149.
+LaTeX Info: Redefining \tempurl on input line 126.
+LaTeX Info: Redefining \tempurl on input line 137.
+LaTeX Info: Redefining \tempurl on input line 150.
 LaTeX Info: Redefining \tempurl on input line 162.
-LaTeX Info: Redefining \tempurl on input line 174.
-LaTeX Info: Redefining \tempurl on input line 185.
+LaTeX Info: Redefining \tempurl on input line 173.
+LaTeX Info: Redefining \tempurl on input line 184.
 LaTeX Info: Redefining \tempurl on input line 196.
-LaTeX Info: Redefining \tempurl on input line 208.
+LaTeX Info: Redefining \tempurl on input line 207.
 LaTeX Info: Redefining \tempurl on input line 219.
-LaTeX Info: Redefining \tempurl on input line 231.
-LaTeX Info: Redefining \tempurl on input line 244.
+ [8.8]
+LaTeX Info: Redefining \tempurl on input line 232.
+LaTeX Info: Redefining \tempurl on input line 245.
 )
 
 Class acmart Warning: Some images may lack descriptions.
@@ -1758,7 +1764,7 @@ Class acmart Warning: Some images may lack descriptions.
 File: se-pdfdoc.def 2019/11/29 v1.12 stringenc: PDFDocEncoding
 ) (/usr/local/texlive/2024/texmf-dist/tex/generic/stringenc/se-utf32be.def
 File: se-utf32be.def 2019/11/29 v1.12 stringenc: UTF-32BE
-) [8.8] (/Users/domenic/repos/slt_project/paper/.texpadtmp/main.aux)
+) [9.9] (/Users/domenic/repos/slt_project/paper/.texpadtmp/main.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
@@ -1768,11 +1774,11 @@ Package rerunfilecheck Info: File `main.out' has not changed.
  ) 
 Here is how much of TeX's memory you used:
  53775 strings out of 474773
- 1230211 string characters out of 5757724
+ 1230262 string characters out of 5757724
  1960839 words of memory out of 5000000
  74999 multiletter control sequences out of 15000+600000
  566300 words of font info for 147 fonts, out of 8000000 for 9000
  1509 hyphenation exceptions out of 8191
- 105i,17n,135p,1353b,32978s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 105i,17n,135p,1899b,32979s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on /Users/domenic/repos/slt_project/paper/.texpadtmp/main.pdf (8 pages).
+Output written on /Users/domenic/repos/slt_project/paper/.texpadtmp/main.pdf (9 pages).

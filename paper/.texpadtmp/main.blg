@@ -17,49 +17,48 @@ Reallocated global_strs (elt_size=200001) to 20 items from 10.
 Reallocated glb_str_end (elt_size=4) to 20 items from 10.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Warning--empty address in Gienapp_2025
-Warning--empty year in qwen3_model
 Warning--empty address in NEURIPS2020_6b493230
 Warning--empty year in blablador_api
 Warning--empty address in reimer:2023
 You've used 18 entries,
             5981 wiz_defined-function locations,
-            1600 strings with 23775 characters,
-and the built_in function-call counts, 21633 in all, are:
-= -- 2174
-> -- 1147
+            1601 strings with 24668 characters,
+and the built_in function-call counts, 24543 in all, are:
+= -- 2371
+> -- 1617
 < -- 0
-+ -- 396
-- -- 397
-* -- 1914
-:= -- 2470
++ -- 573
+- -- 570
+* -- 2402
+:= -- 2993
 add.period$ -- 90
 call.type$ -- 18
-change.case$ -- 187
+change.case$ -- 247
 chr.to.int$ -- 17
-cite$ -- 23
-duplicate$ -- 1692
-empty$ -- 1188
-format.name$ -- 452
-if$ -- 4719
+cite$ -- 22
+duplicate$ -- 1704
+empty$ -- 1195
+format.name$ -- 629
+if$ -- 5209
 int.to.chr$ -- 3
 int.to.str$ -- 1
 missing$ -- 40
-newline$ -- 249
+newline$ -- 250
 num.names$ -- 137
-pop$ -- 708
+pop$ -- 752
 preamble$ -- 1
-purify$ -- 313
+purify$ -- 377
 quote$ -- 0
-skip$ -- 678
+skip$ -- 687
 stack$ -- 0
-substring$ -- 1344
+substring$ -- 1367
 swap$ -- 173
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 534
-warning$ -- 5
-while$ -- 106
+warning$ -- 4
+while$ -- 102
 width$ -- 0
-write$ -- 457
+write$ -- 458
 (There was 1 error message)
